@@ -496,7 +496,8 @@
       justify-content: center;
       padding: 12px;
       box-shadow: var(--shadow-sm);
-      transition: transform 0.2s;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
       min-width: 0;
       overflow: hidden;
     }
@@ -583,6 +584,88 @@
       opacity: 1;
     }
 
+    /* Crystal Detail Modal */
+    .crystal-modal-content {
+      text-align: center;
+    }
+
+    .crystal-modal-icon {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 20px;
+    }
+
+    .crystal-modal-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .crystal-modal-code {
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .crystal-modal-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #1d1d1f;
+    }
+
+    .crystal-modal-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #555;
+      margin-bottom: 24px;
+    }
+
+    .crystal-modal-stats {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .crystal-stat {
+      text-align: center;
+    }
+
+    .crystal-stat-label {
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 4px;
+    }
+
+    .crystal-stat-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .stat-chip {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #f5f5f7;
+      padding: 8px 12px;
+      border-radius: 12px;
+      min-width: 52px;
+    }
+
+    .stat-chip .stat-label {
+      font-size: 10px;
+      color: #86868b;
+      margin-bottom: 2px;
+    }
+
+    .stat-chip .stat-value {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
     .modal-header {
       font-size: 20px;
       font-weight: 700;
@@ -624,6 +707,140 @@
     .advice-list li {
       margin-bottom: 12px;
     }
+
+    /* Mobile Responsive */
+    @media (max-width: 480px) {
+      .app-container {
+        padding: 12px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      .card {
+        padding: 24px 16px;
+        border-radius: 24px;
+      }
+
+      .btn {
+        padding: 14px 20px;
+        font-size: 14px;
+      }
+
+      /* Quiz */
+      .option-btn {
+        padding: 16px;
+        font-size: 14px;
+      }
+
+      /* Result */
+      #result-title {
+        font-size: 22px;
+      }
+
+      #result-code {
+        font-size: 14px;
+      }
+
+      .stat-bar-label {
+        font-size: 12px;
+      }
+
+      /* Collection Grid - 2 columns on mobile */
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .grid-item {
+        padding: 8px;
+        border-radius: 16px;
+      }
+
+      .grid-code {
+        font-size: 10px;
+      }
+
+      .grid-name {
+        font-size: 11px;
+      }
+
+      /* Graph */
+      #graph-container {
+        height: 300px;
+      }
+
+      .graph-controls {
+        padding: 10px 16px;
+      }
+
+      .graph-controls .emoji {
+        font-size: 16px;
+      }
+
+      /* Crystal Modal */
+      .crystal-modal-icon {
+        width: 100px;
+        height: 100px;
+      }
+
+      .crystal-modal-title {
+        font-size: 18px;
+      }
+
+      .crystal-modal-desc {
+        font-size: 13px;
+      }
+
+      .crystal-modal-stats {
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .stat-chip {
+        padding: 6px 10px;
+        min-width: 48px;
+      }
+
+      .stat-chip .stat-label {
+        font-size: 9px;
+      }
+
+      .stat-chip .stat-value {
+        font-size: 14px;
+      }
+
+      /* Room list */
+      .room-item {
+        padding: 12px;
+      }
+
+      /* Screen actions grid */
+      .screen-actions {
+        gap: 8px;
+      }
+    }
+
+    /* Very small screens */
+    @media (max-width: 360px) {
+      h1 {
+        font-size: 24px;
+      }
+
+      .grid {
+        gap: 8px;
+      }
+
+      .stat-chip {
+        min-width: 42px;
+        padding: 5px 8px;
+      }
+    }
   </style>
 </head>
 
@@ -647,7 +864,6 @@
         <div style="display:flex; flex-direction:column; gap:12px;">
           <button id="start-btn" class="btn">시작하기</button>
           <button id="view-map-btn" class="btn btn-secondary">관계도 먼저 보기</button>
-          <button id="test-100-btn" class="btn btn-secondary" style="font-size:12px; padding:10px; opacity:0.7;">🧪 100명 테스트</button>
         </div>
       </div>
     </section>
@@ -750,6 +966,19 @@
       </ul>
       <button class="btn" style="width:100%"
         onclick="document.getElementById('advice-modal').classList.remove('active')">닫기</button>
+    </div>
+  </div>
+
+  <!-- Crystal Detail Modal -->
+  <div id="crystal-modal" class="modal-overlay">
+    <div class="modal-content crystal-modal-content">
+      <div class="crystal-modal-icon" id="crystal-modal-icon"></div>
+      <div class="crystal-modal-code" id="crystal-modal-code"></div>
+      <div class="crystal-modal-title" id="crystal-modal-title"></div>
+      <div class="crystal-modal-desc" id="crystal-modal-desc"></div>
+      <div class="crystal-modal-stats" id="crystal-modal-stats"></div>
+      <button class="btn" style="width:100%"
+        onclick="document.getElementById('crystal-modal').classList.remove('active')">닫기</button>
     </div>
   </div>
 
@@ -3296,68 +3525,6 @@
         await loadRoomData();
       });
 
-      document.getElementById('test-100-btn').addEventListener('click', () => {
-        // 100명 테스트 모드
-        document.querySelector('#result-screen .card').style.display = 'none';
-        document.querySelector('.screen-actions').style.display = 'none';
-        document.getElementById('room-section').style.marginTop = '0';
-        switchScreen('result-screen');
-
-        if (!graphInstance) graphInstance = new SnowGraph('graph-canvas');
-
-        // Generate 100 test users with OCEAN scores
-        const dummyUsers = [];
-        const koreanNames = ['민준', '서윤', '예준', '지우', '도윤', '서연', '하준', '지민', '시우', '수아',
-          '준서', '하윤', '예서', '다은', '지호', '채원', '윤서', '주원', '지안', '소율'];
-
-        // Me at center with moderate OCEAN scores
-        const myName = document.getElementById('nickname-input').value || '나';
-        dummyUsers.push({ id: 'me', nickname: myName, scores: { O: 50, C: 50, E: 50, A: 50, N: 50 }, crystal_code: 'N2c' });
-
-        for (let i = 0; i < 100; i++) {
-          const cluster = Math.random();
-          let baseO = 50, baseC = 50, baseE = 50, baseA = 50, baseN = 50;
-          let variance = 15;
-
-          if (cluster < 0.2) {
-            // Soulmates - very similar OCEAN profile
-            variance = 10;
-          } else if (cluster < 0.5) {
-            // Colleagues - moderate differences, good C and A match
-            baseO += (Math.random() - 0.5) * 40;
-            baseE += (Math.random() - 0.5) * 40;
-            variance = 15;
-          } else {
-            // Different - random OCEAN profile
-            baseO = Math.random() * 100;
-            baseC = Math.random() * 100;
-            baseE = Math.random() * 100;
-            baseA = Math.random() * 100;
-            baseN = Math.random() * 100;
-            variance = 20;
-          }
-
-          dummyUsers.push({
-            id: `u${i}`,
-            nickname: koreanNames[i % koreanNames.length] + (Math.floor(i / 20) || ''),
-            scores: {
-              O: Math.max(0, Math.min(100, baseO + (Math.random() - 0.5) * variance * 2)),
-              C: Math.max(0, Math.min(100, baseC + (Math.random() - 0.5) * variance * 2)),
-              E: Math.max(0, Math.min(100, baseE + (Math.random() - 0.5) * variance * 2)),
-              A: Math.max(0, Math.min(100, baseA + (Math.random() - 0.5) * variance * 2)),
-              N: Math.max(0, Math.min(100, baseN + (Math.random() - 0.5) * variance * 2))
-            },
-            crystal_code: `C${i}`
-          });
-        }
-
-        requestAnimationFrame(() => {
-          graphInstance.resize();
-          graphInstance.setUsers(dummyUsers, 'me');
-          renderRoomList(dummyUsers);
-        });
-      });
-
       document.getElementById('restart-btn').addEventListener('click', () => {
         scores = { O: 50, C: 50, E: 50, A: 50, N: 50 }; // Reset OCEAN scores
         current = 0;
@@ -3741,13 +3908,41 @@
     }
 
     function renderGallery(data) {
-      document.getElementById('gallery-grid').innerHTML = data.map(item => `
-        <div class="grid-item">
+      const grid = document.getElementById('gallery-grid');
+      grid.innerHTML = data.map((item, idx) => `
+        <div class="grid-item" data-crystal-idx="${idx}">
           ${item.svg}
           <div class="grid-code">${item.code}</div>
           <div class="grid-name">${item.title}</div>
         </div>
       `).join('');
+
+      // 클릭 이벤트 바인딩
+      grid.querySelectorAll('.grid-item').forEach(el => {
+        el.addEventListener('click', () => {
+          const idx = parseInt(el.dataset.crystalIdx);
+          showCrystalDetail(data[idx]);
+        });
+      });
+    }
+
+    function showCrystalDetail(item) {
+      const modal = document.getElementById('crystal-modal');
+      document.getElementById('crystal-modal-icon').innerHTML = item.svg;
+      document.getElementById('crystal-modal-code').textContent = item.code;
+      document.getElementById('crystal-modal-title').textContent = item.title;
+      document.getElementById('crystal-modal-desc').textContent = item.desc;
+
+      // OCEAN 스탯 표시
+      const statsEl = document.getElementById('crystal-modal-stats');
+      const stats = item.stats || {};
+      const labels = { O: '개방성', C: '성실성', E: '외향성', A: '친화성', N: '안정성' };
+      statsEl.innerHTML = Object.entries(labels).map(([key, label]) => {
+        const val = stats[key] ?? 50;
+        return `<div class="stat-chip"><span class="stat-label">${label}</span><span class="stat-value">${val}</span></div>`;
+      }).join('');
+
+      modal.classList.add('active');
     }
 
     // START
