@@ -1,0 +1,803 @@
+[
+  {
+    "id": 1,
+    "code": "N1a",
+    "group": "Needle",
+    "name_en": "Simple Needle",
+    "title_kr": "예리한 외골수",
+    "desc": "불필요한 것은 모두 배제하고 핵심만 찌르는 날카로운 분석가입니다.",
+    "rarity": "Common",
+    "stats": { "T": 90, "H": 20, "V": 10, "R": 0 }
+  },
+  {
+    "id": 2,
+    "code": "N1b",
+    "group": "Needle",
+    "name_en": "Needle with Top",
+    "title_kr": "신중한 바늘",
+    "desc": "날카롭지만 끝맺음은 확실하게 처리하는 꼼꼼한 성격입니다.",
+    "rarity": "Common",
+    "stats": { "T": 88, "H": 25, "V": 15, "R": 0 }
+  },
+  {
+    "id": 3,
+    "code": "N1c",
+    "group": "Needle",
+    "name_en": "Bundle of Needles",
+    "title_kr": "협력하는 전략가",
+    "desc": "혼자보다는 마음 맞는 소수 정예 팀으로 움직일 때 빛이 납니다.",
+    "rarity": "Rare",
+    "stats": { "T": 85, "H": 40, "V": 10, "R": 0 }
+  },
+  {
+    "id": 4,
+    "code": "N1d",
+    "group": "Needle",
+    "name_en": "Needle with Cornice",
+    "title_kr": "멋쟁이 신사",
+    "desc": "예리함 속에 숨겨진 디테일한 센스가 돋보이는 타입입니다.",
+    "rarity": "Rare",
+    "stats": { "T": 80, "H": 45, "V": 20, "R": 0 }
+  },
+  {
+    "id": 5,
+    "code": "N1e",
+    "group": "Needle",
+    "name_en": "Bundle of Elementary Needles",
+    "title_kr": "호기심 대장",
+    "desc": "아직 다듬어지지 않았지만 무수한 가능성을 품고 사방을 찌릅니다.",
+    "rarity": "Common",
+    "stats": { "T": 75, "H": 30, "V": 40, "R": 0 }
+  },
+  {
+    "id": 6,
+    "code": "N2a",
+    "group": "Needle",
+    "name_en": "Combination of Needles",
+    "title_kr": "복잡한 해결사",
+    "desc": "얽히고설킨 난제들을 자신만의 논리로 풀어내는 컨설턴트입니다.",
+    "rarity": "Rare",
+    "stats": { "T": 85, "H": 50, "V": 30, "R": 0 }
+  },
+  {
+    "id": 7,
+    "code": "N2b",
+    "group": "Needle",
+    "name_en": "Bundle of Needles (Radial)",
+    "title_kr": "사교적인 리더",
+    "desc": "중심을 잡고 여러 방향으로 영향력을 펼치는 마당발입니다.",
+    "rarity": "Epic",
+    "stats": { "T": 60, "H": 60, "V": 20, "R": 0 }
+  },
+  {
+    "id": 8,
+    "code": "N2c",
+    "group": "Needle",
+    "name_en": "Needles with Skeleton",
+    "title_kr": "뼈대 있는 가문",
+    "desc": "기본기가 탄탄하여 어떤 흔들림에도 무너지지 않습니다.",
+    "rarity": "Rare",
+    "stats": { "T": 95, "H": 30, "V": 5, "R": 10 }
+  },
+  {
+    "id": 9,
+    "code": "C1a",
+    "group": "Column",
+    "name_en": "Pyramid",
+    "title_kr": "고고한 철학자",
+    "desc": "남들과 다른 차원에서 세상을 바라보는 고독한 사색가입니다.",
+    "rarity": "Legend",
+    "stats": { "T": 95, "H": 10, "V": 0, "R": 0 }
+  },
+  {
+    "id": 10,
+    "code": "C1b",
+    "group": "Column",
+    "name_en": "Cup",
+    "title_kr": "넓은 포용력",
+    "desc": "타인의 이야기를 담아줄 준비가 되어 있는 따뜻한 상담가입니다.",
+    "rarity": "Rare",
+    "stats": { "T": 60, "H": 20, "V": 10, "R": 0 }
+  },
+  {
+    "id": 11,
+    "code": "C1c",
+    "group": "Column",
+    "name_en": "Solid Prism",
+    "title_kr": "정직한 원칙주의자",
+    "desc": "거짓말을 못하고 앞뒤가 똑같은 신뢰의 아이콘입니다.",
+    "rarity": "Common",
+    "stats": { "T": 100, "H": 5, "V": 0, "R": 0 }
+  },
+  {
+    "id": 12,
+    "code": "C1d",
+    "group": "Column",
+    "name_en": "Hollow Prism",
+    "title_kr": "실속파 현실주의자",
+    "desc": "겉치레보다는 내실을 다지며 효율적으로 움직입니다.",
+    "rarity": "Common",
+    "stats": { "T": 90, "H": 15, "V": 5, "R": 0 }
+  },
+  {
+    "id": 13,
+    "code": "C1e",
+    "group": "Column",
+    "name_en": "Solid Column",
+    "title_kr": "뚝심 있는 장군",
+    "desc": "한번 결정하면 밀고 나가는 추진력이 대단합니다.",
+    "rarity": "Common",
+    "stats": { "T": 95, "H": 10, "V": 5, "R": 0 }
+  },
+  {
+    "id": 14,
+    "code": "C1f",
+    "group": "Column",
+    "name_en": "Hollow Column",
+    "title_kr": "유연한 보스",
+    "desc": "강해 보이지만 속은 부드러워 팀원의 실수를 감싸줍니다.",
+    "rarity": "Common",
+    "stats": { "T": 70, "H": 30, "V": 10, "R": 0 }
+  },
+  {
+    "id": 15,
+    "code": "C1g",
+    "group": "Column",
+    "name_en": "Solid Thick Plate",
+    "title_kr": "단단한 방패",
+    "desc": "어떤 공격에도 끄떡없는 멘탈과 인내심을 가졌습니다.",
+    "rarity": "Rare",
+    "stats": { "T": 80, "H": 20, "V": 5, "R": 20 }
+  },
+  {
+    "id": 16,
+    "code": "C1h",
+    "group": "Column",
+    "name_en": "Hollow Thick Plate",
+    "title_kr": "내유외강",
+    "desc": "강해보이는 인상이지만 알고 보면 눈물도 많고 정이 많습니다.",
+    "rarity": "Rare",
+    "stats": { "T": 65, "H": 35, "V": 10, "R": 10 }
+  },
+  {
+    "id": 17,
+    "code": "C1i",
+    "group": "Column",
+    "name_en": "Scroll",
+    "title_kr": "지혜로운 기록자",
+    "desc": "세상의 지식을 탐구하고 정리하는 것을 즐기는 학자 스타일.",
+    "rarity": "Epic",
+    "stats": { "T": 90, "H": 40, "V": 20, "R": 0 }
+  },
+  {
+    "id": 18,
+    "code": "C2a",
+    "group": "Column",
+    "name_en": "Bullet",
+    "title_kr": "돌진하는 개척자",
+    "desc": "목표가 생기면 탄환처럼 날아가 꽂히는 열정파입니다.",
+    "rarity": "Common",
+    "stats": { "T": 85, "H": 30, "V": 30, "R": 0 }
+  },
+  {
+    "id": 19,
+    "code": "C2b",
+    "group": "Column",
+    "name_en": "Combination of Bullets",
+    "title_kr": "다재다능 멀티태스커",
+    "desc": "여러 가지 목표를 동시에 추구하며 모두 놓치지 않습니다.",
+    "rarity": "Rare",
+    "stats": { "T": 75, "H": 50, "V": 40, "R": 0 }
+  },
+  {
+    "id": 20,
+    "code": "P1a",
+    "group": "Plane",
+    "name_en": "Hexagonal Plate",
+    "title_kr": "정석 모범생",
+    "desc": "균형, 조화, 안정을 최우선으로 여기는 평화주의자입니다.",
+    "rarity": "Common",
+    "stats": { "T": 50, "H": 30, "V": 10, "R": 0 }
+  },
+  {
+    "id": 21,
+    "code": "P1b",
+    "group": "Plane",
+    "name_en": "Plate with Extensions",
+    "title_kr": "성장하는 유망주",
+    "desc": "기본을 지키면서도 조금씩 자신의 영역을 넓혀갑니다.",
+    "rarity": "Common",
+    "stats": { "T": 45, "H": 50, "V": 15, "R": 0 }
+  },
+  {
+    "id": 22,
+    "code": "P1c",
+    "group": "Plane",
+    "name_en": "Plate with Broad Branches",
+    "title_kr": "대담한 사업가",
+    "desc": "자신의 영향력을 넓고 굵직하게 뻗어나가는 배포가 있습니다.",
+    "rarity": "Rare",
+    "stats": { "T": 30, "H": 70, "V": 20, "R": 0 }
+  },
+  {
+    "id": 23,
+    "code": "P1d",
+    "group": "Plane",
+    "name_en": "Stellar Crystal",
+    "title_kr": "반짝이는 스타",
+    "desc": "어디서나 주목받는 것을 즐기며 끼가 넘칩니다.",
+    "rarity": "Common",
+    "stats": { "T": 20, "H": 80, "V": 10, "R": 0 }
+  },
+  {
+    "id": 24,
+    "code": "P1e",
+    "group": "Plane",
+    "name_en": "Dendrite",
+    "title_kr": "감성 폭발 아티스트",
+    "desc": "섬세한 감수성으로 주변을 화려하게 물들이는 예술가입니다.",
+    "rarity": "Rare",
+    "stats": { "T": 10, "H": 95, "V": 10, "R": 0 }
+  },
+  {
+    "id": 25,
+    "code": "P1f",
+    "group": "Plane",
+    "name_en": "Fernlike Crystal",
+    "title_kr": "숲의 정령",
+    "desc": "자연스러운 아름다움과 복잡한 내면을 동시에 가졌습니다.",
+    "rarity": "Epic",
+    "stats": { "T": 5, "H": 100, "V": 20, "R": 0 }
+  },
+  {
+    "id": 26,
+    "code": "P2a",
+    "group": "Plane",
+    "name_en": "Stepped Hexagon",
+    "title_kr": "계단식 성장가",
+    "desc": "차근차근 단계를 밟아 올라가며 내공을 쌓는 대기만성형.",
+    "rarity": "Rare",
+    "stats": { "T": 60, "H": 40, "V": 15, "R": 0 }
+  },
+  {
+    "id": 27,
+    "code": "P2b",
+    "group": "Plane",
+    "name_en": "Broad Branch with Sector",
+    "title_kr": "부채꼴 외교관",
+    "desc": "넓은 마음으로 다양한 의견을 수렴하는 포용력이 있습니다.",
+    "rarity": "Rare",
+    "stats": { "T": 35, "H": 60, "V": 10, "R": 0 }
+  },
+  {
+    "id": 28,
+    "code": "P2c",
+    "group": "Plane",
+    "name_en": "Dendrite with Sector",
+    "title_kr": "화려한 중재자",
+    "desc": "개성도 강하지만 집단과의 조화도 중요시하는 밸런서.",
+    "rarity": "Epic",
+    "stats": { "T": 15, "H": 85, "V": 15, "R": 0 }
+  },
+  {
+    "id": 29,
+    "code": "P2d",
+    "group": "Plane",
+    "name_en": "Plate with Dendritic Ext",
+    "title_kr": "늦바람 난 모범생",
+    "desc": "얌전하게 살다가 뒤늦게 자신의 화려한 재능을 발견했습니다.",
+    "rarity": "Rare",
+    "stats": { "T": 40, "H": 75, "V": 30, "R": 0 }
+  },
+  {
+    "id": 30,
+    "code": "P2e",
+    "group": "Plane",
+    "name_en": "Plate with Simple Ext",
+    "title_kr": "실용적 창작자",
+    "desc": "너무 튀지 않으면서도 독창적인 아이디어를 냅니다.",
+    "rarity": "Common",
+    "stats": { "T": 45, "H": 55, "V": 20, "R": 0 }
+  },
+  {
+    "id": 31,
+    "code": "P2f",
+    "group": "Plane",
+    "name_en": "Plate with Irregular Ext",
+    "title_kr": "자유 영혼",
+    "desc": "규칙에 얽매이지 않고 기분 내키는 대로 행동합니다.",
+    "rarity": "Rare",
+    "stats": { "T": 30, "H": 60, "V": 70, "R": 0 }
+  },
+  {
+    "id": 32,
+    "code": "P2g",
+    "group": "Plane",
+    "name_en": "Plate with Spatial Dendrites",
+    "title_kr": "입체적 사고가",
+    "desc": "평면적인 생각보다는 다각도에서 문제를 바라봅니다.",
+    "rarity": "Epic",
+    "stats": { "T": 25, "H": 90, "V": 40, "R": 0 }
+  },
+  {
+    "id": 33,
+    "code": "P3a",
+    "group": "Plane",
+    "name_en": "Three-branched Crystal",
+    "title_kr": "삼박자 리듬",
+    "desc": "남들과는 다른 독특한 리듬과 박자로 살아갑니다.",
+    "rarity": "Rare",
+    "stats": { "T": 30, "H": 60, "V": 50, "R": 0 }
+  },
+  {
+    "id": 34,
+    "code": "P3b",
+    "group": "Plane",
+    "name_en": "Four-branched Crystal",
+    "title_kr": "행운의 네 잎",
+    "desc": "안정감보다는 특별함을 추구하는 유니크한 성격.",
+    "rarity": "Epic",
+    "stats": { "T": 30, "H": 60, "V": 60, "R": 0 }
+  },
+  {
+    "id": 35,
+    "code": "P4a",
+    "group": "Plane",
+    "name_en": "Broad Branch with 12 Sectors",
+    "title_kr": "12방위 만능인",
+    "desc": "못하는 게 없는 팔방미인, 아니 십이방미인입니다.",
+    "rarity": "Legend",
+    "stats": { "T": 10, "H": 90, "V": 10, "R": 0 }
+  },
+  {
+    "id": 36,
+    "code": "P4b",
+    "group": "Plane",
+    "name_en": "Dendrite with 12 Branches",
+    "title_kr": "카리스마 황제",
+    "desc": "압도적인 화려함과 카리스마로 주변을 장악합니다.",
+    "rarity": "Legend",
+    "stats": { "T": 5, "H": 100, "V": 20, "R": 0 }
+  },
+  {
+    "id": 37,
+    "code": "P4c",
+    "group": "Plane",
+    "name_en": "Malformation",
+    "title_kr": "미운 오리 새끼",
+    "desc": "남들과 다르지만 자신만의 독보적인 아름다움을 찾아갑니다.",
+    "rarity": "Common",
+    "stats": { "T": 50, "H": 50, "V": 90, "R": 20 }
+  },
+  {
+    "id": 38,
+    "code": "P5",
+    "group": "Plane",
+    "name_en": "Rimmed Plane",
+    "title_kr": "갑옷 입은 전사",
+    "desc": "수많은 시련(운입)을 이겨내고 더 단단해졌습니다.",
+    "rarity": "Common",
+    "stats": { "T": 50, "H": 50, "V": 20, "R": 60 }
+  },
+  {
+    "id": 39,
+    "code": "P6a",
+    "group": "Plane",
+    "name_en": "Plane with Spatial Plates",
+    "title_kr": "복층 구조 설계자",
+    "desc": "생각 위에 생각을 쌓아 올리는 깊이 있는 지성인.",
+    "rarity": "Epic",
+    "stats": { "T": 40, "H": 60, "V": 50, "R": 0 }
+  },
+  {
+    "id": 40,
+    "code": "P6b",
+    "group": "Plane",
+    "name_en": "Radiating Plates",
+    "title_kr": "열정의 풍차",
+    "desc": "에너지가 넘쳐 주변 사람들에게 활력을 불어넣습니다.",
+    "rarity": "Rare",
+    "stats": { "T": 45, "H": 55, "V": 30, "R": 0 }
+  },
+  {
+    "id": 41,
+    "code": "P6c",
+    "group": "Plane",
+    "name_en": "Frame Sheet",
+    "title_kr": "미니멀리스트",
+    "desc": "복잡한 건 딱 질색, 심플하고 깔끔한 삶을 지향합니다.",
+    "rarity": "Common",
+    "stats": { "T": 70, "H": 10, "V": 10, "R": 0 }
+  },
+  {
+    "id": 42,
+    "code": "P6d",
+    "group": "Plane",
+    "name_en": "Combination of Plates",
+    "title_kr": "조각보 모음",
+    "desc": "다양한 경험 조각들을 모아 자신만의 이야기를 만듭니다.",
+    "rarity": "Rare",
+    "stats": { "T": 50, "H": 50, "V": 60, "R": 0 }
+  },
+  {
+    "id": 43,
+    "code": "P7a",
+    "group": "Plane",
+    "name_en": "Radiating Dendrites",
+    "title_kr": "축제 기획자",
+    "desc": "언제나 파티의 중심에 있으며 분위기를 띄웁니다.",
+    "rarity": "Epic",
+    "stats": { "T": 10, "H": 90, "V": 30, "R": 0 }
+  },
+  {
+    "id": 44,
+    "code": "P7b",
+    "group": "Plane",
+    "name_en": "Spatial Dendrites",
+    "title_kr": "4차원 예술가",
+    "desc": "상식의 틀을 깨고 입체적으로 뻗어나가는 상상력.",
+    "rarity": "Epic",
+    "stats": { "T": 5, "H": 95, "V": 50, "R": 0 }
+  },
+  {
+    "id": 45,
+    "code": "CP1a",
+    "group": "Combination",
+    "name_en": "Column with Plates",
+    "title_kr": "반전 매력 츤데레",
+    "desc": "처음엔 차가운 기둥 같지만 알면 알수록 넓은 마음(판)을 가졌습니다.",
+    "rarity": "Rare",
+    "stats": { "T": 60, "H": 50, "V": 80, "R": 0 }
+  },
+  {
+    "id": 46,
+    "code": "CP1b",
+    "group": "Combination",
+    "name_en": "Column with Dendrites",
+    "title_kr": "화려한 변신",
+    "desc": "평범한 일상 속에서도 특별한 일탈을 꿈꾸며 실현합니다.",
+    "rarity": "Epic",
+    "stats": { "T": 40, "H": 80, "V": 90, "R": 0 }
+  },
+  {
+    "id": 47,
+    "code": "CP1c",
+    "group": "Combination",
+    "name_en": "Multiple Capped Column",
+    "title_kr": "레이어드 마스터",
+    "desc": "여러 가지 페르소나(가면)를 상황에 맞게 바꿔 씁니다.",
+    "rarity": "Epic",
+    "stats": { "T": 55, "H": 60, "V": 85, "R": 0 }
+  },
+  {
+    "id": 48,
+    "code": "CP2a",
+    "group": "Combination",
+    "name_en": "Bullet with Plates",
+    "title_kr": "전략적 행동파",
+    "desc": "일단 저지르고(Bullet) 나서 수습하며 판을 키우는(Plate) 스타일.",
+    "rarity": "Rare",
+    "stats": { "T": 70, "H": 40, "V": 70, "R": 0 }
+  },
+  {
+    "id": 49,
+    "code": "CP2b",
+    "group": "Combination",
+    "name_en": "Bullet with Dendrites",
+    "title_kr": "로맨틱 행동대장",
+    "desc": "거칠게 돌진하지만 그 끝에는 낭만을 꽃피웁니다.",
+    "rarity": "Epic",
+    "stats": { "T": 50, "H": 85, "V": 75, "R": 0 }
+  },
+  {
+    "id": 50,
+    "code": "CP3",
+    "group": "Combination",
+    "name_en": "Irregular Column",
+    "title_kr": "자유분방한 방랑자",
+    "desc": "계획대로 되지 않아도 그 상황 자체를 즐깁니다.",
+    "rarity": "Common",
+    "stats": { "T": 60, "H": 40, "V": 90, "R": 10 }
+  },
+  {
+    "id": 51,
+    "code": "S1",
+    "group": "SidePlane",
+    "name_en": "Side Plane",
+    "title_kr": "비판적 몽상가",
+    "desc": "남들이 '예' 할 때 옆으로 삐딱하게 자라나는 용기가 있습니다.",
+    "rarity": "Rare",
+    "stats": { "T": 50, "H": 50, "V": 60, "R": 0 }
+  },
+  {
+    "id": 52,
+    "code": "S2",
+    "group": "SidePlane",
+    "name_en": "Scale-like Side Plane",
+    "title_kr": "균형 잡힌 곡예사",
+    "desc": "불안정한 상황 속에서도 기가 막히게 균형을 찾아냅니다.",
+    "rarity": "Rare",
+    "stats": { "T": 45, "H": 55, "V": 50, "R": 0 }
+  },
+  {
+    "id": 53,
+    "code": "S3",
+    "group": "SidePlane",
+    "name_en": "Irregular Side Plane",
+    "title_kr": "즉흥 연주자",
+    "desc": "악보(규칙) 없이도 멋진 인생을 연주하는 재즈 같은 사람.",
+    "rarity": "Common",
+    "stats": { "T": 40, "H": 45, "V": 80, "R": 10 }
+  },
+  {
+    "id": 54,
+    "code": "R1a",
+    "group": "Rimed",
+    "name_en": "Rimed Needle",
+    "title_kr": "강인한 송곳",
+    "desc": "날카로움에 경험과 연륜이 더해져 더욱 단단해졌습니다.",
+    "rarity": "Common",
+    "stats": { "T": 80, "H": 30, "V": 20, "R": 60 }
+  },
+  {
+    "id": 55,
+    "code": "R1b",
+    "group": "Rimed",
+    "name_en": "Rimed Column",
+    "title_kr": "굳건한 바위",
+    "desc": "어떤 풍파에도 흔들리지 않는 묵직한 존재감.",
+    "rarity": "Common",
+    "stats": { "T": 85, "H": 20, "V": 10, "R": 70 }
+  },
+  {
+    "id": 56,
+    "code": "R1c",
+    "group": "Rimed",
+    "name_en": "Rimed Plate",
+    "title_kr": "생활력 만렙",
+    "desc": "고생을 사서 하는 스타일이지만, 그만큼 얻는 것도 많습니다.",
+    "rarity": "Common",
+    "stats": { "T": 50, "H": 40, "V": 20, "R": 80 }
+  },
+  {
+    "id": 57,
+    "code": "R1d",
+    "group": "Rimed",
+    "name_en": "Rimed Dendrite",
+    "title_kr": "상처 입은 백조",
+    "desc": "화려한 과거 뒤에 숨겨진 아픔을 성숙함으로 승화시켰습니다.",
+    "rarity": "Rare",
+    "stats": { "T": 20, "H": 80, "V": 30, "R": 70 }
+  },
+  {
+    "id": 58,
+    "code": "R2a",
+    "group": "Rimed",
+    "name_en": "Densely Rimed Needle",
+    "title_kr": "무뚝뚝한 장인",
+    "desc": "말수는 적지만 실력 하나로 모든 것을 증명합니다.",
+    "rarity": "Common",
+    "stats": { "T": 75, "H": 25, "V": 15, "R": 90 }
+  },
+  {
+    "id": 59,
+    "code": "R2b",
+    "group": "Rimed",
+    "name_en": "Densely Rimed Column",
+    "title_kr": "철옹성",
+    "desc": "자신만의 세계가 확고하여 누구도 쉽게 침범할 수 없습니다.",
+    "rarity": "Common",
+    "stats": { "T": 90, "H": 15, "V": 10, "R": 95 }
+  },
+  {
+    "id": 60,
+    "code": "R2c",
+    "group": "Rimed",
+    "name_en": "Graupel (Hexagonal)",
+    "title_kr": "싸라기눈 (육각)",
+    "desc": "투박하고 거칠어 보이지만 속은 육각형처럼 반듯합니다.",
+    "rarity": "Common",
+    "stats": { "T": 60, "H": 30, "V": 20, "R": 100 }
+  },
+  {
+    "id": 61,
+    "code": "R3a",
+    "group": "Rimed",
+    "name_en": "Graupel (Cone)",
+    "title_kr": "원뿔형 싸라기",
+    "desc": "한 방향으로만 쏟아붓는 집중력이 무서울 정도입니다.",
+    "rarity": "Common",
+    "stats": { "T": 70, "H": 30, "V": 10, "R": 100 }
+  },
+  {
+    "id": 62,
+    "code": "R3b",
+    "group": "Rimed",
+    "name_en": "Graupel (Lump)",
+    "title_kr": "덩어리 눈",
+    "desc": "디테일보다는 전체적인 덩어리와 흐름을 중요시합니다.",
+    "rarity": "Common",
+    "stats": { "T": 50, "H": 50, "V": 30, "R": 100 }
+  },
+  {
+    "id": 63,
+    "code": "R4a",
+    "group": "Rimed",
+    "name_en": "Graupel-like Snow",
+    "title_kr": "눈보라의 전조",
+    "desc": "큰 변화가 오기 전, 주변을 긴장시키는 분위기 메이커.",
+    "rarity": "Common",
+    "stats": { "T": 55, "H": 45, "V": 40, "R": 85 }
+  },
+  {
+    "id": 64,
+    "code": "R4b",
+    "group": "Rimed",
+    "name_en": "Graupel-like Snow (Lump)",
+    "title_kr": "뭉치면 산다",
+    "desc": "개인보다는 조직의 힘을 믿는 집단주의적 성향.",
+    "rarity": "Common",
+    "stats": { "T": 60, "H": 40, "V": 30, "R": 85 }
+  },
+  {
+    "id": 65,
+    "code": "R4c",
+    "group": "Rimed",
+    "name_en": "Graupel-like Snow (Branch)",
+    "title_kr": "거친 야생화",
+    "desc": "척박한 환경에서도 기어이 꽃(가지)을 피워내는 생존력.",
+    "rarity": "Rare",
+    "stats": { "T": 30, "H": 70, "V": 40, "R": 85 }
+  },
+  {
+    "id": 66,
+    "code": "I1",
+    "group": "Irregular",
+    "name_en": "Ice Particle",
+    "title_kr": "미완의 대기",
+    "desc": "아직 자신의 진짜 모습을 찾지 못했지만 가능성은 무한합니다.",
+    "rarity": "Common",
+    "stats": { "T": 50, "H": 10, "V": 50, "R": 20 }
+  },
+  {
+    "id": 67,
+    "code": "I2",
+    "group": "Irregular",
+    "name_en": "Rimmed Particle",
+    "title_kr": "다듬어지는 원석",
+    "desc": "시련을 통해 조금씩 자신의 모난 부분을 깎아내고 있습니다.",
+    "rarity": "Common",
+    "stats": { "T": 50, "H": 20, "V": 40, "R": 60 }
+  },
+  {
+    "id": 68,
+    "code": "I3a",
+    "group": "Irregular",
+    "name_en": "Broken Crystal",
+    "title_kr": "상처 입은 치유자",
+    "desc": "깨지고 부서진 경험이 있어 남의 아픔을 더 잘 이해합니다.",
+    "rarity": "Glitch",
+    "stats": { "T": 50, "H": 50, "V": 90, "R": 50 }
+  },
+  {
+    "id": 69,
+    "code": "I3b",
+    "group": "Irregular",
+    "name_en": "Miscellaneous Crystal",
+    "title_kr": "정의 불가 미스터리",
+    "desc": "어떤 카테고리로도 분류할 수 없는 독보적인 캐릭터.",
+    "rarity": "Glitch",
+    "stats": { "T": 50, "H": 50, "V": 100, "R": 0 }
+  },
+  {
+    "id": 70,
+    "code": "I4",
+    "group": "Irregular",
+    "name_en": "Recrystallized Crystal",
+    "title_kr": "부활한 불사조",
+    "desc": "한번 녹아내렸다가 다시 얼어붙은, 인생 2회차의 여유.",
+    "rarity": "Legend",
+    "stats": { "T": 60, "H": 40, "V": 80, "R": 10 }
+  },
+  {
+    "id": 71,
+    "code": "G1",
+    "group": "Germ",
+    "name_en": "Minute Column",
+    "title_kr": "꼬마 기둥",
+    "desc": "이제 막 자라나기 시작한 꿈나무 리더.",
+    "rarity": "Common",
+    "stats": { "T": 80, "H": 10, "V": 5, "R": 0 }
+  },
+  {
+    "id": 72,
+    "code": "G2",
+    "group": "Germ",
+    "name_en": "Minute Plate",
+    "title_kr": "꼬마 육각형",
+    "desc": "작지만 완벽한 균형을 갖춘 야무진 막내.",
+    "rarity": "Common",
+    "stats": { "T": 60, "H": 10, "V": 5, "R": 0 }
+  },
+  {
+    "id": 73,
+    "code": "G3",
+    "group": "Germ",
+    "name_en": "Minute Branch",
+    "title_kr": "호기심 새싹",
+    "desc": "세상 모든 것이 궁금해 팔을 뻗어보는 귀여운 탐험가.",
+    "rarity": "Common",
+    "stats": { "T": 30, "H": 20, "V": 10, "R": 0 }
+  },
+  {
+    "id": 74,
+    "code": "G4",
+    "group": "Germ",
+    "name_en": "Minute Assembly",
+    "title_kr": "옹기종기 친구들",
+    "desc": "혼자 있는 것보다 친구들과 붙어있는 것을 좋아합니다.",
+    "rarity": "Common",
+    "stats": { "T": 50, "H": 30, "V": 20, "R": 0 }
+  },
+  {
+    "id": 75,
+    "code": "G5",
+    "group": "Germ",
+    "name_en": "Irregular Germ",
+    "title_kr": "개구쟁이 꼬마",
+    "desc": "어디로 튈지 모르는 럭비공 같은 에너지를 가졌습니다.",
+    "rarity": "Common",
+    "stats": { "T": 50, "H": 20, "V": 60, "R": 0 }
+  },
+  {
+    "id": 76,
+    "code": "G6",
+    "group": "Germ",
+    "name_en": "Hexagonal Germ",
+    "title_kr": "완벽주의 씨앗",
+    "desc": "시작부터 완벽을 추구하는 될성부른 떡잎.",
+    "rarity": "Common",
+    "stats": { "T": 70, "H": 15, "V": 0, "R": 0 }
+  },
+  {
+    "id": 77,
+    "code": "C1j",
+    "group": "Column",
+    "name_en": "Column with Dendrites (Tip)",
+    "title_kr": "섬세한 마무리",
+    "desc": "일처리는 뚝심 있게 하지만 마무리는 섬세하게 챙깁니다.",
+    "rarity": "Rare",
+    "stats": { "T": 65, "H": 60, "V": 40, "R": 0 }
+  },
+  {
+    "id": 78,
+    "code": "P8a",
+    "group": "Plane",
+    "name_en": "Arrowhead",
+    "title_kr": "목표지향 화살",
+    "desc": "오직 하나의 목표를 향해 활시위처럼 팽팽하게 긴장해 있습니다.",
+    "rarity": "Common",
+    "stats": { "T": 80, "H": 10, "V": 5, "R": 0 }
+  },
+  {
+    "id": 79,
+    "code": "P8b",
+    "group": "Plane",
+    "name_en": "Tsuzumi (Hand Drum)",
+    "title_kr": "장구 치는 광대",
+    "desc": "흥이 많고 주변 사람들을 즐겁게 하는 재주꾼.",
+    "rarity": "Rare",
+    "stats": { "T": 55, "H": 45, "V": 30, "R": 0 }
+  },
+  {
+    "id": 80,
+    "code": "H1",
+    "group": "Hail",
+    "name_en": "Hailstone",
+    "title_kr": "슈퍼 헤비급",
+    "desc": "눈이라기엔 너무나 거대한, 압도적인 무게감의 소유자.",
+    "rarity": "Legend",
+    "stats": { "T": 90, "H": 90, "V": 50, "R": 100 }
+  }
+]
+

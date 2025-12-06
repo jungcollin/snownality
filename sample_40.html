@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Magono-Lee Snow Crystal Icons (31–40)</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 24px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #050b16;
+      color: #e5f4ff;
+    }
+    h1 {
+      margin-bottom: 16px;
+      font-size: 20px;
+      letter-spacing: 0.03em;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: rgba(7, 21, 38, 0.9);
+      border-radius: 12px;
+      border: 1px solid rgba(160, 210, 235, 0.2);
+      padding: 12px 12px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+    }
+    .card svg {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 6px;
+    }
+    .code {
+      font-size: 12px;
+      color: #7fb6d8;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .title {
+      font-size: 13px;
+      margin-top: 2px;
+      text-align: center;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>눈 결정 아이콘 (ID 31–40)</h1>
+  <div class="grid">
+
+    <!-- 31. P2f Plate with Irregular Ext / 자유 영혼 -->
+    <div class="card">
+      <svg viewBox="0 0 100 100"
+           xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           stroke="#A0D2EB"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <g transform="translate(50,50)">
+          <!-- 기본 육각 판 -->
+          <polygon points="0,-14 12,-7 12,7 0,14 -12,7 -12,-7" />
+          <!-- 안쪽 작은 육각 -->
+          <polygon points="0,-8 7,-4 7,4 0,8 -7,4 -7,-4" />
+          <!-- 불규칙한 확장 팔 (모양은 서로 다르게) -->
+          <g id="arm-p2f">
+            <line x1="0" y1="-14" x2="0" y2="-24" />
+            <line x1="0" y1="-20" x2="4" y2="-25" />
+            <line x1="0" y1="-18" x2="-3" y2="-23" />
+          </g>
+          <!-- 6방향 회전(자유로운 확장) -->
+          <use href="#arm-p2f" />
+          <g transform="rotate(60)"><use href="#arm-p2f" /></g>
+          <g transform="rotate(120)"><use href="#arm-p2f" /></g>
+          <g transform="rotate(180)"><use href="#arm-p2f" /></g>
+          <g transform="rotate(240)"><use href="#arm-p2f" /></g>
+          <g transform="rotate(300)"><use href="#arm-p2f" /></g>
+        </g>
+        <defs>
+          <g id="arm-p2f">
+            <line x1="0" y1="-14" x2="0" y2="-24" />
+            <line x1="0" y1="-20" x2="4" y2="-25" />
+            <line x1="0" y1="-18" x2="-3" y2="-23" />
+          </g>
+        </defs>
+      </svg>
+      <div class="code">P2f</div>
+      <div class="title">자유 영혼</div>
+    </div>
+
+    <!-- 32. P2g Plate with Spatial Dendrites / 입체적 사고가 -->
+    <div class="card">
+      <svg viewBox="0 0 100 100"
+           xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           stroke="#A0D2EB"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <g transform="translate(50,50)">
+          <!-- 기본 육각 판 -->
+          <polygon points="0,-14 12,-7 12,7 0,14 -12,7 -12,-7" />
+          <!-- 위/아래 살짝 떠 있는 작은 판 (입체감) -->
+          <polygon points="0,-20 8,-15 8,-7 0,-2 -8,-7 -8,-15" />
+          <polygon points="0,2 8,7 8,15 0,20 -8,15 -8,7" />
+          <!-- 덴드라이트 가지가 달린 팔 -->
+          <g id="arm-p2g">
+            <line x1="0" y1="-14" x2="0" y2="-30" />
+            <line x1="0" y1="-20" x2="4" y2="-24" />
+            <line x1="0" y1="-24" x2="-4" y2="-28" />
+          </g>
+          <!-- 6방향 회전 -->
+          <use href="#arm-p2g" />
+          <g transform="rotate(60)"><use href="#arm-p2g" /></g>
+          <g transform="rotate(120)"><use href="#arm-p2g" /></g>
+          <g transform="rotate(180)"><use href="#arm-p2g" /></g>
+          <g transform="rotate(240)"><use href="#arm-p2g" /></g>
+          <g transform="rotate(300)"><use href="#arm-p2g" /></g>
+        </g>
+        <defs>
+          <g id="arm-p2g">
+            <line x1="0" y1="-14" x2="0" y2="-30" />
+            <line x1="0" y1="-20" x2="4" y2="-24" />
+            <line x1="0" y1="-24" x2="-4" y2="-28" />
+          </g>
+        </defs>
+      </svg>
+      <div class="code">P2g</div>
+      <div class="title">입체적 사고가</div>
+    </div>
+
+    <!-- 33. P3a Three-branched Crystal / 삼박자 리듬 -->
+    <div class="card">
+      <svg viewBox="0 0 100 100"
+           xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           stroke="#A0D2EB"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <g transform="translate(50,50)">
+          <!-- 중심 육각 -->
+          <polygon points="0,-8 7,-4 7,4 0,8 -7,4 -7,-4" />
+          <!-- 3개 메인 브랜치 (120도 간격) -->
+          <g id="arm-p3a-main">
+            <line x1="0" y1="-8" x2="0" y2="-26" />
+            <line x1="0" y1="-16" x2="4" y2="-20" />
+            <line x1="0" y1="-16" x2="-4" y2="-20" />
+          </g>
+          <use href="#arm-p3a-main" />
+          <g transform="rotate(120)"><use href="#arm-p3a-main" /></g>
+          <g transform="rotate(240)"><use href="#arm-p3a-main" /></g>
+          <!-- 나머지 3개는 짧은 보조 브랜치로 리듬감만 -->
+          <g id="arm-p3a-sub" transform="rotate(60)">
+            <line x1="0" y1="-8" x2="0" y2="-18" />
+          </g>
+          <g transform="rotate(180)"><use href="#arm-p3a-sub" /></g>
+          <g transform="rotate(300)"><use href="#arm-p3a-sub" /></g>
+        </g>
+        <defs>
+          <g id="arm-p3a-main">
+            <line x1="0" y1="-8" x2="0" y2="-26" />
+            <line x1="0" y1="-16" x2="4" y2="-20" />
+            <line x1="0" y1="-16" x2="-4" y2="-20" />
+          </g>
+        </defs>
+      </svg>
+      <div class="code">P3a</div>
+      <div class="title">삼박자 리듬</div>
+    </div>
+
+    <!-- 34. P3b Four-branched Crystal / 행운의 네 잎 -->
+    <div class="card">
+      <svg viewBox="0 0 100 100"
+           xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           stroke="#A0D2EB"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <g transform="translate(50,50)">
+          <!-- 중심 육각 -->
+          <polygon points="0,-8 7,-4 7,4 0,8 -7,4 -7,-4" />
+          <!-- 네 잎처럼 보이는 브랜치 -->
+          <g id="arm-p3b">
+            <line x1="0" y1="-8" x2="0" y2="-22" />
+            <polygon points="0,-22 5,-18 0,-14 -5,-18" />
+          </g>
+          <!-- 4방향(90도 간격) -->
+          <use href="#arm-p3b" />
+          <g transform="rotate(90)"><use href="#arm-p3b" /></g>
+          <g transform="rotate(180)"><use href="#arm-p3b" /></g>
+          <g transform="rotate(270)"><use href="#arm-p3b" /></g>
+          <!-- 나머지 2방향에는 짧은 가지로 육각 느낌만 유지 -->
+          <line x1="0" y1="0" x2="0" y2="10" />
+          <line x1="0" y1="0" x2="8" y2="-4" />
+          <line x1="0" y1="0" x2="-8" y2="-4" />
+        </g>
+        <defs>
+          <g id="arm-p3b">
+            <line x1="0" y1="-8" x2="0" y2="-22" />
+            <polygon points="0,-22 5,-18 0,-14 -5,-18" />
+          </g>
+        </defs>
+      </svg>
+      <div class="code">P3b</div>
+      <div class="title">행운의 네 잎</div>
+    </div>
+
+    <!-- 35. P4a Broad Branch with 12 Sectors / 12방위 만능인 -->
+    <div class="card">
+      <svg viewBox="0 0 100 100"
+           xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           stroke="#A0D2EB"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <g transform="translate(50,50)">
+          <!-- 큰 육각 판 -->
+          <polygon points="0,-16 14,-8 14,8 0,16 -14,8 -14,-8" />
+          <!-- 안쪽 육각 -->
+          <polygon points="0,-8 7,-4 7,4 0,8 -7,4 -7,-4" />
+          <!-- 12개 섹터 느낌: 한 팔에 두 갈래의 넓은 섹터 -->
+          <g id="arm-p4a">
+            <line x1="0" y1="-16" x2="0" y2="-28" />
+            <!-- 좌우 넓은 섹터 -->
+            <path d="M0 -22 L6 -24 L6 -20 Z" />
+            <path d="M0 -22 L-6 -24 L-6 -20 Z" />
+          </g>
+          <!-- 6방향 회전 = 12 섹터 -->
+          <use href="#arm-p4a" />
+          <g transform="rotate(60)"><use href="#arm-p4a" /></g>
+          <g transform="rotate(120)"><use href="#arm-p4a" /></g>
+          <g transform="rotate(180)"><use href="#arm-p4a" /></g>
+          <g transform="rotate(240)"><use href="#arm-p4a" /></g>
+          <g transform="rotate(300)"><use href="#arm-p4a" /></g>
+        </g>
+        <defs>
+          <g id="arm-p4a">
+            <line x1="0" y1="-16" x2="0" y2="-28" />
+            <path d="M0 -22 L6 -24 L6 -20 Z" />
+            <path d="M0 -22 L-6 -24 L-6 -20 Z" />
+          </g>
+        </defs>
+      </svg>
+      <div class="code">P4a</div>
+      <div class="title">12방위 만능인</div>
+    </div>
+
+    <!-- 36. P4b Dendrite with 12 Branches / 카리스마 황제 -->
+    <div class="card">
+      <svg viewBox="0 0 100 100"
+           xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           stroke="#A0D2EB"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <g transform="translate(50,50)">
+          <!-- 중심 육각 -->
+          <polygon points="0,-10 9,-5 9,5 0,10 -9,5 -9,-5" />
+          <!-- 한 팔에 두 개의 덴드라이트 가지: 6 * 2 = 12 -->
+          <g id="arm-p4b">
+            <line x1="0" y1="-10" x2="0" y2="-30" />
+            <line x1="0" y1="-16" x2="5" y2="-21" />
+            <line x1="0" y1="-22" x2="-5" y2="-27" />
+          </g>
+          <!-- 6방향 회전 -->
+          <use href="#arm-p4b" />
+          <g transform="rotate(60)"><use href="#arm-p4b" /></g>
+          <g transform="rotate(120)"><use href="#arm-p4b" /></g>
+          <g transform="rotate(180)"><use href="#arm-p4b" /></g>
+          <g transform="rotate(240)"><use href="#arm-p4b" /></g>
+          <g transform="rotate(300)"><use href="#arm-p4b" /></g>
+        </g>
+        <defs>
+          <g id="arm-p4b">
+            <line x1="0" y1="-10" x2="0" y2="-30" />
+            <line x1="0" y1="-16" x2="5" y2="-21" />
+            <line x1="0" y1="-22" x2="-5" y2="-27" />
+          </g>
+        </defs>
+      </svg>
+      <div class="code">P4b</div>
+      <div class="title">카리스마 황제</div>
+    </div>
+
+    <!-- 37. P4c Malformation / 미운 오리 새끼 -->
+    <div class="card">
+      <svg viewBox="0 0 100 100"
+           xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           stroke="#A0D2EB"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <g transform="translate(50,50)">
+          <!-- 약간 찌그러진 육각 -->
+          <polygon points="0,-10 8,-4 9,5 1,11 -9,6 -8,-5" />
+          <!-- 일부 팔은 정상, 일부는 휘어지고 끊어진 형태 -->
+          <!-- 정상 팔 -->
+          <g id="arm-p4c-normal">
+            <line x1="0" y1="-10" x2="0" y2="-24" />
+          </g>
+          <!-- 비정상 팔 -->
+          <g id="arm-p4c-bent">
+            <path d="M0 -10 C3 -16, 2 -22, -2 -26" />
+          </g>
+          <!-- 끊어진 팔 -->
+          <g id="arm-p4c-broken">
+            <line x1="0" y1="-10" x2="2" y2="-16" />
+          </g>
+          <!-- 6방향에 섞어서 배치 -->
+          <use href="#arm-p4c-normal" />
+          <g transform="rotate(60)"><use href="#arm-p4c-bent" /></g>
+          <g transform="rotate(120)"><use href="#arm-p4c-normal" /></g>
+          <g transform="rotate(180)"><use href="#arm-p4c-broken" /></g>
+          <g transform="rotate(240)"><use href="#arm-p4c-bent" /></g>
+          <g transform="rotate(300)"><use href="#arm-p4c-broken" /></g>
+        </g>
+        <defs>
+          <g id="arm-p4c-normal">
+            <line x1="0" y1="-10" x2="0" y2="-24" />
+          </g>
+          <g id="arm-p4c-bent">
+            <path d="M0 -10 C3 -16, 2 -22, -2 -26" />
+          </g>
+          <g id="arm-p4c-broken">
+            <line x1="0" y1="-10" x2="2" y2="-16" />
+          </g>
+        </defs>
+      </svg>
+      <div class="code">P4c</div>
+      <div class="title">미운 오리 새끼</div>
+    </div>
+
+    <!-- 38. P5 Rimmed Plane / 갑옷 입은 전사 -->
+    <div class="card">
+      <svg viewBox="0 0 100 100"
+           xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           stroke="#A0D2EB"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <g transform="translate(50,50)">
+          <!-- 바깥 육각 림 -->
+          <polygon points="0,-18 16,-9 16,9 0,18 -16,9 -16,-9" />
+          <!-- 안쪽 육각 판 -->
+          <polygon points="0,-10 9,-5 9,5 0,10 -9,5 -9,-5" />
+          <!-- 림을 따라 짧은 방패 모양 돌기 -->
+          <g id="arm-p5">
+            <line x1="0" y1="-18" x2="0" y2="-24" />
+            <polygon points="0,-24 3,-22 0,-20 -3,-22" />
+          </g>
+          <!-- 6방향 회전 -->
+          <use href="#arm-p5" />
+          <g transform="rotate(60)"><use href="#arm-p5" /></g>
+          <g transform="rotate(120)"><use href="#arm-p5" /></g>
+          <g transform="rotate(180)"><use href="#arm-p5" /></g>
+          <g transform="rotate(240)"><use href="#arm-p5" /></g>
+          <g transform="rotate(300)"><use href="#arm-p5" /></g>
+        </g>
+        <defs>
+          <g id="arm-p5">
+            <line x1="0" y1="-18" x2="0" y2="-24" />
+            <polygon points="0,-24 3,-22 0,-20 -3,-22" />
+          </g>
+        </defs>
+      </svg>
+      <div class="code">P5</div>
+      <div class="title">갑옷 입은 전사</div>
+    </div>
+
+    <!-- 39. P6a Plane with Spatial Plates / 복층 구조 설계자 -->
+    <div class="card">
+      <svg viewBox="0 0 100 100"
+           xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           stroke="#A0D2EB"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <g transform="translate(50,50)">
+          <!-- 아래층 육각 판 -->
+          <polygon points="0,-18 16,-9 16,9 0,18 -16,9 -16,-9" />
+          <!-- 중간층 육각 -->
+          <polygon points="0,-10 11,-5 11,5 0,10 -11,5 -11,-5" />
+          <!-- 위층 작은 육각 -->
+          <polygon points="0,-4 6,-2 6,2 0,4 -6,2 -6,-2" />
+          <!-- 각 층을 연결하는 짧은 기둥 라인 -->
+          <line x1="0" y1="-18" x2="0" y2="-10" />
+          <line x1="0" y1="10" x2="0" y2="18" />
+          <!-- 외곽에 작은 판들이 입체적으로 튀어나온 느낌 -->
+          <g id="arm-p6a">
+            <polygon points="0,-18 5,-15 5,-11 0,-14 -5,-11 -5,-15" />
+          </g>
+          <use href="#arm-p6a" />
+          <g transform="rotate(60)"><use href="#arm-p6a" /></g>
+          <g transform="rotate(120)"><use href="#arm-p6a" /></g>
+          <g transform="rotate(180)"><use href="#arm-p6a" /></g>
+          <g transform="rotate(240)"><use href="#arm-p6a" /></g>
+          <g transform="rotate(300)"><use href="#arm-p6a" /></g>
+        </g>
+        <defs>
+          <g id="arm-p6a">
+            <polygon points="0,-18 5,-15 5,-11 0,-14 -5,-11 -5,-15" />
+          </g>
+        </defs>
+      </svg>
+      <div class="code">P6a</div>
+      <div class="title">복층 구조 설계자</div>
+    </div>
+
+    <!-- 40. P6b Radiating Plates / 열정의 풍차 -->
+    <div class="card">
+      <svg viewBox="0 0 100 100"
+           xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           stroke="#A0D2EB"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <g transform="translate(50,50)">
+          <!-- 중심 작은 육각 -->
+          <polygon points="0,-6 5,-3 5,3 0,6 -5,3 -5,-3" />
+          <!-- 방사형으로 퍼지는 작은 판(풍차 날개처럼) -->
+          <g id="arm-p6b">
+            <polygon points="0,-10 6,-8 6,-2 0,0 -6,-2 -6,-8" />
+            <line x1="0" y1="0" x2="0" y2="6" />
+          </g>
+          <use href="#arm-p6b" />
+          <g transform="rotate(60)"><use href="#arm-p6b" /></g>
+          <g transform="rotate(120)"><use href="#arm-p6b" /></g>
+          <g transform="rotate(180)"><use href="#arm-p6b" /></g>
+          <g transform="rotate(240)"><use href="#arm-p6b" /></g>
+          <g transform="rotate(300)"><use href="#arm-p6b" /></g>
+        </g>
+        <defs>
+          <g id="arm-p6b">
+            <polygon points="0,-10 6,-8 6,-2 0,0 -6,-2 -6,-8" />
+            <line x1="0" y1="0" x2="0" y2="6" />
+          </g>
+        </defs>
+      </svg>
+      <div class="code">P6b</div>
+      <div class="title">열정의 풍차</div>
+    </div>
+
+  </div>
+</body>
+</html>

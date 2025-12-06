@@ -1,0 +1,3758 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Snow Crystal · Personality Test</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Premium Color Palette */
+      --bg-page: #f2f2f7;
+      /* Apple-style light grey */
+      --glass-surface: rgba(255, 255, 255, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.4);
+      --glass-blur: 20px;
+
+      --text-main: #1d1d1f;
+      --text-sub: #86868b;
+
+      --accent: #0071e3;
+      --accent-gradient: linear-gradient(135deg, #0071e3 0%, #4cbaff 100%);
+
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.12);
+
+      --font-stack: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg-page);
+      font-family: var(--font-stack);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      /* Subtle ambient background gradient */
+      background-image: radial-gradient(circle at 10% 10%, rgba(0, 113, 227, 0.03) 0%, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(200, 200, 255, 0.05) 0%, transparent 40%);
+      background-attachment: fixed;
+    }
+
+    /* Layout */
+    .app-container {
+      max-width: 600px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      padding: 20px;
+    }
+
+    /* Typography */
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      text-align: center;
+      background: linear-gradient(135deg, #1d1d1f 30%, #5e5ce6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    h2 {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-sub);
+      margin-bottom: 24px;
+      letter-spacing: -0.01em;
+    }
+
+    /* Premium Glass Cards */
+    .card {
+      background: var(--glass-surface);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--glass-border);
+      border-radius: 32px;
+      padding: 40px 32px;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Input Styling */
+    .input-wrapper {
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .input-field {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      /* Faint border */
+      border-radius: 16px;
+      padding: 16px 20px;
+      font-size: 16px;
+      outline: none;
+      transition: all 0.3s ease;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
+    }
+
+    .input-field:focus {
+      border-color: var(--accent);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
+    }
+
+    /* Premium Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 56px;
+      border-radius: 28px;
+      background: var(--accent-gradient);
+      color: white;
+      font-size: 17px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(0, 113, 227, 0.3);
+      transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn:active {
+      transform: scale(0.96);
+      box-shadow: 0 4px 12px rgba(0, 113, 227, 0.2);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.8);
+      color: var(--accent);
+      box-shadow: none;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-secondary:hover {
+      background: #fff;
+    }
+
+    .btn-danger {
+      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+      color: #fff;
+    }
+
+    .btn-danger:hover {
+      background: linear-gradient(135deg, #ff5252 0%, #e53935 100%);
+      transform: translateY(-2px);
+    }
+
+    /* Screen Transitions */
+    .screen {
+      display: none;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .screen.active {
+      display: block;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Quiz Elements */
+    .progress-track {
+      height: 6px;
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: 3px;
+      margin-bottom: 30px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--accent-gradient);
+      width: 0;
+      transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .option-btn {
+      width: 100%;
+      padding: 24px;
+      margin-bottom: 16px;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      border-radius: 24px;
+      text-align: left;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-main);
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .option-btn:hover {
+      background: white;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--accent);
+    }
+
+    /* Result Elements */
+    .crystal-display {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 32px;
+      filter: drop-shadow(0 20px 40px rgba(0, 113, 227, 0.25));
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .stat-bar {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+
+    .stat-rail {
+      flex: 1;
+      height: 10px;
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: 5px;
+      margin: 0 16px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .stat-val-match {
+      position: absolute;
+      height: 100%;
+      background: #d0d0d5;
+      width: 0;
+    }
+
+    .stat-val-user {
+      position: absolute;
+      height: 100%;
+      background: var(--accent-gradient);
+      width: 0;
+      border-radius: 0 5px 5px 0;
+    }
+
+    /* Graph Section */
+    #graph-container {
+      width: 100%;
+      height: 420px;
+      background: #ffffff;
+      border-radius: 32px;
+      box-shadow: inset 0 4px 20px rgba(0, 0, 0, 0.02);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .graph-controls {
+      position: absolute;
+      bottom: 20px;
+      right: 50%;
+      transform: translateX(50%);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 245, 250, 0.95) 100%);
+      backdrop-filter: blur(12px);
+      padding: 10px 18px;
+      border-radius: 24px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #333;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      pointer-events: none;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .graph-controls.selecting {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      animation: pulse-select 1.5s ease-in-out infinite;
+    }
+
+    .graph-controls .emoji {
+      margin-right: 6px;
+    }
+
+    @keyframes pulse-select {
+      0%, 100% { box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3); }
+      50% { box-shadow: 0 4px 24px rgba(102, 126, 234, 0.5); }
+    }
+
+    #graph-canvas {
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      touch-action: none;
+    }
+
+    .graph-zoom-controls {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+    }
+
+    .graph-zoom-controls button {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.15s, background 0.15s;
+    }
+
+    .graph-zoom-controls button:hover {
+      background: #fff;
+      transform: scale(1.1);
+    }
+
+    .graph-zoom-controls button:active {
+      transform: scale(0.95);
+    }
+
+    .graph-legend {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px);
+      padding: 10px 14px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      z-index: 10;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .filter-checkbox {
+      cursor: pointer;
+      user-select: none;
+      transition: opacity 0.2s;
+    }
+
+    .filter-checkbox input {
+      display: none;
+    }
+
+    .filter-checkbox:has(input:not(:checked)) {
+      opacity: 0.4;
+    }
+
+    .filter-checkbox:has(input:not(:checked)) .legend-dot {
+      background: #ddd;
+      border-color: #ccc;
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid;
+    }
+
+    .legend-soulmate {
+      background: #fff;
+      border-color: #0071e3;
+    }
+
+    .legend-colleague {
+      background: #fff;
+      border-color: #86868b;
+    }
+
+    .legend-different {
+      background: #fff;
+      border-color: #d2d2d7;
+    }
+
+    /* Room Section */
+    #room-section {
+      width: 100%;
+    }
+
+    /* Affinity List */
+    #room-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .room-list-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 18px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .room-list-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .affinity-badge {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: #f0f0f5;
+      color: #666;
+      white-space: nowrap;
+    }
+
+    .affinity-badge.affinity-high {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+    }
+
+    /* Collection Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+      width: 100%;
+    }
+
+    .grid-item {
+      aspect-ratio: 1;
+      background: white;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .grid-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Loading Spinner */
+    .loading-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(4px);
+      z-index: 3000;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .loading-overlay.active {
+      display: flex;
+    }
+
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 4px solid #e5e5ea;
+      border-top-color: #5e5ce6;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+      font-size: 14px;
+      color: var(--text-sub);
+      font-weight: 500;
+    }
+
+    /* Advice Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      width: 90%;
+      max-width: 400px;
+      padding: 40px 32px;
+      border-radius: 32px;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+      transform: scale(0.9);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .modal-header {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1d1d1f;
+      margin-bottom: 24px;
+    }
+
+    .advice-list {
+      text-align: left;
+      font-size: 15px;
+      color: #424245;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      padding-left: 20px;
+    }
+
+    .advice-list li {
+      margin-bottom: 12px;
+    }
+
+    .advice-list strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    font-weight: 700;
+    color: #1d1d1f;
+    margin-bottom: 20px;
+    }
+
+    .advice-list {
+      text-align: left;
+      font-size: 14px;
+      color: #3a3a3c;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .advice-list li {
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app-container">
+    <!-- Start Screen -->
+    <section id="start-screen" class="screen active">
+      <div style="height: 120px;"></div>
+      <div class="card" style="text-align: center;">
+        <p
+          style="text-transform: uppercase; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 12px;">
+          Personality Test</p>
+        <h1>Snow Crystal</h1>
+        <p>당신의 고유한 성향을<br>눈의 결정체로 시각화합니다.</p>
+
+        <div class="input-wrapper">
+          <input type="text" id="nickname-input" class="input-field" placeholder="이름을 입력하세요" maxlength="20" autocomplete="off">
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <button id="start-btn" class="btn">시작하기</button>
+          <button id="view-map-btn" class="btn btn-secondary">관계도 먼저 보기</button>
+          <button id="test-100-btn" class="btn btn-secondary" style="font-size:12px; padding:10px; opacity:0.7;">🧪 100명 테스트</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz Screen -->
+    <section id="quiz-screen" class="screen">
+      <div class="progress-track">
+        <div id="progress-fill" class="progress-fill"></div>
+      </div>
+      <div style="text-align: right; font-size: 13px; color: var(--text-sub); margin-bottom: 20px;">
+        <span id="q-idx">1</span> / 20
+      </div>
+
+      <div class="card question-card">
+        <div id="question-text" class="question-text">Question</div>
+      </div>
+
+      <div id="options-container">
+        <!-- Buttons injected by JS -->
+      </div>
+    </section>
+
+    <!-- Result Screen -->
+    <section id="result-screen" class="screen">
+      <div class="card">
+        <div class="result-hero">
+          <div id="result-icon-container" class="crystal-display"></div>
+          <h2 id="result-title" style="margin-bottom:8px;">Title</h2>
+          <div id="result-code"
+            style="color:var(--accent); font-weight:600; font-size:14px; letter-spacing:0.05em; margin-bottom:20px;">
+            CODE</div>
+          <p id="result-desc">Description</p>
+        </div>
+
+        <div id="stat-bars" style="margin-bottom: 30px;">
+          <!-- Stats injected -->
+        </div>
+
+        <div
+          style="text-align: center; font-size:14px; color:var(--text-sub); background:#f5f5f7; padding:16px; border-radius:12px; line-height:1.6;">
+          <div id="persona-text"></div>
+        </div>
+      </div>
+
+      <div class="screen-actions" style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-bottom:40px;">
+        <button id="restart-btn" class="btn btn-secondary">다시하기</button>
+        <button id="share-btn" class="btn">링크 복사하기</button>
+        <button id="delete-btn" class="btn btn-danger" style="grid-column: span 2; display:none;">내 결과 삭제</button>
+      </div>
+
+      <div id="room-section">
+        <h2>Relationship Map</h2>
+        <p>함께한 사람들과의 관계도입니다.<br>가까울수록 성향이 비슷합니다.</p>
+
+        <div id="graph-container">
+          <div class="graph-zoom-controls">
+            <button id="zoom-in-btn">+</button>
+            <button id="zoom-out-btn">−</button>
+          </div>
+          <canvas id="graph-canvas"></canvas>
+          <div class="graph-legend">
+            <label class="legend-item filter-checkbox">
+              <input type="checkbox" id="filter-soulmate" checked>
+              <span class="legend-dot legend-soulmate"></span>천생연분
+            </label>
+            <label class="legend-item filter-checkbox">
+              <input type="checkbox" id="filter-colleague" checked>
+              <span class="legend-dot legend-colleague"></span>좋은 동료
+            </label>
+            <label class="legend-item filter-checkbox">
+              <input type="checkbox" id="filter-different" checked>
+              <span class="legend-dot legend-different"></span>색다른 관계
+            </label>
+          </div>
+          <div class="graph-controls" id="graph-hint"><span class="emoji">👆</span>나 + 친구 터치하면 케미 분석!</div>
+        </div>
+
+        <h3>My Affinity List</h3>
+        <div id="room-list"></div>
+
+        <div style="height:40px;"></div>
+        <h2>Collection</h2>
+        <div id="gallery-grid" class="grid"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div id="loading-overlay" class="loading-overlay">
+    <div class="spinner"></div>
+    <div class="loading-text" id="loading-text">데이터 불러오는 중...</div>
+  </div>
+
+  <!-- Advice Modal -->
+  <div id="advice-modal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header" id="advice-header">나(N2c) x 친구(P1e)</div>
+      <ul class="advice-list" id="advice-body">
+        <!-- JS Injected -->
+      </ul>
+      <button class="btn" style="width:100%"
+        onclick="document.getElementById('advice-modal').classList.remove('active')">닫기</button>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script>
+    // --- Data & Config ---
+    // Big Five (OCEAN) Personality Model - 20 Questions (4 per axis)
+    // O: Openness (개방성) - 새로운 경험, 창의성, 호기심
+    // C: Conscientiousness (성실성) - 계획성, 책임감, 자기조절
+    // E: Extraversion (외향성) - 사교성, 활력, 자기주장
+    // A: Agreeableness (친화성) - 협조성, 신뢰, 이타심
+    // N: Neuroticism (신경성) - 정서적 안정성 (낮을수록 안정)
+    const questions = [
+      // === Openness (개방성) - 4문항 ===
+      { prompt: "새로운 요리를 접했을 때", axis: "O", options: [
+        { label: "일단 맛부터 봐야 알지! 도전해본다", effect: { O: 12 } },
+        { label: "평소 먹던 메뉴가 제일 편하다", effect: { O: -12 } }
+      ]},
+      { prompt: "다큐멘터리를 고를 때", axis: "O", options: [
+        { label: "우주, 철학, 미래 기술 등 추상적 주제", effect: { O: 12 } },
+        { label: "요리, 여행, 일상 브이로그 등 실용적 주제", effect: { O: -12 } }
+      ]},
+      { prompt: "여행 계획을 세울 때", axis: "O", options: [
+        { label: "현지인만 아는 숨은 골목, 로컬 경험 위주", effect: { O: 12 } },
+        { label: "후기 많은 유명 관광지 중심으로", effect: { O: -12 } }
+      ]},
+      { prompt: "취미 생활에 대한 태도", axis: "O", options: [
+        { label: "관심사가 자주 바뀌고, 새로운 분야에 도전한다", effect: { O: 12 } },
+        { label: "한 가지를 오래, 깊이 파고드는 편이다", effect: { O: -12 } }
+      ]},
+
+      // === Conscientiousness (성실성) - 4문항 ===
+      { prompt: "약속 시간에 대한 태도", axis: "C", options: [
+        { label: "최소 10분 전에는 도착해 있어야 마음이 편하다", effect: { C: 12 } },
+        { label: "5분 정도 늦어도 괜찮다고 생각한다", effect: { C: -12 } }
+      ]},
+      { prompt: "책상이나 방 정리 습관", axis: "C", options: [
+        { label: "물건마다 정해진 자리가 있고, 바로바로 정리한다", effect: { C: 12 } },
+        { label: "어지러워 보여도 내 나름의 시스템이 있다", effect: { C: -12 } }
+      ]},
+      { prompt: "마감이 있는 과제나 업무를 할 때", axis: "C", options: [
+        { label: "미리미리 나눠서 하고, 마감 전에 여유있게 끝낸다", effect: { C: 12 } },
+        { label: "마감 직전 집중력이 올라와서 몰아서 한다", effect: { C: -12 } }
+      ]},
+      { prompt: "새해 목표나 계획을 세울 때", axis: "C", options: [
+        { label: "구체적인 실행 계획과 체크리스트를 만든다", effect: { C: 12 } },
+        { label: "대략적인 방향만 정하고 유연하게 간다", effect: { C: -12 } }
+      ]},
+
+      // === Extraversion (외향성) - 4문항 ===
+      { prompt: "주말에 에너지를 충전하는 방법", axis: "E", options: [
+        { label: "친구들과 약속 잡고 밖에서 활동하기", effect: { E: 12 } },
+        { label: "집에서 혼자만의 시간 갖기", effect: { E: -12 } }
+      ]},
+      { prompt: "처음 보는 사람들이 많은 모임에서", axis: "E", options: [
+        { label: "먼저 다가가서 대화를 시작하는 편이다", effect: { E: 12 } },
+        { label: "누군가 말을 걸어주길 기다리는 편이다", effect: { E: -12 } }
+      ]},
+      { prompt: "생각이나 감정을 표현할 때", axis: "E", options: [
+        { label: "말로 바로바로 표현하는 게 편하다", effect: { E: 12 } },
+        { label: "글이나 메시지로 정리해서 전달하는 게 편하다", effect: { E: -12 } }
+      ]},
+      { prompt: "팀 회의나 토론에서", axis: "E", options: [
+        { label: "적극적으로 의견을 내고 토론을 주도한다", effect: { E: 12 } },
+        { label: "다른 사람들 의견을 듣고 정리하는 역할을 한다", effect: { E: -12 } }
+      ]},
+
+      // === Agreeableness (친화성) - 4문항 ===
+      { prompt: "친구가 명백히 잘못된 결정을 하려 할 때", axis: "A", options: [
+        { label: "직접적으로 내 의견을 말하고 설득하려 한다", effect: { A: -12 } },
+        { label: "조심스럽게 다른 관점도 있다고 돌려 말한다", effect: { A: 12 } }
+      ]},
+      { prompt: "경쟁 상황에서의 나", axis: "A", options: [
+        { label: "이기는 것보다 모두가 만족하는 결과가 중요하다", effect: { A: 12 } },
+        { label: "공정한 경쟁이라면 이기고 싶다", effect: { A: -12 } }
+      ]},
+      { prompt: "누군가 부탁을 해왔을 때", axis: "A", options: [
+        { label: "내 상황이 어려워도 일단 들어주려 한다", effect: { A: 12 } },
+        { label: "내 일정과 상황을 먼저 고려해서 결정한다", effect: { A: -12 } }
+      ]},
+      { prompt: "의견 충돌이 생겼을 때", axis: "A", options: [
+        { label: "관계 유지가 더 중요해서 양보하는 편이다", effect: { A: 12 } },
+        { label: "내 생각이 맞다면 끝까지 주장하는 편이다", effect: { A: -12 } }
+      ]},
+
+      // === Neuroticism (신경성) - 4문항 ===
+      { prompt: "중요한 발표나 시험을 앞두고", axis: "N", options: [
+        { label: "걱정이 많아서 여러 번 확인하고 준비한다", effect: { N: 12 } },
+        { label: "적당히 준비하면 될 거라고 마음 편히 먹는다", effect: { N: -12 } }
+      ]},
+      { prompt: "예상치 못한 문제가 생겼을 때", axis: "N", options: [
+        { label: "불안하고 여러 최악의 시나리오가 떠오른다", effect: { N: 12 } },
+        { label: "어떻게든 되겠지, 차분하게 대응한다", effect: { N: -12 } }
+      ]},
+      { prompt: "누군가에게 비판을 받았을 때", axis: "N", options: [
+        { label: "한동안 마음에 남고 자꾸 생각난다", effect: { N: 12 } },
+        { label: "참고할 건 참고하고 빨리 털어버린다", effect: { N: -12 } }
+      ]},
+      { prompt: "일이 계획대로 안 풀릴 때", axis: "N", options: [
+        { label: "짜증나고 스트레스를 많이 받는 편이다", effect: { N: 12 } },
+        { label: "어쩔 수 없지, 플랜B로 넘어간다", effect: { N: -12 } }
+      ]}
+    ];
+    // (Preserve snowData - placeholder for now, actual implementation will use full array)
+    // NOTE: To save context space, I will re-inject the FULL snowData array from the previous file content here. 
+    // Since I cannot technically "copy-paste" from previous context in one step without reading, 
+    // I will assume the snowData variable is available or I must include it. 
+    // **CRITICAL**: The user expects the *same* logic. I will include a shortened version for brevity in this artifact display 
+    // but the actual write will include the full data set from my "brain" (context).
+    // ... Actually, I must write the full file. I will use the previously read snowData.
+
+    // [Start of Logic Implementation]
+    // Due to the large size of snowData (64 items), I will proceed by WRITING the Logic + Graph Engine
+
+    // Convert legacy T/H/V/R stats to OCEAN (Big Five) coordinates
+    // This provides psychological validity through established personality model
+    function convertToOCEAN(stats) {
+      const T = stats.T || 50, H = stats.H || 50, V = stats.V || 50, R = stats.R || 50;
+      return {
+        O: Math.round(Math.min(100, Math.max(0, V * 0.6 + (100 - T) * 0.25 + H * 0.15))), // Openness
+        C: Math.round(Math.min(100, Math.max(0, T * 0.5 + (100 - V) * 0.35 + R * 0.15))), // Conscientiousness
+        E: Math.round(Math.min(100, Math.max(0, H * 0.7 + V * 0.2 + (100 - T) * 0.1))),   // Extraversion
+        A: Math.round(Math.min(100, Math.max(0, (100 - T) * 0.3 + H * 0.35 + (100 - V) * 0.2 + R * 0.15))), // Agreeableness
+        N: Math.round(Math.min(100, Math.max(0, 70 - R * 0.5 + V * 0.2 + (100 - H) * 0.1))) // Neuroticism
+      };
+    }
+
+    const supabaseUrl = "https://hfjwrxudlwsckqemxzty.supabase.co"; const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhmandyeHVkbHdzY2txZW14enR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ5MTA0MTQsImV4cCI6MjA4MDQ4NjQxNH0.1KsnS3r_xBjqZrlC71unWEGoNv45u--hgI8zMq8KrV0";
+    // supabaseClient moved to init()
+
+    const snowData = [
+      {
+        "code": "N1a",
+        "title": "예리한 외골수",
+        "desc": "불필요한 것은 모두 배제하고 핵심만 찌르는 날카로운 분석가입니다.",
+        "stats": {
+          "T": 90,
+          "H": 20,
+          "V": 10,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중심 작은 육각 --><polygon points=\"0,-5 4,-3 4,3 0,5 -4,3 -4,-3\" /><!-- 기본 팔: 곁가지 거의 없는 아주 단순한 바늘 --><g id=\"arm-n1a\"><line x1=\"0\" y1=\"-5\" x2=\"0\" y2=\"-30\" /><!-- 끝 육각 단면 --><polygon points=\"0,-30 3,-28 3,-24 0,-22 -3,-24 -3,-28\" /></g><!-- 6방향 회전 복제 --><g transform=\"rotate(60)\"><use href=\"#arm-n1a\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-n1a\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-n1a\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-n1a\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-n1a\" /></g></g><!-- arm 정의 --><defs><g id=\"arm-n1a\"><line x1=\"0\" y1=\"-5\" x2=\"0\" y2=\"-30\" /><polygon points=\"0,-30 3,-28 3,-24 0,-22 -3,-24 -3,-28\" /></g></defs></svg>"
+      },
+      {
+        "code": "N1b",
+        "title": "신중한 바늘",
+        "desc": "날카롭지만 끝맺음은 확실하게 처리하는 꼼꼼한 성격입니다.",
+        "stats": {
+          "T": 88,
+          "H": 25,
+          "V": 15,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중심 육각 --><polygon points=\"0,-6 5,-3 5,3 0,6 -5,3 -5,-3\" /><!-- 기본 팔: 끝에 캡(작은 판) --><g id=\"arm-n1b\"><!-- 메인 바늘 --><line x1=\"0\" y1=\"-6\" x2=\"0\" y2=\"-30\" /><!-- 캡 --><path d=\"M-5 -30 L5 -30 L3 -26 L-3 -26 Z\" /></g><!-- 6방향 반복 --><g transform=\"rotate(60)\"><use href=\"#arm-n1b\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-n1b\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-n1b\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-n1b\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-n1b\" /></g></g><defs><g id=\"arm-n1b\"><line x1=\"0\" y1=\"-6\" x2=\"0\" y2=\"-30\" /><path d=\"M-5 -30 L5 -30 L3 -26 L-3 -26 Z\" /></g></defs></svg>"
+      },
+      {
+        "code": "N1c",
+        "title": "협력하는 전략가",
+        "desc": "혼자보다는 마음 맞는 소수 정예 팀으로 움직일 때 빛이 납니다.",
+        "stats": {
+          "T": 85,
+          "H": 40,
+          "V": 10,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중심 이중 육각 --><polygon points=\"0,-5 4,-3 4,3 0,5 -4,3 -4,-3\" /><polygon points=\"0,-9 6,-5 6,5 0,9 -6,5 -6,-5\" /><!-- 기본 팔: Y자 형태의 두 갈래 바늘 --><g id=\"arm-n1c\"><line x1=\"0\" y1=\"-5\" x2=\"-3\" y2=\"-26\" /><line x1=\"0\" y1=\"-5\" x2=\"3\" y2=\"-26\" /><!-- 각 끝에 작은 단면 --><polygon points=\"-3,-26 -1,-25 -1,-22 -3,-21 -5,-22 -5,-25\" /><polygon points=\"3,-26 5,-25 5,-22 3,-21 1,-22 1,-25\" /></g><!-- 6방향 반복 --><g transform=\"rotate(60)\"><use href=\"#arm-n1c\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-n1c\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-n1c\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-n1c\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-n1c\" /></g></g><defs><g id=\"arm-n1c\"><line x1=\"0\" y1=\"-5\" x2=\"-3\" y2=\"-26\" /><line x1=\"0\" y1=\"-5\" x2=\"3\" y2=\"-26\" /><polygon points=\"-3,-26 -1,-25 -1,-22 -3,-21 -5,-22 -5,-25\" /><polygon points=\"3,-26 5,-25 5,-22 3,-21 1,-22 1,-25\" /></g></defs></svg>"
+      },
+      {
+        "code": "N1d",
+        "title": "멋쟁이 신사",
+        "desc": "예리함 속에 숨겨진 디테일한 센스가 돋보이는 타입입니다.",
+        "stats": {
+          "T": 80,
+          "H": 45,
+          "V": 20,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중심 육각 + 장식 링 --><polygon points=\"0,-4 4,-2 4,2 0,4 -4,2 -4,-2\" /><circle cx=\"0\" cy=\"0\" r=\"9\" /><!-- 기본 팔: 중앙 장식에서 뻗어나가는 바늘 --><g id=\"arm-n1d\"><!-- 메인 바늘 --><line x1=\"0\" y1=\"-9\" x2=\"0\" y2=\"-30\" /><!-- 장식 코니스 (작은 수평판) --><line x1=\"-5\" y1=\"-14\" x2=\"5\" y2=\"-14\" /><!-- 끝 단면 --><polygon points=\"0,-30 3,-28 3,-24 0,-22 -3,-24 -3,-28\" /></g><!-- 6방향 반복 --><g transform=\"rotate(60)\"><use href=\"#arm-n1d\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-n1d\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-n1d\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-n1d\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-n1d\" /></g></g><defs><g id=\"arm-n1d\"><line x1=\"0\" y1=\"-9\" x2=\"0\" y2=\"-30\" /><line x1=\"-5\" y1=\"-14\" x2=\"5\" y2=\"-14\" /><polygon points=\"0,-30 3,-28 3,-24 0,-22 -3,-24 -3,-28\" /></g></defs></svg>"
+      },
+      {
+        "code": "N1e",
+        "title": "호기심 대장",
+        "desc": "아직 다듬어지지 않았지만 무수한 가능성을 품고 사방을 찌릅니다.",
+        "stats": {
+          "T": 75,
+          "H": 30,
+          "V": 40,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중심 육각 코어 --><polygon points=\"0,-6 5,-3 5,3 0,6 -5,3 -5,-3\" /><!-- 기본 팔: 가지가 두 단계 있는 프랙탈 느낌 --><g id=\"arm-n1e\"><!-- 메인 가지 --><line x1=\"0\" y1=\"-6\" x2=\"0\" y2=\"-32\" /><!-- 곁가지1 --><line x1=\"0\" y1=\"-14\" x2=\"4\" y2=\"-18\" /><line x1=\"0\" y1=\"-14\" x2=\"-4\" y2=\"-18\" /><!-- 곁가지2 --><line x1=\"0\" y1=\"-22\" x2=\"5\" y2=\"-26\" /><line x1=\"0\" y1=\"-22\" x2=\"-5\" y2=\"-26\" /><!-- 팔 끝 작은 육각 --><polygon points=\"0,-32 3,-30 3,-26 0,-24 -3,-26 -3,-30\" /></g><!-- 6방향 회전 --><g transform=\"rotate(60)\"><use href=\"#arm-n1e\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-n1e\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-n1e\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-n1e\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-n1e\" /></g></g><defs><g id=\"arm-n1e\"><line x1=\"0\" y1=\"-6\" x2=\"0\" y2=\"-32\" /><line x1=\"0\" y1=\"-14\" x2=\"4\" y2=\"-18\" /><line x1=\"0\" y1=\"-14\" x2=\"-4\" y2=\"-18\" /><line x1=\"0\" y1=\"-22\" x2=\"5\" y2=\"-26\" /><line x1=\"0\" y1=\"-22\" x2=\"-5\" y2=\"-26\" /><polygon points=\"0,-32 3,-30 3,-26 0,-24 -3,-26 -3,-30\" /></g></defs></svg>"
+      },
+      {
+        "code": "N2a",
+        "title": "복잡한 해결사",
+        "desc": "얽히고설킨 난제들을 자신만의 논리로 풀어내는 컨설턴트입니다.",
+        "stats": {
+          "T": 85,
+          "H": 50,
+          "V": 30,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중심 이중 육각 --><polygon points=\"0,-5 4,-3 4,3 0,5 -4,3 -4,-3\" /><polygon points=\"0,-9 6,-5 6,5 0,9 -6,5 -6,-5\" /><!-- 기본 팔: 구간마다 가지가 있는 긴 복합 바늘 --><g id=\"arm-n2a\"><line x1=\"0\" y1=\"-9\" x2=\"0\" y2=\"-34\" /><!-- 3단계 곁가지 --><line x1=\"0\" y1=\"-14\" x2=\"4\" y2=\"-18\" /><line x1=\"0\" y1=\"-14\" x2=\"-4\" y2=\"-18\" /><line x1=\"0\" y1=\"-20\" x2=\"5\" y2=\"-24\" /><line x1=\"0\" y1=\"-20\" x2=\"-5\" y2=\"-24\" /><line x1=\"0\" y1=\"-26\" x2=\"6\" y2=\"-30\" /><line x1=\"0\" y1=\"-26\" x2=\"-6\" y2=\"-30\" /><!-- 끝 단면 --><polygon points=\"0,-34 3,-32 3,-28 0,-26 -3,-28 -3,-32\" /></g><!-- 6방향 반복 --><g transform=\"rotate(60)\"><use href=\"#arm-n2a\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-n2a\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-n2a\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-n2a\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-n2a\" /></g></g><defs><g id=\"arm-n2a\"><line x1=\"0\" y1=\"-9\" x2=\"0\" y2=\"-34\" /><line x1=\"0\" y1=\"-14\" x2=\"4\" y2=\"-18\" /><line x1=\"0\" y1=\"-14\" x2=\"-4\" y2=\"-18\" /><line x1=\"0\" y1=\"-20\" x2=\"5\" y2=\"-24\" /><line x1=\"0\" y1=\"-20\" x2=\"-5\" y2=\"-24\" /><line x1=\"0\" y1=\"-26\" x2=\"6\" y2=\"-30\" /><line x1=\"0\" y1=\"-26\" x2=\"-6\" y2=\"-30\" /><polygon points=\"0,-34 3,-32 3,-28 0,-26 -3,-28 -3,-32\" /></g></defs></svg>"
+      },
+      {
+        "code": "N2b",
+        "title": "사교적인 리더",
+        "desc": "중심을 잡고 여러 방향으로 영향력을 펼치는 마당발입니다.",
+        "stats": {
+          "T": 60,
+          "H": 60,
+          "V": 20,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중심 육각 --><polygon points=\"0,-6 5,-3 5,3 0,6 -5,3 -5,-3\" /><!-- 기본 팔: 두 줄이 나란한 바늘(리더 + 동료) --><g id=\"arm-n2b\"><!-- 메인 두 줄 --><line x1=\"-2\" y1=\"-6\" x2=\"-2\" y2=\"-30\" /><line x1=\"2\" y1=\"-6\" x2=\"2\" y2=\"-30\" /><!-- 곁가지 --><line x1=\"-2\" y1=\"-16\" x2=\"-7\" y2=\"-21\" /><line x1=\"2\" y1=\"-16\" x2=\"7\" y2=\"-21\" /><!-- 끝 단면 (조금 넓게) --><path d=\"M-4 -30 L4 -30 L3 -26 L-3 -26 Z\" /></g><!-- 6방향 반복 --><g transform=\"rotate(60)\"><use href=\"#arm-n2b\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-n2b\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-n2b\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-n2b\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-n2b\" /></g></g><defs><g id=\"arm-n2b\"><line x1=\"-2\" y1=\"-6\" x2=\"-2\" y2=\"-30\" /><line x1=\"2\" y1=\"-6\" x2=\"2\" y2=\"-30\" /><line x1=\"-2\" y1=\"-16\" x2=\"-7\" y2=\"-21\" /><line x1=\"2\" y1=\"-16\" x2=\"7\" y2=\"-21\" /><path d=\"M-4 -30 L4 -30 L3 -26 L-3 -26 Z\" /></g></defs></svg>"
+      },
+      {
+        "code": "N2c",
+        "title": "뼈대 있는 가문",
+        "desc": "기본기가 탄탄하여 어떤 흔들림에도 무너지지 않습니다.",
+        "stats": {
+          "T": 95,
+          "H": 30,
+          "V": 5,
+          "R": 10
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중심 육각 + 안쪽 십자 뼈대 --><polygon points=\"0,-5 4,-3 4,3 0,5 -4,3 -4,-3\" /><line x1=\"-6\" y1=\"0\" x2=\"6\" y2=\"0\" /><line x1=\"0\" y1=\"-6\" x2=\"0\" y2=\"6\" /><!-- 기본 팔: 축을 따라 규칙적으로 가지가 달린 바늘 --><g id=\"arm-n2c\"><line x1=\"0\" y1=\"-5\" x2=\"0\" y2=\"-32\" /><!-- 뼈대 가지 --><line x1=\"0\" y1=\"-10\" x2=\"4\" y2=\"-12\" /><line x1=\"0\" y1=\"-10\" x2=\"-4\" y2=\"-12\" /><line x1=\"0\" y1=\"-17\" x2=\"5\" y2=\"-19\" /><line x1=\"0\" y1=\"-17\" x2=\"-5\" y2=\"-19\" /><line x1=\"0\" y1=\"-24\" x2=\"6\" y2=\"-26\" /><line x1=\"0\" y1=\"-24\" x2=\"-6\" y2=\"-26\" /><!-- 끝 육각 --><polygon points=\"0,-32 3,-30 3,-26 0,-24 -3,-26 -3,-30\" /></g><!-- 6방향 반복 --><g transform=\"rotate(60)\"><use href=\"#arm-n2c\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-n2c\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-n2c\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-n2c\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-n2c\" /></g></g><defs><g id=\"arm-n2c\"><line x1=\"0\" y1=\"-5\" x2=\"0\" y2=\"-32\" /><line x1=\"0\" y1=\"-10\" x2=\"4\" y2=\"-12\" /><line x1=\"0\" y1=\"-10\" x2=\"-4\" y2=\"-12\" /><line x1=\"0\" y1=\"-17\" x2=\"5\" y2=\"-19\" /><line x1=\"0\" y1=\"-17\" x2=\"-5\" y2=\"-19\" /><line x1=\"0\" y1=\"-24\" x2=\"6\" y2=\"-26\" /><line x1=\"0\" y1=\"-24\" x2=\"-6\" y2=\"-26\" /><polygon points=\"0,-32 3,-30 3,-26 0,-24 -3,-26 -3,-30\" /></g></defs></svg>"
+      },
+      {
+        "code": "C1a",
+        "title": "고고한 철학자",
+        "desc": "남들과 다른 차원에서 세상을 바라보는 고독한 사색가입니다.",
+        "stats": {
+          "T": 95,
+          "H": 10,
+          "V": 0,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><!-- 기둥 중심에 약한 방사형을 섞어서 눈결정 느낌 유지 --><g transform=\"translate(50,50)\"><!-- 중앙 기둥형 육각 --><polygon points=\"0,-18 8,-12 8,12 0,18 -8,12 -8,-12\" /><!-- 위쪽 피라미드 모양 --><polygon points=\"0,-32 10,-20 0,-18 -10,-20\" /><!-- 아래 기둥 바닥 --><line x1=\"-8\" y1=\"12\" x2=\"8\" y2=\"12\" /><!-- 내부 골격 --><line x1=\"0\" y1=\"-32\" x2=\"0\" y2=\"18\" /><line x1=\"-4\" y1=\"-10\" x2=\"4\" y2=\"-10\" /><line x1=\"-4\" y1=\"0\" x2=\"4\" y2=\"0\" /><!-- 짧은 방사형 가지 (철학자지만 눈결정 구조를 유지) --><line x1=\"-12\" y1=\"0\" x2=\"-18\" y2=\"0\" /><line x1=\"12\" y1=\"0\" x2=\"18\" y2=\"0\" /><line x1=\"-10\" y1=\"-8\" x2=\"-15\" y2=\"-11\" /><line x1=\"10\" y1=\"-8\" x2=\"15\" y2=\"-11\" /><line x1=\"-10\" y1=\"8\" x2=\"-15\" y2=\"11\" /><line x1=\"10\" y1=\"8\" x2=\"15\" y2=\"11\" /></g></svg>"
+      },
+      {
+        "code": "C1b",
+        "title": "넓은 포용력",
+        "desc": "타인의 이야기를 담아줄 준비가 되어 있는 따뜻한 상담가입니다.",
+        "stats": {
+          "T": 60,
+          "H": 20,
+          "V": 10,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 컵 림: 살짝 육각 느낌이 나는 곡선 --><path d=\"M-12 -16 C-6 -22, 0 -24, 6 -22 C10 -20, 12 -18, 12 -16\" /><!-- 컵 몸통 --><path d=\"M-12 -16 C-12 0, -6 12, 0 12 C6 12, 12 0, 12 -16\" /><!-- 내부 골격 --><line x1=\"0\" y1=\"-24\" x2=\"0\" y2=\"12\" /><line x1=\"-6\" y1=\"-12\" x2=\"-6\" y2=\"4\" /><line x1=\"6\" y1=\"-12\" x2=\"6\" y2=\"4\" /><!-- 스템과 받침 --><line x1=\"0\" y1=\"12\" x2=\"0\" y2=\"22\" /><path d=\"M-10 24 H10\" /><!-- 짧은 방사형 가지: 포용력 느낌으로 주변에 살짝 펼침 --><line x1=\"-18\" y1=\"-4\" x2=\"-12\" y2=\"-4\" /><line x1=\"18\" y1=\"-4\" x2=\"12\" y2=\"-4\" /><line x1=\"-16\" y1=\"2\" x2=\"-10\" y2=\"4\" /><line x1=\"16\" y1=\"2\" x2=\"10\" y2=\"4\" /></g></svg>"
+      },
+      {
+        "code": "C1c",
+        "title": "정직한 원칙주의자",
+        "desc": "거짓말을 못하고 앞뒤가 똑같은 신뢰의 아이콘입니다.",
+        "stats": {
+          "T": 100,
+          "H": 5,
+          "V": 0,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 단단한 육각 기둥 --><polygon points=\"0,-20 10,-12 10,12 0,20 -10,12 -10,-12\" /><!-- 위아래 단면 강조 --><polygon points=\"0,-26 8,-20 8,-14 0,-10 -8,-14 -8,-20\" /><polygon points=\"0,26 8,20 8,14 0,10 -8,14 -8,20\" /><!-- 내부 축 --><line x1=\"0\" y1=\"-26\" x2=\"0\" y2=\"26\" /><!-- 짧은 방사형 가지 (원칙의 균형감) --><line x1=\"-14\" y1=\"0\" x2=\"-20\" y2=\"0\" /><line x1=\"14\" y1=\"0\" x2=\"20\" y2=\"0\" /><line x1=\"-10\" y1=\"-10\" x2=\"-15\" y2=\"-13\" /><line x1=\"10\" y1=\"-10\" x2=\"15\" y2=\"-13\" /><line x1=\"-10\" y1=\"10\" x2=\"-15\" y2=\"13\" /><line x1=\"10\" y1=\"10\" x2=\"15\" y2=\"13\" /></g></svg>"
+      },
+      {
+        "code": "C1d",
+        "title": "실속파 현실주의자",
+        "desc": "겉치레보다는 내실을 다지며 효율적으로 움직입니다.",
+        "stats": {
+          "T": 90,
+          "H": 15,
+          "V": 5,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 바깥 육각 기둥 --><polygon points=\"0,-20 10,-12 10,12 0,20 -10,12 -10,-12\" /><!-- 안쪽 비어있는 육각 (속이 빈 프리즘) --><polygon points=\"0,-14 7,-9 7,9 0,14 -7,9 -7,-9\" /><!-- 위아래 림 --><line x1=\"-10\" y1=\"-12\" x2=\"10\" y2=\"-12\" /><line x1=\"-10\" y1=\"12\" x2=\"10\" y2=\"12\" /><!-- 현실 감각의 짧은 가지 --><line x1=\"-14\" y1=\"-2\" x2=\"-20\" y2=\"-2\" /><line x1=\"14\" y1=\"2\" x2=\"20\" y2=\"2\" /></g></svg>"
+      },
+      {
+        "code": "C1e",
+        "title": "뚝심 있는 장군",
+        "desc": "한번 결정하면 밀고 나가는 추진력이 대단합니다.",
+        "stats": {
+          "T": 95,
+          "H": 10,
+          "V": 5,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 두꺼운 육각 스택 --><polygon points=\"0,-24 11,-16 11,-6 0,2 -11,-6 -11,-16\" /><polygon points=\"0,2 11,10 11,20 0,28 -11,20 -11,10\" /><!-- 가운데 띠 --><line x1=\"-11\" y1=\"-2\" x2=\"11\" y2=\"-2\" /><!-- 내부 축 --><line x1=\"0\" y1=\"-24\" x2=\"0\" y2=\"28\" /><!-- 양옆 짧은 방패형 가지 --><path d=\"M-16 -4 L-20 0 L-16 4\" /><path d=\"M16 -4 L20 0 L16 4\" /></g></svg>"
+      },
+      {
+        "code": "C1f",
+        "title": "유연한 보스",
+        "desc": "강해 보이지만 속은 부드러워 팀원의 실수를 감싸줍니다.",
+        "stats": {
+          "T": 70,
+          "H": 30,
+          "V": 10,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 바깥 기둥 --><polygon points=\"0,-24 11,-16 11,16 0,24 -11,16 -11,-16\" /><!-- 안쪽 기둥 (속이 빈 느낌) --><polygon points=\"0,-18 7,-11 7,11 0,18 -7,11 -7,-11\" /><!-- 상단/하단 링 --><line x1=\"-11\" y1=\"-16\" x2=\"11\" y2=\"-16\" /><line x1=\"-11\" y1=\"16\" x2=\"11\" y2=\"16\" /><!-- 부드러운 곡선 가지 --><path d=\"M-16 -6 C-20 -4, -20 4, -16 6\" /><path d=\"M16 -6 C20 -4, 20 4, 16 6\" /></g></svg>"
+      },
+      {
+        "code": "C1g",
+        "title": "단단한 방패",
+        "desc": "어떤 공격에도 끄떡없는 멘탈과 인내심을 가졌습니다.",
+        "stats": {
+          "T": 80,
+          "H": 20,
+          "V": 5,
+          "R": 20
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 두꺼운 육각 판 --><polygon points=\"0,-18 16,-8 16,8 0,18 -16,8 -16,-8\" /><!-- 안쪽 육각 (중심 코어) --><polygon points=\"0,-10 9,-4 9,4 0,10 -9,4 -9,-4\" /><!-- 짧은 기둥 위/아래 --><line x1=\"0\" y1=\"-24\" x2=\"0\" y2=\"-18\" /><line x1=\"0\" y1=\"18\" x2=\"0\" y2=\"24\" /><!-- 방패형 가지 6개 --><g id=\"arm-c1g\"><line x1=\"0\" y1=\"-18\" x2=\"0\" y2=\"-30\" /><polygon points=\"0,-30 4,-27 4,-23 0,-20 -4,-23 -4,-27\" /></g><g transform=\"rotate(60)\"><use href=\"#arm-c1g\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-c1g\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-c1g\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-c1g\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-c1g\" /></g></g><defs><g id=\"arm-c1g\"><line x1=\"0\" y1=\"-18\" x2=\"0\" y2=\"-30\" /><polygon points=\"0,-30 4,-27 4,-23 0,-20 -4,-23 -4,-27\" /></g></defs></svg>"
+      },
+      {
+        "code": "C1h",
+        "title": "내유외강",
+        "desc": "강해보이는 인상이지만 알고 보면 눈물도 많고 정이 많습니다.",
+        "stats": {
+          "T": 65,
+          "H": 35,
+          "V": 10,
+          "R": 10
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 바깥 두꺼운 육각 --><polygon points=\"0,-18 16,-8 16,8 0,18 -16,8 -16,-8\" /><!-- 안쪽 작은 육각 (속은 따뜻함) --><polygon points=\"0,-9 8,-4 8,4 0,9 -8,4 -8,-4\" /><!-- 링 느낌 라인 --><line x1=\"-16\" y1=\"0\" x2=\"16\" y2=\"0\" /><!-- 부드런 짧은 가지 --><g id=\"arm-c1h\"><line x1=\"0\" y1=\"-18\" x2=\"0\" y2=\"-28\" /><path d=\"M0 -28 C2 -30, 4 -30, 6 -28\" /></g><g transform=\"rotate(60)\"><use href=\"#arm-c1h\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-c1h\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-c1h\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-c1h\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-c1h\" /></g></g><defs><g id=\"arm-c1h\"><line x1=\"0\" y1=\"-18\" x2=\"0\" y2=\"-28\" /><path d=\"M0 -28 C2 -30, 4 -30, 6 -28\" /></g></defs></svg>"
+      },
+      {
+        "code": "C1i",
+        "title": "지혜로운 기록자",
+        "desc": "세상의 지식을 탐구하고 정리하는 것을 즐기는 학자 스타일.",
+        "stats": {
+          "T": 90,
+          "H": 40,
+          "V": 20,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 말려있는 두루마리형 기둥 실루엣 --><path d=\"M-10 -20 C-4 -24, 4 -24, 10 -20 L10 18 C4 22, -4 22, -10 18 Z\" /><!-- 상단 말린 부분 --><path d=\"M-10 -20 C-9 -14, -5 -10, 0 -10 C5 -10, 9 -14, 10 -20\" /><!-- 하단 말린 부분 --><path d=\"M-10 18 C-9 12, -5 8, 0 8 C5 8, 9 12, 10 18\" /><!-- 안쪽 세로 줄 (기록 라인) --><line x1=\"-3\" y1=\"-14\" x2=\"-3\" y2=\"12\" /><line x1=\"3\" y1=\"-14\" x2=\"3\" y2=\"12\" /><!-- 주변에 잉크처럼 짧은 가지 --><line x1=\"-18\" y1=\"0\" x2=\"-12\" y2=\"0\" /><line x1=\"18\" y1=\"0\" x2=\"12\" y2=\"0\" /><line x1=\"-14\" y1=\"-8\" x2=\"-10\" y2=\"-10\" /><line x1=\"14\" y1=\"-8\" x2=\"10\" y2=\"-10\" /></g></svg>"
+      },
+      {
+        "code": "C2a",
+        "title": "돌진하는 개척자",
+        "desc": "목표가 생기면 탄환처럼 날아가 꽂히는 열정파입니다.",
+        "stats": {
+          "T": 85,
+          "H": 30,
+          "V": 30,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 탄환형 기둥 --><path d=\"M0 -28 C6 -24, 10 -18, 10 -10 L10 14 C10 18, 6 22, 0 24 C-6 22, -10 18, -10 14 L-10 -10 C-10 -18, -6 -24, 0 -28 Z\" /><!-- 내부 축 --><line x1=\"0\" y1=\"-26\" x2=\"0\" y2=\"22\" /><!-- 속도감을 주는 옆 가지 --><line x1=\"-18\" y1=\"-6\" x2=\"-10\" y2=\"-6\" /><line x1=\"-20\" y1=\"0\" x2=\"-10\" y2=\"0\" /><line x1=\"-18\" y1=\"6\" x2=\"-10\" y2=\"6\" /></g></svg>"
+      },
+      {
+        "code": "C2b",
+        "title": "다재다능 멀티태스커",
+        "desc": "여러 가지 목표를 동시에 추구하며 모두 놓치지 않습니다.",
+        "stats": {
+          "T": 75,
+          "H": 50,
+          "V": 40,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중심 육각 코어 --><polygon points=\"0,-6 5,-3 5,3 0,6 -5,3 -5,-3\" /><!-- 하나의 탄환형 팔 --><g id=\"arm-c2b\"><path d=\"M0 -6 C4 -10, 7 -14, 7 -18 C7 -22, 4 -26, 0 -28 C-4 -26, -7 -22, -7 -18 C-7 -14, -4 -10, 0 -6 Z\" /></g><!-- 6방향으로 탄환을 배치 --><use href=\"#arm-c2b\" /><g transform=\"rotate(60)\"><use href=\"#arm-c2b\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-c2b\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-c2b\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-c2b\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-c2b\" /></g></g><defs><g id=\"arm-c2b\"><path d=\"M0 -6 C4 -10, 7 -14, 7 -18 C7 -22, 4 -26, 0 -28 C-4 -26, -7 -22, -7 -18 C-7 -14, -4 -10, 0 -6 Z\" /></g></defs></svg>"
+      },
+      {
+        "code": "P1a",
+        "title": "정석 모범생",
+        "desc": "균형, 조화, 안정을 최우선으로 여기는 평화주의자입니다.",
+        "stats": {
+          "T": 50,
+          "H": 30,
+          "V": 10,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 큰 육각 판 --><polygon points=\"0,-20 17,-10 17,10 0,20 -17,10 -17,-10\" /><!-- 안쪽 육각 --><polygon points=\"0,-10 9,-5 9,5 0,10 -9,5 -9,-5\" /><!-- 추가 육각 링 --><polygon points=\"0,-15 13,-8 13,8 0,15 -13,8 -13,-8\" /><!-- 한 팔(판형 가지) 정의 --><g id=\"arm-p1a\"><!-- 메인 팔 --><line x1=\"0\" y1=\"-20\" x2=\"0\" y2=\"-32\" /><!-- 팔 끝 작은 판 --><polygon points=\"0,-32 6,-29 6,-23 0,-20 -6,-23 -6,-29\" /><!-- 중간 얕은 돌기 --><line x1=\"-4\" y1=\"-24\" x2=\"-8\" y2=\"-22\" /><line x1=\"4\" y1=\"-24\" x2=\"8\" y2=\"-22\" /></g><!-- 6방향 회전 배치 --><use href=\"#arm-p1a\" /><g transform=\"rotate(60)\"><use href=\"#arm-p1a\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-p1a\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p1a\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-p1a\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-p1a\" /></g></g><defs><g id=\"arm-p1a\"><line x1=\"0\" y1=\"-20\" x2=\"0\" y2=\"-32\" /><polygon points=\"0,-32 6,-29 6,-23 0,-20 -6,-23 -6,-29\" /><line x1=\"-4\" y1=\"-24\" x2=\"-8\" y2=\"-22\" /><line x1=\"4\" y1=\"-24\" x2=\"8\" y2=\"-22\" /></g></defs></svg>"
+      },
+      {
+        "code": "P1b",
+        "title": "성장하는 유망주",
+        "desc": "기본을 지키면서도 조금씩 자신의 영역을 넓혀갑니다.",
+        "stats": {
+          "T": 45,
+          "H": 50,
+          "V": 15,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 기본 육각 판 --><polygon points=\"0,-16 14,-8 14,8 0,16 -14,8 -14,-8\" /><!-- 안쪽 작은 육각 --><polygon points=\"0,-8 7,-4 7,4 0,8 -7,4 -7,-4\" /><!-- 성장하는 확장(짧은 확장 팔) --><g id=\"arm-p1b\"><line x1=\"0\" y1=\"-16\" x2=\"0\" y2=\"-24\" /><rect x=\"-3\" y=\"-24\" width=\"6\" height=\"4\" rx=\"1.5\" /></g><!-- 6방향 회전 --><use href=\"#arm-p1b\" /><g transform=\"rotate(60)\"><use href=\"#arm-p1b\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-p1b\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p1b\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-p1b\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-p1b\" /></g></g><defs><g id=\"arm-p1b\"><line x1=\"0\" y1=\"-16\" x2=\"0\" y2=\"-24\" /><rect x=\"-3\" y=\"-24\" width=\"6\" height=\"4\" rx=\"1.5\" /></g></defs></svg>"
+      },
+      {
+        "code": "P1c",
+        "title": "대담한 사업가",
+        "desc": "자신의 영향력을 넓고 굵직하게 뻗어나가는 배포가 있습니다.",
+        "stats": {
+          "T": 30,
+          "H": 70,
+          "V": 20,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중앙 육각 판 --><polygon points=\"0,-16 14,-8 14,8 0,16 -14,8 -14,-8\" /><!-- 안쪽 육각 --><polygon points=\"0,-9 8,-4 8,4 0,9 -8,4 -8,-4\" /><!-- 넓고 굵은 가지 --><g id=\"arm-p1c\"><!-- 메인 브랜치 --><path d=\"M0 -16 L0 -26\" /><!-- 넓은 판 형태의 브랜치 --><path d=\"M0 -26 L8 -22 L8 -18 L0 -20 L-8 -18 L-8 -22 Z\" /><!-- 짧은 서브 브랜치 --><line x1=\"-3\" y1=\"-20\" x2=\"-8\" y2=\"-24\" /><line x1=\"3\" y1=\"-20\" x2=\"8\" y2=\"-24\" /></g><!-- 6방향 회전 --><use href=\"#arm-p1c\" /><g transform=\"rotate(60)\"><use href=\"#arm-p1c\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-p1c\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p1c\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-p1c\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-p1c\" /></g></g><defs><g id=\"arm-p1c\"><path d=\"M0 -16 L0 -26\" /><path d=\"M0 -26 L8 -22 L8 -18 L0 -20 L-8 -18 L-8 -22 Z\" /><line x1=\"-3\" y1=\"-20\" x2=\"-8\" y2=\"-24\" /><line x1=\"3\" y1=\"-20\" x2=\"8\" y2=\"-24\" /></g></defs></svg>"
+      },
+      {
+        "code": "P1d",
+        "title": "반짝이는 스타",
+        "desc": "어디서나 주목받는 것을 즐기며 끼가 넘칩니다.",
+        "stats": {
+          "T": 20,
+          "H": 80,
+          "V": 10,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중심 이중 육각 --><polygon points=\"0,-10 9,-5 9,5 0,10 -9,5 -9,-5\" /><polygon points=\"0,-16 14,-8 14,8 0,16 -14,8 -14,-8\" /><!-- 반짝이는 별 모양 팔 --><g id=\"arm-p1d\"><!-- 메인 팔 --><line x1=\"0\" y1=\"-16\" x2=\"0\" y2=\"-32\" /><!-- 양 옆으로 뻗는 별 팔 --><line x1=\"0\" y1=\"-22\" x2=\"6\" y2=\"-26\" /><line x1=\"0\" y1=\"-22\" x2=\"-6\" y2=\"-26\" /><!-- 끝 작은 별꼭지 --><polygon points=\"0,-32 3,-29 0,-26 -3,-29\" /></g><!-- 6방향 회전 --><use href=\"#arm-p1d\" /><g transform=\"rotate(60)\"><use href=\"#arm-p1d\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-p1d\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p1d\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-p1d\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-p1d\" /></g></g><defs><g id=\"arm-p1d\"><line x1=\"0\" y1=\"-16\" x2=\"0\" y2=\"-32\" /><line x1=\"0\" y1=\"-22\" x2=\"6\" y2=\"-26\" /><line x1=\"0\" y1=\"-22\" x2=\"-6\" y2=\"-26\" /><polygon points=\"0,-32 3,-29 0,-26 -3,-29\" /></g></defs></svg>"
+      },
+      {
+        "code": "P1e",
+        "title": "감성 폭발 아티스트",
+        "desc": "섬세한 감수성으로 주변을 화려하게 물들이는 예술가입니다.",
+        "stats": {
+          "T": 10,
+          "H": 95,
+          "V": 10,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중심 육각 판 --><polygon points=\"0,-12 10,-6 10,6 0,12 -10,6 -10,-6\" /><!-- 덴드라이트형 팔 (프랙탈 가지) --><g id=\"arm-p1e\"><!-- 메인 가지 --><line x1=\"0\" y1=\"-12\" x2=\"0\" y2=\"-32\" /><!-- 1단 가지 --><line x1=\"0\" y1=\"-16\" x2=\"4\" y2=\"-20\" /><line x1=\"0\" y1=\"-16\" x2=\"-4\" y2=\"-20\" /><!-- 2단 가지 --><line x1=\"0\" y1=\"-22\" x2=\"5\" y2=\"-27\" /><line x1=\"0\" y1=\"-22\" x2=\"-5\" y2=\"-27\" /><!-- 3단 가지 --><line x1=\"0\" y1=\"-28\" x2=\"6\" y2=\"-32\" /><line x1=\"0\" y1=\"-28\" x2=\"-6\" y2=\"-32\" /></g><!-- 6방향 회전 --><use href=\"#arm-p1e\" /><g transform=\"rotate(60)\"><use href=\"#arm-p1e\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-p1e\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p1e\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-p1e\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-p1e\" /></g></g><defs><g id=\"arm-p1e\"><line x1=\"0\" y1=\"-12\" x2=\"0\" y2=\"-32\" /><line x1=\"0\" y1=\"-16\" x2=\"4\" y2=\"-20\" /><line x1=\"0\" y1=\"-16\" x2=\"-4\" y2=\"-20\" /><line x1=\"0\" y1=\"-22\" x2=\"5\" y2=\"-27\" /><line x1=\"0\" y1=\"-22\" x2=\"-5\" y2=\"-27\" /><line x1=\"0\" y1=\"-28\" x2=\"6\" y2=\"-32\" /><line x1=\"0\" y1=\"-28\" x2=\"-6\" y2=\"-32\" /></g></defs></svg>"
+      },
+      {
+        "code": "P1f",
+        "title": "숲의 정령",
+        "desc": "자연스러운 아름다움과 복잡한 내면을 동시에 가졌습니다.",
+        "stats": {
+          "T": 5,
+          "H": 100,
+          "V": 20,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중심 육각 --><polygon points=\"0,-10 9,-5 9,5 0,10 -9,5 -9,-5\" /><!-- 양쪽으로 휘어진 고사리형 팔 --><g id=\"arm-p1f\"><!-- 메인 곡선 줄기 --><path d=\"M0 -10 C2 -16, 3 -20, 2 -24 C1 -28, -1 -30, -3 -32\" /><!-- 줄기에서 나오는 잎 모양 가지 --><line x1=\"0\" y1=\"-14\" x2=\"4\" y2=\"-16\" /><line x1=\"1\" y1=\"-19\" x2=\"5\" y2=\"-21\" /><line x1=\"1\" y1=\"-23\" x2=\"5\" y2=\"-25\" /></g><!-- 6방향 회전 --><use href=\"#arm-p1f\" /><g transform=\"rotate(60)\"><use href=\"#arm-p1f\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-p1f\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p1f\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-p1f\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-p1f\" /></g></g><defs><g id=\"arm-p1f\"><path d=\"M0 -10 C2 -16, 3 -20, 2 -24 C1 -28, -1 -30, -3 -32\" /><line x1=\"0\" y1=\"-14\" x2=\"4\" y2=\"-16\" /><line x1=\"1\" y1=\"-19\" x2=\"5\" y2=\"-21\" /><line x1=\"1\" y1=\"-23\" x2=\"5\" y2=\"-25\" /></g></defs></svg>"
+      },
+      {
+        "code": "P2a",
+        "title": "계단식 성장가",
+        "desc": "차근차근 단계를 밟아 올라가며 내공을 쌓는 대기만성형.",
+        "stats": {
+          "T": 60,
+          "H": 40,
+          "V": 15,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 계단처럼 겹친 육각들 --><polygon points=\"0,-18 15,-9 15,9 0,18 -15,9 -15,-9\" /><polygon points=\"0,-12 10,-6 10,6 0,12 -10,6 -10,-6\" /><polygon points=\"0,-6 5,-3 5,3 0,6 -5,3 -5,-3\" /><!-- 계단식 성장 가지 --><g id=\"arm-p2a\"><line x1=\"0\" y1=\"-18\" x2=\"0\" y2=\"-30\" /><line x1=\"0\" y1=\"-14\" x2=\"4\" y2=\"-18\" /><line x1=\"0\" y1=\"-10\" x2=\"-4\" y2=\"-14\" /></g><!-- 6방향 회전 --><use href=\"#arm-p2a\" /><g transform=\"rotate(60)\"><use href=\"#arm-p2a\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-p2a\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p2a\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-p2a\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-p2a\" /></g></g><defs><g id=\"arm-p2a\"><line x1=\"0\" y1=\"-18\" x2=\"0\" y2=\"-30\" /><line x1=\"0\" y1=\"-14\" x2=\"4\" y2=\"-18\" /><line x1=\"0\" y1=\"-10\" x2=\"-4\" y2=\"-14\" /></g></defs></svg>"
+      },
+      {
+        "code": "P2b",
+        "title": "부채꼴 외교관",
+        "desc": "넓은 마음으로 다양한 의견을 수렴하는 포용력이 있습니다.",
+        "stats": {
+          "T": 35,
+          "H": 60,
+          "V": 10,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중앙 육각 판 --><polygon points=\"0,-14 12,-7 12,7 0,14 -12,7 -12,-7\" /><!-- 부채꼴 가지 --><g id=\"arm-p2b\"><!-- 부채꼴 메인 --><path d=\"M0 -14 Q8 -18, 14 -14 Q8 -10, 0 -14 Z\" /><!-- 안쪽 가는 선들 (부채살) --><line x1=\"0\" y1=\"-14\" x2=\"5\" y2=\"-17\" /><line x1=\"0\" y1=\"-14\" x2=\"9\" y2=\"-15\" /></g><!-- 6방향 회전 --><use href=\"#arm-p2b\" /><g transform=\"rotate(60)\"><use href=\"#arm-p2b\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-p2b\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p2b\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-p2b\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-p2b\" /></g></g><defs><g id=\"arm-p2b\"><path d=\"M0 -14 Q8 -18, 14 -14 Q8 -10, 0 -14 Z\" /><line x1=\"0\" y1=\"-14\" x2=\"5\" y2=\"-17\" /><line x1=\"0\" y1=\"-14\" x2=\"9\" y2=\"-15\" /></g></defs></svg>"
+      },
+      {
+        "code": "P2c",
+        "title": "화려한 중재자",
+        "desc": "개성도 강하지만 집단과의 조화도 중요시하는 밸런서.",
+        "stats": {
+          "T": 15,
+          "H": 85,
+          "V": 15,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중심 육각 --><polygon points=\"0,-12 10,-6 10,6 0,12 -10,6 -10,-6\" /><!-- 덴드라이트 + 부채꼴 끝 --><g id=\"arm-p2c\"><!-- 메인 가지 --><line x1=\"0\" y1=\"-12\" x2=\"0\" y2=\"-26\" /><!-- 가지 --><line x1=\"0\" y1=\"-16\" x2=\"4\" y2=\"-20\" /><line x1=\"0\" y1=\"-20\" x2=\"-4\" y2=\"-24\" /><!-- 끝 부채꼴 --><path d=\"M0 -26 Q6 -30, 11 -26 Q6 -22, 0 -26 Z\" /></g><!-- 6방향 회전 --><use href=\"#arm-p2c\" /><g transform=\"rotate(60)\"><use href=\"#arm-p2c\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-p2c\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p2c\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-p2c\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-p2c\" /></g></g><defs><g id=\"arm-p2c\"><line x1=\"0\" y1=\"-12\" x2=\"0\" y2=\"-26\" /><line x1=\"0\" y1=\"-16\" x2=\"4\" y2=\"-20\" /><line x1=\"0\" y1=\"-20\" x2=\"-4\" y2=\"-24\" /><path d=\"M0 -26 Q6 -30, 11 -26 Q6 -22, 0 -26 Z\" /></g></defs></svg>"
+      },
+      {
+        "code": "P2d",
+        "title": "늦바람 난 모범생",
+        "desc": "얌전하게 살다가 뒤늦게 자신의 화려한 재능을 발견했습니다.",
+        "stats": {
+          "T": 40,
+          "H": 75,
+          "V": 30,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 조용한 기본 육각 판 --><polygon points=\"0,-14 12,-7 12,7 0,14 -12,7 -12,-7\" /><!-- 바깥 얇은 육각 링 --><polygon points=\"0,-18 15,-9 15,9 0,18 -15,9 -15,-9\" /><!-- 끝부분만 화려한 덴드라이트 확장 --><g id=\"arm-p2d\"><!-- 짧은 팔 --><line x1=\"0\" y1=\"-18\" x2=\"0\" y2=\"-28\" /><!-- 덴드라이트 확장 --><line x1=\"0\" y1=\"-24\" x2=\"4\" y2=\"-28\" /><line x1=\"0\" y1=\"-24\" x2=\"-4\" y2=\"-28\" /><line x1=\"0\" y1=\"-28\" x2=\"5\" y2=\"-32\" /><line x1=\"0\" y1=\"-28\" x2=\"-5\" y2=\"-32\" /></g><!-- 6방향 회전 --><use href=\"#arm-p2d\" /><g transform=\"rotate(60)\"><use href=\"#arm-p2d\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-p2d\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p2d\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-p2d\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-p2d\" /></g></g><defs><g id=\"arm-p2d\"><line x1=\"0\" y1=\"-18\" x2=\"0\" y2=\"-28\" /><line x1=\"0\" y1=\"-24\" x2=\"4\" y2=\"-28\" /><line x1=\"0\" y1=\"-24\" x2=\"-4\" y2=\"-28\" /><line x1=\"0\" y1=\"-28\" x2=\"5\" y2=\"-32\" /><line x1=\"0\" y1=\"-28\" x2=\"-5\" y2=\"-32\" /></g></defs></svg>"
+      },
+      {
+        "code": "P2e",
+        "title": "실용적 창작자",
+        "desc": "너무 튀지 않으면서도 독창적인 아이디어를 냅니다.",
+        "stats": {
+          "T": 45,
+          "H": 55,
+          "V": 20,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 기본 육각 판 --><polygon points=\"0,-14 12,-7 12,7 0,14 -12,7 -12,-7\" /><!-- 안쪽 작은 육각 --><polygon points=\"0,-8 7,-4 7,4 0,8 -7,4 -7,-4\" /><!-- 단순 확장 팔 --><g id=\"arm-p2e\"><line x1=\"0\" y1=\"-14\" x2=\"0\" y2=\"-24\" /><line x1=\"-2\" y1=\"-18\" x2=\"-6\" y2=\"-22\" /><line x1=\"2\" y1=\"-18\" x2=\"6\" y2=\"-22\" /></g><!-- 6방향 회전 --><use href=\"#arm-p2e\" /><g transform=\"rotate(60)\"><use href=\"#arm-p2e\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-p2e\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p2e\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-p2e\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-p2e\" /></g></g><defs><g id=\"arm-p2e\"><line x1=\"0\" y1=\"-14\" x2=\"0\" y2=\"-24\" /><line x1=\"-2\" y1=\"-18\" x2=\"-6\" y2=\"-22\" /><line x1=\"2\" y1=\"-18\" x2=\"6\" y2=\"-22\" /></g></defs></svg>"
+      },
+      {
+        "code": "P2f",
+        "title": "자유 영혼",
+        "desc": "규칙에 얽매이지 않고 기분 내키는 대로 행동합니다.",
+        "stats": {
+          "T": 30,
+          "H": 60,
+          "V": 70,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 기본 육각 판 --><polygon points=\"0,-14 12,-7 12,7 0,14 -12,7 -12,-7\" /><!-- 안쪽 작은 육각 --><polygon points=\"0,-8 7,-4 7,4 0,8 -7,4 -7,-4\" /><!-- 불규칙한 확장 팔 (모양은 서로 다르게) --><g id=\"arm-p2f\"><line x1=\"0\" y1=\"-14\" x2=\"0\" y2=\"-24\" /><line x1=\"0\" y1=\"-20\" x2=\"4\" y2=\"-25\" /><line x1=\"0\" y1=\"-18\" x2=\"-3\" y2=\"-23\" /></g><!-- 6방향 회전(자유로운 확장) --><use href=\"#arm-p2f\" /><g transform=\"rotate(60)\"><use href=\"#arm-p2f\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-p2f\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p2f\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-p2f\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-p2f\" /></g></g><defs><g id=\"arm-p2f\"><line x1=\"0\" y1=\"-14\" x2=\"0\" y2=\"-24\" /><line x1=\"0\" y1=\"-20\" x2=\"4\" y2=\"-25\" /><line x1=\"0\" y1=\"-18\" x2=\"-3\" y2=\"-23\" /></g></defs></svg>"
+      },
+      {
+        "code": "P2g",
+        "title": "입체적 사고가",
+        "desc": "평면적인 생각보다는 다각도에서 문제를 바라봅니다.",
+        "stats": {
+          "T": 25,
+          "H": 90,
+          "V": 40,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 기본 육각 판 --><polygon points=\"0,-14 12,-7 12,7 0,14 -12,7 -12,-7\" /><!-- 위/아래 살짝 떠 있는 작은 판 (입체감) --><polygon points=\"0,-20 8,-15 8,-7 0,-2 -8,-7 -8,-15\" /><polygon points=\"0,2 8,7 8,15 0,20 -8,15 -8,7\" /><!-- 덴드라이트 가지가 달린 팔 --><g id=\"arm-p2g\"><line x1=\"0\" y1=\"-14\" x2=\"0\" y2=\"-30\" /><line x1=\"0\" y1=\"-20\" x2=\"4\" y2=\"-24\" /><line x1=\"0\" y1=\"-24\" x2=\"-4\" y2=\"-28\" /></g><!-- 6방향 회전 --><use href=\"#arm-p2g\" /><g transform=\"rotate(60)\"><use href=\"#arm-p2g\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-p2g\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p2g\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-p2g\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-p2g\" /></g></g><defs><g id=\"arm-p2g\"><line x1=\"0\" y1=\"-14\" x2=\"0\" y2=\"-30\" /><line x1=\"0\" y1=\"-20\" x2=\"4\" y2=\"-24\" /><line x1=\"0\" y1=\"-24\" x2=\"-4\" y2=\"-28\" /></g></defs></svg>"
+      },
+      {
+        "code": "P3a",
+        "title": "삼박자 리듬",
+        "desc": "남들과는 다른 독특한 리듬과 박자로 살아갑니다.",
+        "stats": {
+          "T": 30,
+          "H": 60,
+          "V": 50,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중심 육각 --><polygon points=\"0,-8 7,-4 7,4 0,8 -7,4 -7,-4\" /><!-- 3개 메인 브랜치 (120도 간격) --><g id=\"arm-p3a-main\"><line x1=\"0\" y1=\"-8\" x2=\"0\" y2=\"-26\" /><line x1=\"0\" y1=\"-16\" x2=\"4\" y2=\"-20\" /><line x1=\"0\" y1=\"-16\" x2=\"-4\" y2=\"-20\" /></g><use href=\"#arm-p3a-main\" /><g transform=\"rotate(120)\"><use href=\"#arm-p3a-main\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-p3a-main\" /></g><!-- 나머지 3개는 짧은 보조 브랜치로 리듬감만 --><g id=\"arm-p3a-sub\" transform=\"rotate(60)\"><line x1=\"0\" y1=\"-8\" x2=\"0\" y2=\"-18\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p3a-sub\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-p3a-sub\" /></g></g><defs><g id=\"arm-p3a-main\"><line x1=\"0\" y1=\"-8\" x2=\"0\" y2=\"-26\" /><line x1=\"0\" y1=\"-16\" x2=\"4\" y2=\"-20\" /><line x1=\"0\" y1=\"-16\" x2=\"-4\" y2=\"-20\" /></g></defs></svg>"
+      },
+      {
+        "code": "P3b",
+        "title": "행운의 네 잎",
+        "desc": "안정감보다는 특별함을 추구하는 유니크한 성격.",
+        "stats": {
+          "T": 30,
+          "H": 60,
+          "V": 60,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중심 육각 --><polygon points=\"0,-8 7,-4 7,4 0,8 -7,4 -7,-4\" /><!-- 네 잎처럼 보이는 브랜치 --><g id=\"arm-p3b\"><line x1=\"0\" y1=\"-8\" x2=\"0\" y2=\"-22\" /><polygon points=\"0,-22 5,-18 0,-14 -5,-18\" /></g><!-- 4방향(90도 간격) --><use href=\"#arm-p3b\" /><g transform=\"rotate(90)\"><use href=\"#arm-p3b\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p3b\" /></g><g transform=\"rotate(270)\"><use href=\"#arm-p3b\" /></g><!-- 나머지 2방향에는 짧은 가지로 육각 느낌만 유지 --><line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"10\" /><line x1=\"0\" y1=\"0\" x2=\"8\" y2=\"-4\" /><line x1=\"0\" y1=\"0\" x2=\"-8\" y2=\"-4\" /></g><defs><g id=\"arm-p3b\"><line x1=\"0\" y1=\"-8\" x2=\"0\" y2=\"-22\" /><polygon points=\"0,-22 5,-18 0,-14 -5,-18\" /></g></defs></svg>"
+      },
+      {
+        "code": "P4a",
+        "title": "12방위 만능인",
+        "desc": "못하는 게 없는 팔방미인, 아니 십이방미인입니다.",
+        "stats": {
+          "T": 10,
+          "H": 90,
+          "V": 10,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 큰 육각 판 --><polygon points=\"0,-16 14,-8 14,8 0,16 -14,8 -14,-8\" /><!-- 안쪽 육각 --><polygon points=\"0,-8 7,-4 7,4 0,8 -7,4 -7,-4\" /><!-- 12개 섹터 느낌: 한 팔에 두 갈래의 넓은 섹터 --><g id=\"arm-p4a\"><line x1=\"0\" y1=\"-16\" x2=\"0\" y2=\"-28\" /><!-- 좌우 넓은 섹터 --><path d=\"M0 -22 L6 -24 L6 -20 Z\" /><path d=\"M0 -22 L-6 -24 L-6 -20 Z\" /></g><!-- 6방향 회전 = 12 섹터 --><use href=\"#arm-p4a\" /><g transform=\"rotate(60)\"><use href=\"#arm-p4a\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-p4a\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p4a\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-p4a\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-p4a\" /></g></g><defs><g id=\"arm-p4a\"><line x1=\"0\" y1=\"-16\" x2=\"0\" y2=\"-28\" /><path d=\"M0 -22 L6 -24 L6 -20 Z\" /><path d=\"M0 -22 L-6 -24 L-6 -20 Z\" /></g></defs></svg>"
+      },
+      {
+        "code": "P4b",
+        "title": "카리스마 황제",
+        "desc": "압도적인 화려함과 카리스마로 주변을 장악합니다.",
+        "stats": {
+          "T": 5,
+          "H": 100,
+          "V": 20,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중심 육각 --><polygon points=\"0,-10 9,-5 9,5 0,10 -9,5 -9,-5\" /><!-- 한 팔에 두 개의 덴드라이트 가지: 6 * 2 = 12 --><g id=\"arm-p4b\"><line x1=\"0\" y1=\"-10\" x2=\"0\" y2=\"-30\" /><line x1=\"0\" y1=\"-16\" x2=\"5\" y2=\"-21\" /><line x1=\"0\" y1=\"-22\" x2=\"-5\" y2=\"-27\" /></g><!-- 6방향 회전 --><use href=\"#arm-p4b\" /><g transform=\"rotate(60)\"><use href=\"#arm-p4b\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-p4b\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p4b\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-p4b\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-p4b\" /></g></g><defs><g id=\"arm-p4b\"><line x1=\"0\" y1=\"-10\" x2=\"0\" y2=\"-30\" /><line x1=\"0\" y1=\"-16\" x2=\"5\" y2=\"-21\" /><line x1=\"0\" y1=\"-22\" x2=\"-5\" y2=\"-27\" /></g></defs></svg>"
+      },
+      {
+        "code": "P4c",
+        "title": "미운 오리 새끼",
+        "desc": "남들과 다르지만 자신만의 독보적인 아름다움을 찾아갑니다.",
+        "stats": {
+          "T": 50,
+          "H": 50,
+          "V": 90,
+          "R": 20
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 약간 찌그러진 육각 --><polygon points=\"0,-10 8,-4 9,5 1,11 -9,6 -8,-5\" /><!-- 일부 팔은 정상, 일부는 휘어지고 끊어진 형태 --><!-- 정상 팔 --><g id=\"arm-p4c-normal\"><line x1=\"0\" y1=\"-10\" x2=\"0\" y2=\"-24\" /></g><!-- 비정상 팔 --><g id=\"arm-p4c-bent\"><path d=\"M0 -10 C3 -16, 2 -22, -2 -26\" /></g><!-- 끊어진 팔 --><g id=\"arm-p4c-broken\"><line x1=\"0\" y1=\"-10\" x2=\"2\" y2=\"-16\" /></g><!-- 6방향에 섞어서 배치 --><use href=\"#arm-p4c-normal\" /><g transform=\"rotate(60)\"><use href=\"#arm-p4c-bent\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-p4c-normal\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p4c-broken\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-p4c-bent\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-p4c-broken\" /></g></g><defs><g id=\"arm-p4c-normal\"><line x1=\"0\" y1=\"-10\" x2=\"0\" y2=\"-24\" /></g><g id=\"arm-p4c-bent\"><path d=\"M0 -10 C3 -16, 2 -22, -2 -26\" /></g><g id=\"arm-p4c-broken\"><line x1=\"0\" y1=\"-10\" x2=\"2\" y2=\"-16\" /></g></defs></svg>"
+      },
+      {
+        "code": "P5",
+        "title": "갑옷 입은 전사",
+        "desc": "수많은 시련(운입)을 이겨내고 더 단단해졌습니다.",
+        "stats": {
+          "T": 50,
+          "H": 50,
+          "V": 20,
+          "R": 60
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 바깥 육각 림 --><polygon points=\"0,-18 16,-9 16,9 0,18 -16,9 -16,-9\" /><!-- 안쪽 육각 판 --><polygon points=\"0,-10 9,-5 9,5 0,10 -9,5 -9,-5\" /><!-- 림을 따라 짧은 방패 모양 돌기 --><g id=\"arm-p5\"><line x1=\"0\" y1=\"-18\" x2=\"0\" y2=\"-24\" /><polygon points=\"0,-24 3,-22 0,-20 -3,-22\" /></g><!-- 6방향 회전 --><use href=\"#arm-p5\" /><g transform=\"rotate(60)\"><use href=\"#arm-p5\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-p5\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p5\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-p5\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-p5\" /></g></g><defs><g id=\"arm-p5\"><line x1=\"0\" y1=\"-18\" x2=\"0\" y2=\"-24\" /><polygon points=\"0,-24 3,-22 0,-20 -3,-22\" /></g></defs></svg>"
+      },
+      {
+        "code": "P6a",
+        "title": "복층 구조 설계자",
+        "desc": "생각 위에 생각을 쌓아 올리는 깊이 있는 지성인.",
+        "stats": {
+          "T": 40,
+          "H": 60,
+          "V": 50,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 아래층 육각 판 --><polygon points=\"0,-18 16,-9 16,9 0,18 -16,9 -16,-9\" /><!-- 중간층 육각 --><polygon points=\"0,-10 11,-5 11,5 0,10 -11,5 -11,-5\" /><!-- 위층 작은 육각 --><polygon points=\"0,-4 6,-2 6,2 0,4 -6,2 -6,-2\" /><!-- 각 층을 연결하는 짧은 기둥 라인 --><line x1=\"0\" y1=\"-18\" x2=\"0\" y2=\"-10\" /><line x1=\"0\" y1=\"10\" x2=\"0\" y2=\"18\" /><!-- 외곽에 작은 판들이 입체적으로 튀어나온 느낌 --><g id=\"arm-p6a\"><polygon points=\"0,-18 5,-15 5,-11 0,-14 -5,-11 -5,-15\" /></g><use href=\"#arm-p6a\" /><g transform=\"rotate(60)\"><use href=\"#arm-p6a\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-p6a\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p6a\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-p6a\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-p6a\" /></g></g><defs><g id=\"arm-p6a\"><polygon points=\"0,-18 5,-15 5,-11 0,-14 -5,-11 -5,-15\" /></g></defs></svg>"
+      },
+      {
+        "code": "P6b",
+        "title": "열정의 풍차",
+        "desc": "에너지가 넘쳐 주변 사람들에게 활력을 불어넣습니다.",
+        "stats": {
+          "T": 45,
+          "H": 55,
+          "V": 30,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중심 작은 육각 --><polygon points=\"0,-6 5,-3 5,3 0,6 -5,3 -5,-3\" /><!-- 방사형으로 퍼지는 작은 판(풍차 날개처럼) --><g id=\"arm-p6b\"><polygon points=\"0,-10 6,-8 6,-2 0,0 -6,-2 -6,-8\" /><line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"6\" /></g><use href=\"#arm-p6b\" /><g transform=\"rotate(60)\"><use href=\"#arm-p6b\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-p6b\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p6b\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-p6b\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-p6b\" /></g></g><defs><g id=\"arm-p6b\"><polygon points=\"0,-10 6,-8 6,-2 0,0 -6,-2 -6,-8\" /><line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"6\" /></g></defs></svg>"
+      },
+      {
+        "code": "P6c",
+        "title": "미니멀리스트",
+        "desc": "복잡한 건 딱 질색, 심플하고 깔끔한 삶을 지향합니다.",
+        "stats": {
+          "T": 70,
+          "H": 10,
+          "V": 10,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 바깥 프레임 육각 --><polygon points=\"0,-18 16,-9 16,9 0,18 -16,9 -16,-9\" /><!-- 안쪽 빈 프레임 육각 --><polygon points=\"0,-12 11,-6 11,6 0,12 -11,6 -11,-6\" /><!-- 일부 모서리는 끊어서 미니멀 프레임 느낌 --><line x1=\"0\" y1=\"-18\" x2=\"6\" y2=\"-15\" /><line x1=\"0\" y1=\"-18\" x2=\"-6\" y2=\"-15\" /><!-- 짧은 직선 확장 (아주 심플하게) --><g id=\"arm-p6c\"><line x1=\"0\" y1=\"-18\" x2=\"0\" y2=\"-24\" /></g><use href=\"#arm-p6c\" /><g transform=\"rotate(60)\"><use href=\"#arm-p6c\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-p6c\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p6c\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-p6c\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-p6c\" /></g></g><defs><g id=\"arm-p6c\"><line x1=\"0\" y1=\"-18\" x2=\"0\" y2=\"-24\" /></g></defs></svg>"
+      },
+      {
+        "code": "P6d",
+        "title": "조각보 모음",
+        "desc": "다양한 경험 조각들을 모아 자신만의 이야기를 만듭니다.",
+        "stats": {
+          "T": 50,
+          "H": 50,
+          "V": 60,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중앙 육각 판 --><polygon points=\"0,-10 9,-5 9,5 0,10 -9,5 -9,-5\" /><!-- 겹겹이 이어진 작은 판 조각들 --><polygon points=\"0,-18 8,-14 8,-6 0,-2 -8,-6 -8,-14\" /><polygon points=\"0,2 8,6 8,14 0,18 -8,14 -8,6\" /><!-- 팔 끝에 작은 판 조각 --><g id=\"arm-p6d\"><polygon points=\"0,-18 5,-15 5,-11 0,-14 -5,-11 -5,-15\" /></g><use href=\"#arm-p6d\" /><g transform=\"rotate(60)\"><use href=\"#arm-p6d\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-p6d\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p6d\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-p6d\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-p6d\" /></g></g><defs><g id=\"arm-p6d\"><polygon points=\"0,-18 5,-15 5,-11 0,-14 -5,-11 -5,-15\" /></g></defs></svg>"
+      },
+      {
+        "code": "P7a",
+        "title": "축제 기획자",
+        "desc": "언제나 파티의 중심에 있으며 분위기를 띄웁니다.",
+        "stats": {
+          "T": 10,
+          "H": 90,
+          "V": 30,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중심 육각 --><polygon points=\"0,-8 7,-4 7,4 0,8 -7,4 -7,-4\" /><!-- 폭죽처럼 튀어나가는 덴드라이트 팔 --><g id=\"arm-p7a\"><line x1=\"0\" y1=\"-8\" x2=\"0\" y2=\"-30\" /><!-- 가지 1 --><line x1=\"0\" y1=\"-14\" x2=\"5\" y2=\"-19\" /><line x1=\"0\" y1=\"-14\" x2=\"-5\" y2=\"-19\" /><!-- 가지 2 --><line x1=\"0\" y1=\"-21\" x2=\"6\" y2=\"-26\" /><line x1=\"0\" y1=\"-21\" x2=\"-6\" y2=\"-26\" /><!-- 끝 점 --><circle cx=\"0\" cy=\"-30\" r=\"1.6\" /></g><!-- 6방향 회전 --><use href=\"#arm-p7a\" /><g transform=\"rotate(60)\"><use href=\"#arm-p7a\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-p7a\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p7a\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-p7a\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-p7a\" /></g></g><defs><g id=\"arm-p7a\"><line x1=\"0\" y1=\"-8\" x2=\"0\" y2=\"-30\" /><line x1=\"0\" y1=\"-14\" x2=\"5\" y2=\"-19\" /><line x1=\"0\" y1=\"-14\" x2=\"-5\" y2=\"-19\" /><line x1=\"0\" y1=\"-21\" x2=\"6\" y2=\"-26\" /><line x1=\"0\" y1=\"-21\" x2=\"-6\" y2=\"-26\" /><circle cx=\"0\" cy=\"-30\" r=\"1.6\" /></g></defs></svg>"
+      },
+      {
+        "code": "P7b",
+        "title": "4차원 예술가",
+        "desc": "상식의 틀을 깨고 입체적으로 뻗어나가는 상상력.",
+        "stats": {
+          "T": 5,
+          "H": 95,
+          "V": 50,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 살짝 어긋난 이중 육각 (입체감) --><polygon points=\"0,-8 7,-4 7,4 0,8 -7,4 -7,-4\" /><polygon points=\"2,-12 9,-8 9,0 2,4 -5,0 -5,-8\" /><!-- 비틀린 덴드라이트 팔 --><g id=\"arm-p7b\"><path d=\"M0 -8 C2 -16, 6 -20, 8 -24 C9 -27, 7 -30, 4 -32\" /><line x1=\"0\" y1=\"-14\" x2=\"4\" y2=\"-18\" /><line x1=\"1\" y1=\"-20\" x2=\"-3\" y2=\"-24\" /></g><!-- 6방향 회전 --><use href=\"#arm-p7b\" /><g transform=\"rotate(60)\"><use href=\"#arm-p7b\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-p7b\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p7b\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-p7b\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-p7b\" /></g></g><defs><g id=\"arm-p7b\"><path d=\"M0 -8 C2 -16, 6 -20, 8 -24 C9 -27, 7 -30, 4 -32\" /><line x1=\"0\" y1=\"-14\" x2=\"4\" y2=\"-18\" /><line x1=\"1\" y1=\"-20\" x2=\"-3\" y2=\"-24\" /></g></defs></svg>"
+      },
+      {
+        "code": "CP1a",
+        "title": "반전 매력 츤데레",
+        "desc": "처음엔 차가운 기둥 같지만 알면 알수록 넓은 마음(판)을 가졌습니다.",
+        "stats": {
+          "T": 60,
+          "H": 50,
+          "V": 80,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중앙 기둥 --><line x1=\"0\" y1=\"-26\" x2=\"0\" y2=\"26\" /><!-- 위아래 육각 단면 --><polygon points=\"0,-30 8,-26 8,-22 0,-18 -8,-22 -8,-26\" /><polygon points=\"0,30 8,26 8,22 0,18 -8,22 -8,26\" /><!-- 중간에 끼워진 판(플레이트) --><polygon points=\"0,-8 10,-4 10,4 0,8 -10,4 -10,-4\" /><!-- 살짝 튀어나오는 반전 가지 --><line x1=\"-12\" y1=\"-8\" x2=\"-18\" y2=\"-8\" /><line x1=\"12\" y1=\"8\" x2=\"18\" y2=\"8\" /></g></svg>"
+      },
+      {
+        "code": "CP1b",
+        "title": "화려한 변신",
+        "desc": "평범한 일상 속에서도 특별한 일탈을 꿈꾸며 실현합니다.",
+        "stats": {
+          "T": 40,
+          "H": 80,
+          "V": 90,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중앙 기둥 --><line x1=\"0\" y1=\"-28\" x2=\"0\" y2=\"28\" /><!-- 위/아래 육각 --><polygon points=\"0,-32 7,-28 7,-24 0,-20 -7,-24 -7,-28\" /><polygon points=\"0,32 7,28 7,24 0,20 -7,24 -7,28\" /><!-- 덴드라이트 가지 층층이 --><line x1=\"0\" y1=\"-18\" x2=\"6\" y2=\"-22\" /><line x1=\"0\" y1=\"-18\" x2=\"-6\" y2=\"-22\" /><line x1=\"0\" y1=\"-10\" x2=\"7\" y2=\"-13\" /><line x1=\"0\" y1=\"-10\" x2=\"-7\" y2=\"-13\" /><line x1=\"0\" y1=\"-2\" x2=\"7\" y2=\"-5\" /><line x1=\"0\" y1=\"-2\" x2=\"-7\" y2=\"-5\" /><line x1=\"0\" y1=\"6\" x2=\"6\" y2=\"10\" /><line x1=\"0\" y1=\"6\" x2=\"-6\" y2=\"10\" /><line x1=\"0\" y1=\"14\" x2=\"5\" y2=\"18\" /><line x1=\"0\" y1=\"14\" x2=\"-5\" y2=\"18\" /></g></svg>"
+      },
+      {
+        "code": "CP1c",
+        "title": "레이어드 마스터",
+        "desc": "여러 가지 페르소나(가면)를 상황에 맞게 바꿔 씁니다.",
+        "stats": {
+          "T": 55,
+          "H": 60,
+          "V": 85,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 여러 개의 캡이 겹쳐진 기둥 --><!-- 중앙 기둥 --><line x1=\"0\" y1=\"-30\" x2=\"0\" y2=\"30\" /><!-- 상단 캡들 --><polygon points=\"0,-30 8,-26 8,-22 0,-18 -8,-22 -8,-26\" /><polygon points=\"0,-22 7,-18 7,-14 0,-10 -7,-14 -7,-18\" /><!-- 중간 캡 --><polygon points=\"0,-6 9,-2 9,2 0,6 -9,2 -9,-2\" /><!-- 하단 캡들 --><polygon points=\"0,10 7,14 7,18 0,22 -7,18 -7,14\" /><polygon points=\"0,18 8,22 8,26 0,30 -8,26 -8,22\" /></g></svg>"
+      },
+      {
+        "code": "CP2a",
+        "title": "전략적 행동파",
+        "desc": "일단 저지르고(Bullet) 나서 수습하며 판을 키우는(Plate) 스타일.",
+        "stats": {
+          "T": 70,
+          "H": 40,
+          "V": 70,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 탄환형 몸체 --><path d=\"M0 -28 C6 -24, 10 -18, 10 -10 L10 14 C10 18, 6 22, 0 24 C-6 22, -10 18, -10 14 L-10 -10 C-10 -18, -6 -24, 0 -28 Z\" /><!-- 내부 축 --><line x1=\"0\" y1=\"-26\" x2=\"0\" y2=\"22\" /><!-- 중간중간 판(플레이트) --><line x1=\"-8\" y1=\"-14\" x2=\"8\" y2=\"-14\" /><line x1=\"-8\" y1=\"-4\" x2=\"8\" y2=\"-4\" /><line x1=\"-7\" y1=\"6\" x2=\"7\" y2=\"6\" /></g></svg>"
+      },
+      {
+        "code": "CP2b",
+        "title": "로맨틱 행동대장",
+        "desc": "거칠게 돌진하지만 그 끝에는 낭만을 꽃피웁니다.",
+        "stats": {
+          "T": 50,
+          "H": 85,
+          "V": 75,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 탄환형 몸체 --><path d=\"M0 -26 C6 -22, 10 -16, 10 -8 L10 10 C10 16, 6 22, 0 24 C-6 22, -10 16, -10 10 L-10 -8 C-10 -16, -6 -22, 0 -26 Z\" /><!-- 덴드라이트 가지 (둘레에서 꽃처럼) --><line x1=\"0\" y1=\"-10\" x2=\"6\" y2=\"-14\" /><line x1=\"0\" y1=\"-10\" x2=\"-6\" y2=\"-14\" /><line x1=\"0\" y1=\"0\" x2=\"7\" y2=\"-2\" /><line x1=\"0\" y1=\"0\" x2=\"-7\" y2=\"-2\" /><line x1=\"0\" y1=\"8\" x2=\"6\" y2=\"12\" /><line x1=\"0\" y1=\"8\" x2=\"-6\" y2=\"12\" /><circle cx=\"0\" cy=\"0\" r=\"2\" /></g></svg>"
+      },
+      {
+        "code": "CP3",
+        "title": "자유분방한 방랑자",
+        "desc": "계획대로 되지 않아도 그 상황 자체를 즐깁니다.",
+        "stats": {
+          "T": 60,
+          "H": 40,
+          "V": 90,
+          "R": 10
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 약간 휘어진 불규칙 기둥 --><path d=\"M0 -28 C2 -24, 3 -18, 0 -12 C-3 -6, -2 0, 1 6 C3 12, 2 18, 0 24\" /><!-- 여기저기 붙은 작은 단면/플레이트 --><polygon points=\"0,-22 5,-19 5,-15 0,-18 -5,-15 -5,-19\" /><polygon points=\"-1,-8 4,-5 4,-1 -1,-4 -6,-1 -6,-5\" /><polygon points=\"1,10 6,13 6,17 1,14 -4,17 -4,13\" /><!-- 자유로운 짧은 가지 --><line x1=\"-8\" y1=\"-14\" x2=\"-12\" y2=\"-18\" /><line x1=\"8\" y1=\"-2\" x2=\"13\" y2=\"-4\" /><line x1=\"-7\" y1=\"8\" x2=\"-12\" y2=\"10\" /></g></svg>"
+      },
+      {
+        "code": "S1",
+        "title": "비판적 몽상가",
+        "desc": "남들이 '예' 할 때 옆으로 삐딱하게 자라나는 용기가 있습니다.",
+        "stats": {
+          "T": 50,
+          "H": 50,
+          "V": 60,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중앙 기둥 --><line x1=\"0\" y1=\"-26\" x2=\"0\" y2=\"26\" /><!-- 위아래 육각 단면 --><polygon points=\"0,-30 7,-26 7,-22 0,-18 -7,-22 -7,-26\" /><polygon points=\"0,30 7,26 7,22 0,18 -7,22 -7,26\" /><!-- 한쪽으로 튀어나온 사이드 플레이트 --><polygon points=\"0,-6 10,-2 10,6 0,10 -10,6 -10,-2\" /><!-- 위쪽에 작은 보조 사이드 플레이트 --><polygon points=\"0,-16 7,-13 7,-9 0,-6 -7,-9 -7,-13\" /></g></svg>"
+      },
+      {
+        "code": "S2",
+        "title": "균형 잡힌 곡예사",
+        "desc": "불안정한 상황 속에서도 기가 막히게 균형을 찾아냅니다.",
+        "stats": {
+          "T": 45,
+          "H": 55,
+          "V": 50,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중앙 기둥 --><line x1=\"0\" y1=\"-28\" x2=\"0\" y2=\"28\" /><!-- 위아래 단면 --><polygon points=\"0,-32 7,-28 7,-24 0,-20 -7,-24 -7,-28\" /><polygon points=\"0,32 7,28 7,24 0,20 -7,24 -7,28\" /><!-- 오른쪽에 비늘처럼 겹친 플레이트 --><polygon points=\"0,-18 9,-14 9,-8 0,-4 -9,-8 -9,-14\" /><polygon points=\"0,-8 9,-4 9,2 0,6 -9,2 -9,-4\" /><polygon points=\"0,2 9,6 9,12 0,16 -9,12 -9,6\" /><!-- 왼쪽에 작은 균형용 플레이트 --><polygon points=\"-9,-2 -4,0 -4,4 -9,6 -14,4 -14,0\" /></g></svg>"
+      },
+      {
+        "code": "S3",
+        "title": "즉흥 연주자",
+        "desc": "악보(규칙) 없이도 멋진 인생을 연주하는 재즈 같은 사람.",
+        "stats": {
+          "T": 40,
+          "H": 45,
+          "V": 80,
+          "R": 10
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중앙 기둥(약간 휘어진 선) --><path d=\"M0 -28 C2 -20, -2 -10, 0 0 C2 8, -1 18, 0 28\" /><!-- 불규칙하게 붙은 플레이트들 --><polygon points=\"0,-20 8,-16 7,-10 -1,-12 -8,-14 -7,-18\" /><polygon points=\"2,-6 9,-2 8,4 1,2 -6,0 -5,-4\" /><polygon points=\"-1,10 6,14 5,20 -2,18 -8,16 -7,12\" /></g></svg>"
+      },
+      {
+        "code": "R1a",
+        "title": "강인한 송곳",
+        "desc": "날카로움에 경험과 연륜이 더해져 더욱 단단해졌습니다.",
+        "stats": {
+          "T": 80,
+          "H": 30,
+          "V": 20,
+          "R": 60
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중앙 바늘 --><line x1=\"0\" y1=\"-30\" x2=\"0\" y2=\"30\" /><polygon points=\"0,-34 4,-30 0,-26 -4,-30\" /><polygon points=\"0,34 4,30 0,26 -4,30\" /><!-- 바늘 주변에 붙은 서리(짧은 가지와 점) --><line x1=\"0\" y1=\"-20\" x2=\"4\" y2=\"-24\" /><line x1=\"0\" y1=\"-14\" x2=\"-4\" y2=\"-18\" /><line x1=\"0\" y1=\"-6\" x2=\"5\" y2=\"-9\" /><line x1=\"0\" y1=\"2\" x2=\"-5\" y2=\"-1\" /><line x1=\"0\" y1=\"10\" x2=\"5\" y2=\"13\" /><line x1=\"0\" y1=\"18\" x2=\"-4\" y2=\"22\" /><circle cx=\"4\" cy=\"-24\" r=\"1.3\" /><circle cx=\"-4\" cy=\"-18\" r=\"1.3\" /><circle cx=\"5\" cy=\"-9\" r=\"1.3\" /><circle cx=\"-5\" cy=\"-1\" r=\"1.3\" /><circle cx=\"5\" cy=\"13\" r=\"1.3\" /><circle cx=\"-4\" cy=\"22\" r=\"1.3\" /></g></svg>"
+      },
+      {
+        "code": "R1b",
+        "title": "굳건한 바위",
+        "desc": "어떤 풍파에도 흔들리지 않는 묵직한 존재감.",
+        "stats": {
+          "T": 85,
+          "H": 20,
+          "V": 10,
+          "R": 70
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 안쪽 육각 기둥 --><polygon points=\"0,-20 9,-12 9,12 0,20 -9,12 -9,-12\" /><!-- 바깥 서리 림(두꺼운 윤곽선 느낌) --><polygon points=\"0,-24 13,-14 13,14 0,24 -13,14 -13,-14\" /><!-- 주변에 박힌 서리 덩어리들 --><circle cx=\"-15\" cy=\"-8\" r=\"1.6\" /><circle cx=\"15\" cy=\"-4\" r=\"1.6\" /><circle cx=\"-14\" cy=\"6\" r=\"1.6\" /><circle cx=\"14\" cy=\"10\" r=\"1.6\" /><circle cx=\"0\" cy=\"-26\" r=\"1.6\" /><circle cx=\"0\" cy=\"26\" r=\"1.6\" /></g></svg>"
+      },
+      {
+        "code": "R1c",
+        "title": "생활력 만렙",
+        "desc": "고생을 사서 하는 스타일이지만, 그만큼 얻는 것도 많습니다.",
+        "stats": {
+          "T": 50,
+          "H": 40,
+          "V": 20,
+          "R": 80
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 안쪽 육각 판 --><polygon points=\"0,-12 10,-6 10,6 0,12 -10,6 -10,-6\" /><!-- 바깥 림(서리가 둘러싼 윤곽) --><polygon points=\"0,-18 16,-9 16,9 0,18 -16,9 -16,-9\" /><!-- 가장자리 따라 박힌 서리 알갱이 --><circle cx=\"0\" cy=\"-18\" r=\"1.5\" /><circle cx=\"9\" cy=\"-13\" r=\"1.5\" /><circle cx=\"15\" cy=\"0\" r=\"1.5\" /><circle cx=\"9\" cy=\"13\" r=\"1.5\" /><circle cx=\"0\" cy=\"18\" r=\"1.5\" /><circle cx=\"-9\" cy=\"13\" r=\"1.5\" /><circle cx=\"-15\" cy=\"0\" r=\"1.5\" /><circle cx=\"-9\" cy=\"-13\" r=\"1.5\" /></g></svg>"
+      },
+      {
+        "code": "R1d",
+        "title": "상처 입은 백조",
+        "desc": "화려한 과거 뒤에 숨겨진 아픔을 성숙함으로 승화시켰습니다.",
+        "stats": {
+          "T": 20,
+          "H": 80,
+          "V": 30,
+          "R": 70
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 중심 육각 --><polygon points=\"0,-6 5,-3 5,3 0,6 -5,3 -5,-3\" /><!-- 덴드라이트 팔 --><g id=\"arm-r1d\"><line x1=\"0\" y1=\"-6\" x2=\"0\" y2=\"-26\" /><line x1=\"0\" y1=\"-12\" x2=\"4\" y2=\"-16\" /><line x1=\"0\" y1=\"-18\" x2=\"-4\" y2=\"-22\" /><!-- 끝 서리 덩어리 --><circle cx=\"0\" cy=\"-26\" r=\"1.8\" /></g><!-- 6방향 회전 --><use href=\"#arm-r1d\" /><g transform=\"rotate(60)\"><use href=\"#arm-r1d\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-r1d\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-r1d\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-r1d\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-r1d\" /></g><!-- 가지 중간 중간 서리 점 --><circle cx=\"4\" cy=\"-16\" r=\"1.3\" /><circle cx=\"-4\" cy=\"-22\" r=\"1.3\" /></g><defs><g id=\"arm-r1d\"><line x1=\"0\" y1=\"-6\" x2=\"0\" y2=\"-26\" /><line x1=\"0\" y1=\"-12\" x2=\"4\" y2=\"-16\" /><line x1=\"0\" y1=\"-18\" x2=\"-4\" y2=\"-22\" /><circle cx=\"0\" cy=\"-26\" r=\"1.8\" /></g></defs></svg>"
+      },
+      {
+        "code": "R2a",
+        "title": "무뚝뚝한 장인",
+        "desc": "말수는 적지만 실력 하나로 모든 것을 증명합니다.",
+        "stats": {
+          "T": 75,
+          "H": 25,
+          "V": 15,
+          "R": 90
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 안쪽 바늘 --><line x1=\"0\" y1=\"-26\" x2=\"0\" y2=\"26\" /><!-- 바깥 서리로 두꺼워진 윤곽 --><path d=\"M-4 -28 L4 -28 L6 -24 L6 24 L4 28 L-4 28 L-6 24 L-6 -24 Z\" /><!-- 표면에 울퉁불퉁 박힌 서리 덩어리 --><circle cx=\"-5\" cy=\"-18\" r=\"1.7\" /><circle cx=\"5\" cy=\"-10\" r=\"1.7\" /><circle cx=\"-5\" cy=\"-2\" r=\"1.7\" /><circle cx=\"5\" cy=\"6\" r=\"1.7\" /><circle cx=\"-5\" cy=\"14\" r=\"1.7\" /></g></svg>"
+      },
+      {
+        "code": "R2b",
+        "title": "철옹성",
+        "desc": "자신만의 세계가 확고하여 누구도 쉽게 침범할 수 없습니다.",
+        "stats": {
+          "T": 90,
+          "H": 15,
+          "V": 10,
+          "R": 95
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 안쪽 육각 기둥 --><polygon points=\"0,-18 9,-12 9,12 0,18 -9,12 -9,-12\" /><!-- 바깥 두꺼운 서리층 --><polygon points=\"0,-24 14,-16 14,16 0,24 -14,16 -14,-16\" /><!-- 서리 알갱이로 더 채움 --><circle cx=\"-12\" cy=\"-10\" r=\"1.8\" /><circle cx=\"12\" cy=\"-6\" r=\"1.8\" /><circle cx=\"-13\" cy=\"2\" r=\"1.8\" /><circle cx=\"13\" cy=\"8\" r=\"1.8\" /><circle cx=\"0\" cy=\"-26\" r=\"1.8\" /><circle cx=\"0\" cy=\"26\" r=\"1.8\" /></g></svg>"
+      },
+      {
+        "code": "R2c",
+        "title": "싸라기눈 (육각)",
+        "desc": "투박하고 거칠어 보이지만 속은 육각형처럼 반듯합니다.",
+        "stats": {
+          "T": 60,
+          "H": 30,
+          "V": 20,
+          "R": 100
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 육각형 핵심 덩어리 --><polygon points=\"0,-10 9,-5 9,5 0,10 -9,5 -9,-5\" /><!-- 약간 불규칙한 바깥 윤곽(싸라기눈 뭉침) --><polygon points=\"0,-18 11,-11 13,0 8,11 0,18 -9,14 -14,4 -12,-9\" /><!-- 표면의 알갱이들 --><circle cx=\"0\" cy=\"-14\" r=\"1.8\" /><circle cx=\"8\" cy=\"-7\" r=\"1.8\" /><circle cx=\"10\" cy=\"4\" r=\"1.8\" /><circle cx=\"0\" cy=\"14\" r=\"1.8\" /><circle cx=\"-9\" cy=\"8\" r=\"1.8\" /><circle cx=\"-10\" cy=\"-2\" r=\"1.8\" /></g></svg>"
+      },
+      {
+        "code": "R3a",
+        "title": "원뿔형 싸라기",
+        "desc": "한 방향으로만 쏟아붓는 집중력이 무서울 정도입니다.",
+        "stats": {
+          "T": 70,
+          "H": 30,
+          "V": 10,
+          "R": 100
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,55)\"><!-- 원뿔 실루엣 --><polygon points=\"0,-24 16,14 -16,14\" /><!-- 내부 싸라기 알갱이들 --><circle cx=\"0\" cy=\"-12\" r=\"1.8\" /><circle cx=\"-6\" cy=\"-8\" r=\"1.6\" /><circle cx=\"7\" cy=\"-6\" r=\"1.6\" /><circle cx=\"-10\" cy=\"0\" r=\"1.6\" /><circle cx=\"10\" cy=\"2\" r=\"1.6\" /><circle cx=\"-4\" cy=\"6\" r=\"1.6\" /><circle cx=\"3\" cy=\"8\" r=\"1.6\" /></g></svg>"
+      },
+      {
+        "code": "R3b",
+        "title": "덩어리 눈",
+        "desc": "디테일보다는 전체적인 덩어리와 흐름을 중요시합니다.",
+        "stats": {
+          "T": 50,
+          "H": 50,
+          "V": 30,
+          "R": 100
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><g transform=\"translate(50,50)\"><!-- 덩어리 실루엣 --><path d=\"M0 -18 C10 -18, 18 -10, 18 0 C18 10, 10 18, 0 18 C-10 18, -18 10, -18 0 C-18 -10, -10 -18, 0 -18 Z\" /><!-- 내부 알갱이들 --><circle cx=\"-8\" cy=\"-6\" r=\"1.8\" /><circle cx=\"7\" cy=\"-4\" r=\"1.8\" /><circle cx=\"-4\" cy=\"0\" r=\"1.8\" /><circle cx=\"5\" cy=\"5\" r=\"1.8\" /><circle cx=\"0\" cy=\"10\" r=\"1.8\" /><circle cx=\"-9\" cy=\"6\" r=\"1.6\" /></g></svg>"
+      },
+      {
+        "code": "R4a",
+        "title": "눈보라의 전조",
+        "desc": "큰 변화가 오기 전, 주변을 긴장시키는 분위기 메이커.",
+        "stats": {
+          "T": 55,
+          "H": 45,
+          "V": 40,
+          "R": 85
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><!-- 바람 방향으로 길게 늘어진 싸라기눈 --><g transform=\"translate(50,50)\"><!-- 흐름을 나타내는 곡선 --><path d=\"M-20 -10 C-10 -18, 5 -18, 18 -8 C22 -4, 22 4, 18 8 C5 18, -10 18, -20 10\" /><!-- 곡선을 따라 박힌 알갱이 --><circle cx=\"-14\" cy=\"-9\" r=\"1.6\" /><circle cx=\"-4\" cy=\"-13\" r=\"1.6\" /><circle cx=\"6\" cy=\"-10\" r=\"1.6\" /><circle cx=\"14\" cy=\"-4\" r=\"1.6\" /><circle cx=\"14\" cy=\"4\" r=\"1.6\" /><circle cx=\"6\" cy=\"10\" r=\"1.6\" /><circle cx=\"-4\" cy=\"13\" r=\"1.6\" /><circle cx=\"-14\" cy=\"9\" r=\"1.6\" /></g></svg>"
+      },
+      {
+        "code": "R4b",
+        "title": "뭉치면 산다",
+        "desc": "개인보다는 조직의 힘을 믿는 집단주의적 성향.",
+        "stats": {
+          "T": 60,
+          "H": 40,
+          "V": 30,
+          "R": 85
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><!-- 여러 덩어리가 모인 싸라기눈 --><g transform=\"translate(50,50)\"><!-- 세 개의 겹친 덩어리 --><path d=\"M-10 -4 C-2 -10, 6 -10, 12 -4 C16 0, 16 6, 12 10 C6 14, -2 14, -10 8 C-14 4, -14 0, -10 -4 Z\" /><path d=\"M-14 -8 C-8 -14, 0 -14, 6 -8 C10 -4, 10 0, 6 4 C0 8, -8 8, -14 2 C-18 -2, -18 -4, -14 -8 Z\" /><path d=\"M-4 0 C4 -4, 12 -4, 16 2 C20 6, 18 12, 12 16 C6 20, -2 20, -8 14 C-10 12, -10 6, -4 0 Z\" /><!-- 알갱이들 --><circle cx=\"-6\" cy=\"-6\" r=\"1.5\" /><circle cx=\"2\" cy=\"-4\" r=\"1.5\" /><circle cx=\"8\" cy=\"0\" r=\"1.5\" /><circle cx=\"0\" cy=\"6\" r=\"1.5\" /><circle cx=\"-8\" cy=\"2\" r=\"1.5\" /></g></svg>"
+      },
+      {
+        "code": "R4c",
+        "title": "거친 야생화",
+        "desc": "척박한 환경에서도 기어이 꽃(가지)을 피워내는 생존력.",
+        "stats": {
+          "T": 30,
+          "H": 70,
+          "V": 40,
+          "R": 85
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><!-- 가지를 따라 달린 싸라기 알갱이들 --><g transform=\"translate(50,50)\"><!-- 중심 줄기 --><line x1=\"0\" y1=\"-20\" x2=\"0\" y2=\"20\" /><!-- 가지 --><line x1=\"0\" y1=\"-8\" x2=\"10\" y2=\"-14\" /><line x1=\"0\" y1=\"-2\" x2=\"-10\" y2=\"-10\" /><line x1=\"0\" y1=\"6\" x2=\"11\" y2=\"12\" /><line x1=\"0\" y1=\"12\" x2=\"-9\" y2=\"18\" /><!-- 가지 끝과 줄기 주변의 알갱이 --><circle cx=\"0\" cy=\"-20\" r=\"1.6\" /><circle cx=\"0\" cy=\"20\" r=\"1.6\" /><circle cx=\"10\" cy=\"-14\" r=\"1.6\" /><circle cx=\"-10\" cy=\"-10\" r=\"1.6\" /><circle cx=\"11\" cy=\"12\" r=\"1.6\" /><circle cx=\"-9\" cy=\"18\" r=\"1.6\" /><circle cx=\"0\" cy=\"0\" r=\"1.4\" /></g></svg>"
+      },
+      {
+        "code": "I1",
+        "title": "미완의 대기",
+        "desc": "아직 자신의 진짜 모습을 찾지 못했지만 가능성은 무한합니다.",
+        "stats": {
+          "T": 50,
+          "H": 10,
+          "V": 50,
+          "R": 20
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><!-- 날카로운 얼음 파편 --><g transform=\"translate(50,50)\"><!-- 불완전한 조각 실루엣 --><polygon points=\"0,-18 10,-10 6,0 12,10 0,16 -10,8 -8,-4 -14,-12\" /><!-- 내부 균열선 --><line x1=\"-8\" y1=\"-8\" x2=\"4\" y2=\"0\" /><line x1=\"-2\" y1=\"-14\" x2=\"2\" y2=\"-4\" /><line x1=\"0\" y1=\"4\" x2=\"-4\" y2=\"12\" /></g></svg>"
+      },
+      {
+        "code": "I2",
+        "title": "다듬어지는 원석",
+        "desc": "시련을 통해 조금씩 자신의 모난 부분을 깎아내고 있습니다.",
+        "stats": {
+          "T": 50,
+          "H": 20,
+          "V": 40,
+          "R": 60
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><!-- 가장자리에 서리가 둘러진 얼음 조각 --><g transform=\"translate(50,50)\"><!-- 안쪽 불규칙 조각 --><polygon points=\"0,-14 10,-8 8,4 0,12 -9,7 -8,-6\" /><!-- 바깥 림 --><polygon points=\"0,-20 13,-11 12,6 0,18 -13,10 -12,-9\" /><!-- 가장자리에 작은 서리 알갱이 --><circle cx=\"0\" cy=\"-20\" r=\"1.5\" /><circle cx=\"10\" cy=\"-8\" r=\"1.5\" /><circle cx=\"11\" cy=\"4\" r=\"1.5\" /><circle cx=\"0\" cy=\"18\" r=\"1.5\" /><circle cx=\"-11\" cy=\"8\" r=\"1.5\" /><circle cx=\"-11\" cy=\"-6\" r=\"1.5\" /></g></svg>"
+      },
+      {
+        "code": "I3a",
+        "title": "상처 입은 치유자",
+        "desc": "깨지고 부서진 경험이 있어 남의 아픔을 더 잘 이해합니다.",
+        "stats": {
+          "T": 50,
+          "H": 50,
+          "V": 90,
+          "R": 50
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><!-- 일부가 부러진 육각 판 --><g transform=\"translate(50,50)\"><!-- 손상된 육각형 --><polygon points=\"0,-14 12,-7 10,6 0,14 -10,8 -12,-2\" /><!-- 깨진 자리 표시 (크랙 라인) --><line x1=\"-12\" y1=\"-2\" x2=\"-4\" y2=\"-8\" /><line x1=\"-4\" y1=\"-8\" x2=\"4\" y2=\"-2\" /><!-- 떨어져 나간 조각 --><polygon points=\"-16,-10 -10,-10 -8,-4 -14,-4\" /><!-- 회복을 상징하는 작은 중심 육각 --><polygon points=\"0,-4 4,-2 4,2 0,4 -4,2 -4,-2\" /></g></svg>"
+      },
+      {
+        "code": "I3b",
+        "title": "정의 불가 미스터리",
+        "desc": "어떤 카테고리로도 분류할 수 없는 독보적인 캐릭터.",
+        "stats": {
+          "T": 50,
+          "H": 50,
+          "V": 100,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><!-- 여러 조각이 뒤섞인 정체불명 결정 --><g transform=\"translate(50,50)\"><!-- 중심 불규칙 코어 --><polygon points=\"0,-8 8,-4 6,4 -2,8 -10,4 -8,-4\" /><!-- 각 방향으로 다른 모양의 조각 --><path d=\"M0 -8 L4 -16 L-2 -14 Z\" /><path d=\"M8 -4 L16 0 L10 4 Z\" /><path d=\"M6 4 L10 12 L2 10 Z\" /><path d=\"M-2 8 L-4 16 L-10 10 Z\" /><path d=\"M-10 4 L-16 -2 L-8 -4 Z\" /><path d=\"M-8 -4 L-4 -12 L0 -8 Z\" /><!-- 랜덤한 작은 점들 --><circle cx=\"3\" cy=\"0\" r=\"1.2\" /><circle cx=\"-5\" cy=\"1\" r=\"1.2\" /><circle cx=\"1\" cy=\"6\" r=\"1.2\" /></g></svg>"
+      },
+      {
+        "code": "I4",
+        "title": "부활한 불사조",
+        "desc": "한번 녹아내렸다가 다시 얼어붙은, 인생 2회차의 여유.",
+        "stats": {
+          "T": 60,
+          "H": 40,
+          "V": 80,
+          "R": 10
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><!-- 부서진 조각 주변으로 다시 자라나는 눈결정 --><g transform=\"translate(50,50)\"><!-- 중심 육각 코어(재결정된 핵) --><polygon points=\"0,-6 5,-3 5,3 0,6 -5,3 -5,-3\" /><!-- 바깥 부서진 링 --><polygon points=\"0,-16 12,-8 14,2 8,14 -2,18 -12,10 -16,0 -10,-12\" /><!-- 깨진 링을 가로지르는 크랙 --><line x1=\"-12\" y1=\"-2\" x2=\"10\" y2=\"4\" /><!-- 새로 자라나는 6방향 팔 (짧은 덴드라이트) --><g id=\"arm-i4\"><line x1=\"0\" y1=\"-6\" x2=\"0\" y2=\"-20\" /><line x1=\"0\" y1=\"-12\" x2=\"4\" y2=\"-16\" /><line x1=\"0\" y1=\"-12\" x2=\"-4\" y2=\"-16\" /></g><use href=\"#arm-i4\" /><g transform=\"rotate(60)\"><use href=\"#arm-i4\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-i4\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-i4\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-i4\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-i4\" /></g></g><defs><g id=\"arm-i4\"><line x1=\"0\" y1=\"-6\" x2=\"0\" y2=\"-20\" /><line x1=\"0\" y1=\"-12\" x2=\"4\" y2=\"-16\" /><line x1=\"0\" y1=\"-12\" x2=\"-4\" y2=\"-16\" /></g></defs></svg>"
+      },
+      {
+        "code": "G1",
+        "title": "꼬마 기둥",
+        "desc": "이제 막 자라나기 시작한 꿈나무 리더.",
+        "stats": {
+          "T": 80,
+          "H": 10,
+          "V": 5,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><!-- 아주 작은 육각 기둥 --><g transform=\"translate(50,50)\"><!-- 위아래 작은 단면 --><polygon points=\"0,-10 5,-7 5,-3 0,0 -5,-3 -5,-7\" /><polygon points=\"0,10 5,7 5,3 0,0 -5,3 -5,7\" /><!-- 기둥 몸통 --><line x1=\"0\" y1=\"-10\" x2=\"0\" y2=\"10\" /><!-- 작음을 강조하는 주변 점들 --><circle cx=\"10\" cy=\"-2\" r=\"1.2\" /><circle cx=\"-10\" cy=\"2\" r=\"1.2\" /></g></svg>"
+      },
+      {
+        "code": "G2",
+        "title": "꼬마 육각형",
+        "desc": "작지만 완벽한 균형을 갖춘 야무진 막내.",
+        "stats": {
+          "T": 60,
+          "H": 10,
+          "V": 5,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><!-- 작은 육각 판 --><g transform=\"translate(50,50)\"><polygon points=\"0,-10 9,-5 9,5 0,10 -9,5 -9,-5\" /><!-- 얇은 외곽 링 --><polygon points=\"0,-14 12,-7 12,7 0,14 -12,7 -12,-7\" /><!-- 중심 점 --><circle cx=\"0\" cy=\"0\" r=\"1.5\" /></g></svg>"
+      },
+      {
+        "code": "G3",
+        "title": "호기심 새싹",
+        "desc": "세상 모든 것이 궁금해 팔을 뻗어보는 귀여운 탐험가.",
+        "stats": {
+          "T": 30,
+          "H": 20,
+          "V": 10,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><!-- 작은 가지가 3방향으로 난 새싹 구조 --><g transform=\"translate(50,50)\"><!-- 중심 작은 육각 --><polygon points=\"0,-5 4,-3 4,3 0,5 -4,3 -4,-3\" /><!-- 3개의 메인 가지 (120도 간격) --><g id=\"arm-g3\"><line x1=\"0\" y1=\"-5\" x2=\"0\" y2=\"-16\" /><circle cx=\"0\" cy=\"-16\" r=\"1.4\" /></g><use href=\"#arm-g3\" /><g transform=\"rotate(120)\"><use href=\"#arm-g3\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-g3\" /></g></g></svg>"
+      },
+      {
+        "code": "G4",
+        "title": "옹기종기 친구들",
+        "desc": "혼자 있는 것보다 친구들과 붙어있는 것을 좋아합니다.",
+        "stats": {
+          "T": 50,
+          "H": 30,
+          "V": 20,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><!-- 작은 눈결정 여러 개가 모인 집합 --><g transform=\"translate(50,50)\"><!-- 가운데 코어 --><polygon points=\"0,-6 5,-3 5,3 0,6 -5,3 -5,-3\" /><!-- 주변 작은 판/기둥 --><polygon points=\"-10,-4 -5,-2 -5,2 -10,4 -15,2 -15,-2\" /><polygon points=\"10,-2 14,0 14,4 10,6 6,4 6,0\" /><polygon points=\"-6,10 -2,12 -2,16 -6,18 -10,16 -10,12\" /><polygon points=\"6,10 10,12 10,16 6,18 2,16 2,12\" /><!-- 얇은 연결선 --><line x1=\"0\" y1=\"0\" x2=\"-10\" y2=\"0\" /><line x1=\"0\" y1=\"0\" x2=\"10\" y2=\"1\" /><line x1=\"0\" y1=\"4\" x2=\"-4\" y2=\"12\" /><line x1=\"2\" y1=\"4\" x2=\"6\" y2=\"12\" /></g></svg>"
+      },
+      {
+        "code": "G5",
+        "title": "개구쟁이 꼬마",
+        "desc": "어디로 튈지 모르는 럭비공 같은 에너지를 가졌습니다.",
+        "stats": {
+          "T": 50,
+          "H": 20,
+          "V": 60,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><!-- 불규칙한 작은 씨앗 모양 --><g transform=\"translate(50,50)\"><!-- 삐뚤삐뚤한 코어 --><polygon points=\"0,-8 6,-4 5,4 -2,8 -8,4 -7,-3\" /><!-- 방향이 제각각인 짧은 팔 --><line x1=\"0\" y1=\"-8\" x2=\"4\" y2=\"-14\" /><line x1=\"6\" y1=\"-4\" x2=\"12\" y2=\"-6\" /><line x1=\"5\" y1=\"4\" x2=\"10\" y2=\"8\" /><line x1=\"-2\" y1=\"8\" x2=\"-4\" y2=\"14\" /><line x1=\"-8\" y1=\"4\" x2=\"-12\" y2=\"8\" /><line x1=\"-7\" y1=\"-3\" x2=\"-12\" y2=\"-8\" /></g></svg>"
+      },
+      {
+        "code": "G6",
+        "title": "완벽주의 씨앗",
+        "desc": "시작부터 완벽을 추구하는 될성부른 떡잎.",
+        "stats": {
+          "T": 70,
+          "H": 15,
+          "V": 0,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><!-- 매우 작은 육각 눈 결정의 씨앗 --><g transform=\"translate(50,50)\"><!-- 중심 육각 --><polygon points=\"0,-6 5,-3 5,3 0,6 -5,3 -5,-3\" /><!-- 얇은 육각 링 --><polygon points=\"0,-10 9,-5 9,5 0,10 -9,5 -9,-5\" /><!-- 아주 짧은 6방향 팔 --><g id=\"arm-g6\"><line x1=\"0\" y1=\"-10\" x2=\"0\" y2=\"-15\" /></g><use href=\"#arm-g6\" /><g transform=\"rotate(60)\"><use href=\"#arm-g6\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-g6\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-g6\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-g6\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-g6\" /></g></g></svg>"
+      },
+      {
+        "code": "C1j",
+        "title": "섬세한 마무리",
+        "desc": "일처리는 뚝심 있게 하지만 마무리는 섬세하게 챙깁니다.",
+        "stats": {
+          "T": 65,
+          "H": 60,
+          "V": 40,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><!-- 양 끝에 덴드라이트가 달려있는 기둥 --><g transform=\"translate(50,50)\"><!-- 중앙 기둥 --><line x1=\"0\" y1=\"-24\" x2=\"0\" y2=\"24\" /><!-- 가운데 약한 육각 --><polygon points=\"0,-4 4,-2 4,2 0,4 -4,2 -4,-2\" /><!-- 위쪽 덴드라이트 팁 --><g id=\"tip-dend\"><line x1=\"0\" y1=\"-24\" x2=\"0\" y2=\"-32\" /><line x1=\"0\" y1=\"-28\" x2=\"4\" y2=\"-32\" /><line x1=\"0\" y1=\"-28\" x2=\"-4\" y2=\"-32\" /><circle cx=\"0\" cy=\"-32\" r=\"1.6\" /></g><!-- 아래쪽 덴드라이트 팁 (대칭) --><g transform=\"scale(1,-1)\"><use href=\"#tip-dend\" /></g></g></svg>"
+      },
+      {
+        "code": "P8a",
+        "title": "목표지향 화살",
+        "desc": "오직 하나의 목표를 향해 활시위처럼 팽팽하게 긴장해 있습니다.",
+        "stats": {
+          "T": 80,
+          "H": 10,
+          "V": 5,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><!-- 육각 대칭으로 배치된 화살촉 모양 판 --><g transform=\"translate(50,50)\"><!-- 중심 육각 --><polygon points=\"0,-6 5,-3 5,3 0,6 -5,3 -5,-3\" /><!-- 한 방향의 화살촉 --><g id=\"arm-p8a\"><path d=\"M0 -6 L0 -22\" /><polygon points=\"0,-22 6,-16 0,-10 -6,-16\" /></g><!-- 6방향 회전 --><use href=\"#arm-p8a\" /><g transform=\"rotate(60)\"><use href=\"#arm-p8a\" /></g><g transform=\"rotate(120)\"><use href=\"#arm-p8a\" /></g><g transform=\"rotate(180)\"><use href=\"#arm-p8a\" /></g><g transform=\"rotate(240)\"><use href=\"#arm-p8a\" /></g><g transform=\"rotate(300)\"><use href=\"#arm-p8a\" /></g></g></svg>"
+      },
+      {
+        "code": "P8b",
+        "title": "장구 치는 광대",
+        "desc": "흥이 많고 주변 사람들을 즐겁게 하는 재주꾼.",
+        "stats": {
+          "T": 55,
+          "H": 45,
+          "V": 30,
+          "R": 0
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><!-- 일본 장구(츠즈미)처럼 가운데가 잘록한 드럼형 판 --><g transform=\"translate(50,50)\"><!-- 장구 실루엣 --><path d=\"M-10 -18 C-4 -10, -4 -4, -8 0 C-4 4, -4 10, -10 18\" /><path d=\"M10 -18 C4 -10, 4 -4, 8 0 C4 4, 4 10, 10 18\" /><line x1=\"-10\" y1=\"-18\" x2=\"10\" y2=\"-18\" /><line x1=\"-10\" y1=\"18\" x2=\"10\" y2=\"18\" /><!-- 장구 끈 --><line x1=\"-8\" y1=\"-8\" x2=\"8\" y2=\"-4\" /><line x1=\"-8\" y1=\"4\" x2=\"8\" y2=\"8\" /><!-- 주변에 리듬감 있는 작은 점 --><circle cx=\"-16\" cy=\"0\" r=\"1.4\" /><circle cx=\"16\" cy=\"-2\" r=\"1.4\" /></g></svg>"
+      },
+      {
+        "code": "H1",
+        "title": "슈퍼 헤비급",
+        "desc": "눈이라기엔 너무나 거대한, 압도적인 무게감의 소유자.",
+        "stats": {
+          "T": 90,
+          "H": 90,
+          "V": 50,
+          "R": 100
+        },
+        "svg": "<svg viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"#A0D2EB\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><!-- 커다란 우박 덩어리 --><g transform=\"translate(50,50)\"><!-- 바깥 둥근 형태 --><circle cx=\"0\" cy=\"0\" r=\"22\" /><!-- 내부 육각 크랙 --><polygon points=\"0,-10 9,-5 9,5 0,10 -9,5 -9,-5\" /><line x1=\"0\" y1=\"-10\" x2=\"0\" y2=\"-20\" /><line x1=\"9\" y1=\"-5\" x2=\"18\" y2=\"-6\" /><line x1=\"9\" y1=\"5\" x2=\"16\" y2=\"10\" /><line x1=\"0\" y1=\"10\" x2=\"0\" y2=\"20\" /><line x1=\"-9\" y1=\"5\" x2=\"-16\" y2=\"10\" /><line x1=\"-9\" y1=\"-5\" x2=\"-18\" y2=\"-6\" /><!-- 표면의 요철 --><circle cx=\"10\" cy=\"-14\" r=\"1.8\" /><circle cx=\"-12\" cy=\"-10\" r=\"1.8\" /><circle cx=\"14\" cy=\"6\" r=\"1.8\" /><circle cx=\"-8\" cy=\"14\" r=\"1.8\" /></g></svg>"
+      }
+    ];
+
+    // Add OCEAN stats to all snowData entries at load time
+    snowData.forEach(crystal => {
+      crystal.ocean = convertToOCEAN(crystal.stats);
+    });
+
+    let current = 0;
+    let scores = { O: 50, C: 50, E: 50, A: 50, N: 50 }; // OCEAN model
+    let roomId = null;
+    let nickname = "";
+    let roomResults = [];
+
+    // --- Graph Engine (Static Radial Layout) ---
+    class SnowGraph {
+      constructor(canvasId) {
+        this.canvas = document.getElementById(canvasId);
+        if (!this.canvas) {
+          console.error("Canvas not found:", canvasId);
+          return;
+        }
+        this.ctx = this.canvas.getContext('2d');
+        this.nodes = [];
+        this.selected = null;
+        this.rawUsers = null;
+        this.animationId = null;
+        this.hovered = null;
+
+        // Defer size measurement - will be set properly by resize()
+        this.width = 0;
+        this.height = 0;
+
+        // Zoom & Pan
+        this.scale = 1;
+        this.minScale = 0.3;
+        this.maxScale = 3;
+        this.panX = 0;
+        this.panY = 0;
+
+        // Drag state
+        this.isDragging = false;
+        this.dragStartX = 0;
+        this.dragStartY = 0;
+        this.dragStartPanX = 0;
+        this.dragStartPanY = 0;
+
+        // Filter state
+        this.filters = { soulmate: true, colleague: true, different: true };
+
+        // Filter checkboxes
+        ['soulmate', 'colleague', 'different'].forEach(type => {
+          const cb = document.getElementById(`filter-${type}`);
+          if (cb) {
+            cb.addEventListener('change', () => {
+              this.filters[type] = cb.checked;
+            });
+          }
+        });
+
+        // Mouse interactions
+        this.canvas.addEventListener('mousedown', (e) => this.handleMouseDown(e));
+        this.canvas.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+        this.canvas.addEventListener('mouseup', (e) => this.handleMouseUp(e));
+        this.canvas.addEventListener('mouseleave', () => this.handleMouseLeave());
+        this.canvas.addEventListener('wheel', (e) => this.handleWheel(e), { passive: false });
+        this.canvas.addEventListener('click', (e) => this.handleClick(e));
+
+        // Touch interactions
+        this.canvas.addEventListener('touchstart', (e) => this.handleTouchStart(e), { passive: false });
+        this.canvas.addEventListener('touchmove', (e) => this.handleTouchMove(e), { passive: false });
+        this.canvas.addEventListener('touchend', (e) => this.handleTouchEnd(e));
+
+        // Touch state
+        this.lastTouchDist = null;
+        this.lastTouchPos = null;
+        this.isTouchMoved = false;
+
+        // Zoom buttons
+        const zoomIn = document.getElementById('zoom-in-btn');
+        const zoomOut = document.getElementById('zoom-out-btn');
+        if (zoomIn) zoomIn.addEventListener('click', () => this.zoomBy(0.3));
+        if (zoomOut) zoomOut.addEventListener('click', () => this.zoomBy(-0.3));
+      }
+
+      setFilter(type, enabled) {
+        this.filters[type] = enabled;
+      }
+
+      zoomBy(delta) {
+        this.scale = Math.max(this.minScale, Math.min(this.maxScale, this.scale + delta));
+      }
+
+      screenToWorld(clientX, clientY) {
+        const rect = this.canvas.getBoundingClientRect();
+        const scaleX = this.width / rect.width;
+        const scaleY = this.height / rect.height;
+        const canvasX = (clientX - rect.left) * scaleX;
+        const canvasY = (clientY - rect.top) * scaleY;
+        const cx = this.width / 2;
+        const cy = this.height / 2;
+        return {
+          x: (canvasX - cx - this.panX) / this.scale + cx,
+          y: (canvasY - cy - this.panY) / this.scale + cy
+        };
+      }
+
+      handleWheel(e) {
+        e.preventDefault();
+        const delta = e.deltaY > 0 ? -0.1 : 0.1;
+        this.zoomBy(delta);
+      }
+
+      handleMouseDown(e) {
+        this.isDragging = true;
+        this.dragStartX = e.clientX;
+        this.dragStartY = e.clientY;
+        this.dragStartPanX = this.panX;
+        this.dragStartPanY = this.panY;
+        this.canvas.style.cursor = 'grabbing';
+      }
+
+      handleMouseMove(e) {
+        if (this.isDragging) {
+          const rect = this.canvas.getBoundingClientRect();
+          const scaleX = this.width / rect.width;
+          const scaleY = this.height / rect.height;
+          this.panX = this.dragStartPanX + (e.clientX - this.dragStartX) * scaleX;
+          this.panY = this.dragStartPanY + (e.clientY - this.dragStartY) * scaleY;
+        } else {
+          // Hover detection
+          const pos = this.screenToWorld(e.clientX, e.clientY);
+          const hitRadius = 15;
+          this.hovered = this.nodes.find(n => {
+            if (!this.isNodeVisible(n)) return false;
+            return Math.hypot(n.x - pos.x, n.y - pos.y) < hitRadius;
+          }) || null;
+          this.canvas.style.cursor = this.hovered ? 'pointer' : 'grab';
+        }
+      }
+
+      handleMouseUp(e) {
+        const wasDragging = this.isDragging && (
+          Math.abs(e.clientX - this.dragStartX) > 5 ||
+          Math.abs(e.clientY - this.dragStartY) > 5
+        );
+        this.isDragging = false;
+        this.canvas.style.cursor = this.hovered ? 'pointer' : 'grab';
+        return wasDragging;
+      }
+
+      handleMouseLeave() {
+        this.isDragging = false;
+        this.hovered = null;
+        this.canvas.style.cursor = 'grab';
+      }
+
+      handleTouchStart(e) {
+        if (e.touches.length === 2) {
+          e.preventDefault();
+          const t1 = e.touches[0], t2 = e.touches[1];
+          this.lastTouchDist = Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY);
+          this.lastTouchPos = { x: (t1.clientX + t2.clientX) / 2, y: (t1.clientY + t2.clientY) / 2 };
+        } else if (e.touches.length === 1) {
+          this.lastTouchPos = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+          this.dragStartPanX = this.panX;
+          this.dragStartPanY = this.panY;
+        }
+        this.isTouchMoved = false;
+      }
+
+      handleTouchMove(e) {
+        if (e.touches.length === 2 && this.lastTouchDist) {
+          e.preventDefault();
+          const t1 = e.touches[0], t2 = e.touches[1];
+          const dist = Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY);
+          const delta = (dist - this.lastTouchDist) * 0.01;
+          this.zoomBy(delta);
+          this.lastTouchDist = dist;
+          this.isTouchMoved = true;
+        } else if (e.touches.length === 1 && this.lastTouchPos) {
+          e.preventDefault();
+          const rect = this.canvas.getBoundingClientRect();
+          const scaleX = this.width / rect.width;
+          const scaleY = this.height / rect.height;
+          const dx = (e.touches[0].clientX - this.lastTouchPos.x) * scaleX;
+          const dy = (e.touches[0].clientY - this.lastTouchPos.y) * scaleY;
+          if (Math.abs(dx) > 2 || Math.abs(dy) > 2) {
+            this.panX = this.dragStartPanX + (e.touches[0].clientX - this.lastTouchPos.x) * scaleX;
+            this.panY = this.dragStartPanY + (e.touches[0].clientY - this.lastTouchPos.y) * scaleY;
+            this.isTouchMoved = true;
+          }
+        }
+      }
+
+      handleTouchEnd(e) {
+        this.lastTouchDist = null;
+        this.lastTouchPos = null;
+      }
+
+      isNodeVisible(n) {
+        if (n.isMe) return true;
+        const type = n.pDist < 30 ? 'soulmate' : (n.pDist < 60 ? 'colleague' : 'different');
+        return this.filters[type];
+      }
+
+      handleClick(e) {
+        if (!this.nodes.length || this.isTouchMoved) return;
+        if (this.handleMouseUp(e)) return; // Was dragging, not a click
+
+        const pos = this.screenToWorld(e.clientX, e.clientY);
+        const hitRadius = 20;
+        const clicked = this.nodes.find(n => {
+          if (!this.isNodeVisible(n)) return false;
+          return Math.hypot(n.x - pos.x, n.y - pos.y) < hitRadius;
+        });
+
+        if (clicked) {
+          if (!this.selected) {
+            this.selected = clicked;
+            this.updateHint('selecting', clicked.original.nickname || '???');
+          } else if (this.selected === clicked) {
+            this.selected = null;
+            this.updateHint('default');
+          } else {
+            showAdvice(this.selected.original, clicked.original);
+            this.selected = null;
+            this.updateHint('default');
+          }
+        } else {
+          this.selected = null;
+          this.updateHint('default');
+        }
+      }
+
+      updateHint(state, name = '') {
+        const hint = document.getElementById('graph-hint');
+        if (!hint) return;
+
+        if (state === 'selecting') {
+          hint.classList.add('selecting');
+          hint.innerHTML = `<span class="emoji">✨</span><strong>${name}</strong> 선택됨 → 비교할 친구 터치!`;
+        } else {
+          hint.classList.remove('selecting');
+          hint.innerHTML = `<span class="emoji">👆</span>나 + 친구 터치하면 케미 분석!`;
+        }
+      }
+
+      stop() {
+        if (this.animationId) {
+          cancelAnimationFrame(this.animationId);
+          this.animationId = null;
+        }
+      }
+
+      resize() {
+        // Get actual visible size
+        this.width = this.canvas.clientWidth || 300;
+        this.height = this.canvas.clientHeight || 300;
+
+        // Set canvas pixel size for retina
+        this.canvas.width = this.width * 2;
+        this.canvas.height = this.height * 2;
+
+        // Reset and scale context
+        this.ctx.setTransform(1, 0, 0, 1, 0, 0);
+        this.ctx.scale(2, 2);
+
+        // Re-layout nodes if we have data
+        if (this.rawUsers && this.rawUsers.length > 0) {
+          const meId = this.nodes.find(n => n.isMe)?.original?.id;
+          this.layoutNodes(meId);
+        }
+      }
+
+      setUsers(users, meId = null) {
+        this.rawUsers = users;
+        // Ensure dimensions are set before layout
+        if (this.width === 0 || this.height === 0) {
+          this.resize();
+        }
+        this.layoutNodes(meId);
+        this.startAnimation();
+      }
+
+      layoutNodes(meId) {
+        const users = this.rawUsers;
+        if (!users) return;
+
+        // Find Me
+        let me = users.find(u => u.id === meId);
+        if (!me) {
+          me = { scores: { T: 50, H: 50, V: 50, R: 50 }, id: 'dummy', nickname: "나" };
+        }
+
+        // Process Nodes
+        this.nodes = users.map(u => {
+          const isMe = u.id === meId;
+          const pDist = this.euclidean(me, u);
+          return { original: u, isMe, pDist };
+        });
+
+        const cx = this.width / 2;
+        const cy = this.height / 2;
+        const nodeCount = this.nodes.length;
+
+        // Sort by distance (closest first)
+        this.nodes.sort((a, b) => a.pDist - b.pDist);
+
+        // Golden angle spiral layout - prevents overlap
+        const goldenAngle = Math.PI * (3 - Math.sqrt(5)); // ~137.5 degrees
+
+        // Calculate spacing based on node count
+        const baseSpacing = nodeCount > 50 ? 18 : 25;
+
+        let spiralIndex = 0;
+        this.nodes.forEach((n) => {
+          if (n.isMe) {
+            n.x = cx;
+            n.y = cy;
+          } else {
+            spiralIndex++;
+            // Fermat spiral: r = c * sqrt(n), theta = n * golden_angle
+            const r = baseSpacing * Math.sqrt(spiralIndex);
+            const angle = spiralIndex * goldenAngle;
+            n.x = cx + Math.cos(angle) * r;
+            n.y = cy + Math.sin(angle) * r;
+          }
+        });
+
+        // Scale to fit available space
+        let maxDist = 0;
+        this.nodes.forEach(n => {
+          const dist = Math.hypot(n.x - cx, n.y - cy);
+          if (dist > maxDist) maxDist = dist;
+        });
+
+        const availableRadius = Math.min(this.width, this.height) / 2 - 30;
+        if (maxDist > availableRadius && maxDist > 0) {
+          const scaleFactor = availableRadius / maxDist;
+          this.nodes.forEach(n => {
+            if (!n.isMe) {
+              n.x = cx + (n.x - cx) * scaleFactor;
+              n.y = cy + (n.y - cy) * scaleFactor;
+            }
+          });
+        }
+      }
+
+      euclidean(a, b) {
+        // Get OCEAN scores for both users
+        const s1 = this.getOcean(a);
+        const s2 = this.getOcean(b);
+
+        // Weighted distance - C and A more important for relationships
+        const weights = { O: 1.0, C: 1.3, E: 1.1, A: 1.4, N: 1.2 };
+
+        return Math.sqrt(
+          ['O', 'C', 'E', 'A', 'N'].reduce((sum, k) => {
+            const diff = (s1[k] || 50) - (s2[k] || 50);
+            return sum + (diff * diff * weights[k]);
+          }, 0)
+        );
+      }
+
+      getOcean(user) {
+        // Try to get OCEAN scores from various sources
+        if (user.ocean) return user.ocean;
+        if (user.scores && user.scores.O !== undefined) return user.scores;
+        if (user.stats) return convertToOCEAN(user.stats);
+        return { O: 50, C: 50, E: 50, A: 50, N: 50 };
+      }
+
+      startAnimation() {
+        this.stop();
+        const animate = () => {
+          this.render();
+          this.animationId = requestAnimationFrame(animate);
+        };
+        animate();
+      }
+
+      render() {
+        const ctx = this.ctx;
+        if (!ctx || this.width === 0) return;
+
+        // Reset transform and clear
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        const cx = this.width / 2;
+        const cy = this.height / 2;
+
+        // Apply retina scale (2x) + zoom + pan transformation
+        ctx.setTransform(
+          2 * this.scale, 0,
+          0, 2 * this.scale,
+          cx * 2 * (1 - this.scale) + this.panX * 2,
+          cy * 2 * (1 - this.scale) + this.panY * 2
+        );
+
+        const time = Date.now() * 0.001;
+        const breath = Math.sin(time * 2) * 2;
+
+        // Zones (scaled based on node count for better visibility)
+        const nodeCount = this.nodes.length;
+        const zoneScale = nodeCount > 50 ? Math.min(2.5, 1 + nodeCount / 100) : 1;
+        const innerZone = 60 * zoneScale;
+        const outerZone = 110 * zoneScale;
+
+        let g2 = ctx.createRadialGradient(cx, cy, innerZone, cx, cy, outerZone);
+        g2.addColorStop(0, "rgba(240,240,250,0)");
+        g2.addColorStop(1, "rgba(230,230,250,0.3)");
+        ctx.fillStyle = g2;
+        ctx.beginPath(); ctx.arc(cx, cy, outerZone, 0, Math.PI * 2); ctx.fill();
+
+        let g1 = ctx.createRadialGradient(cx, cy, 0, cx, cy, innerZone);
+        g1.addColorStop(0, "rgba(0,113,227,0.02)");
+        g1.addColorStop(1, "rgba(0,113,227,0.06)");
+        ctx.fillStyle = g1;
+        ctx.beginPath(); ctx.arc(cx, cy, innerZone, 0, Math.PI * 2); ctx.fill();
+
+        // Ring lines
+        ctx.strokeStyle = 'rgba(0,113,227,0.08)';
+        ctx.lineWidth = 1 / this.scale;
+        ctx.beginPath(); ctx.arc(cx, cy, innerZone, 0, Math.PI * 2); ctx.stroke();
+        ctx.strokeStyle = 'rgba(0,0,0,0.04)';
+        ctx.beginPath(); ctx.arc(cx, cy, outerZone, 0, Math.PI * 2); ctx.stroke();
+
+        ctx.textAlign = 'center';
+
+        // Filter visible nodes
+        const visibleNodes = this.nodes.filter(n => this.isNodeVisible(n));
+
+        // Connections (only for visible nodes, dimmed)
+        visibleNodes.forEach(n => {
+          if (!n.isMe) {
+            ctx.beginPath();
+            ctx.moveTo(cx, cy);
+            ctx.lineTo(n.x, n.y);
+            const op = Math.max(0.03, 0.15 - n.pDist / 400);
+            ctx.strokeStyle = `rgba(0,113,227,${op})`;
+            ctx.lineWidth = 0.5 / this.scale;
+            ctx.stroke();
+          }
+        });
+
+        // Nodes - smaller base size for many nodes
+        const baseRadius = nodeCount > 50 ? 6 : 10;
+        const meRadius = nodeCount > 50 ? 8 : 12; // Only slightly larger than others
+
+        visibleNodes.forEach(n => {
+          const isHovered = this.hovered === n;
+          const isSelected = this.selected === n;
+
+          // Hover/select enlargement
+          let r = n.isMe ? (meRadius + breath / 3) : baseRadius;
+          if (isHovered) r = baseRadius * 1.8;
+          if (isSelected) r = baseRadius * 1.6;
+
+          ctx.shadowColor = n.isMe ? "rgba(0,113,227,0.3)" : "rgba(0,0,0,0.06)";
+          ctx.shadowBlur = (n.isMe ? 8 : 3) / this.scale;
+
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+          ctx.fillStyle = isHovered ? '#f0f8ff' : '#fff';
+          ctx.fill();
+
+          ctx.lineWidth = ((n.isMe ? 3 : 1.5) / this.scale) * (isHovered ? 2 : 1);
+          if (isSelected) {
+            ctx.strokeStyle = '#ffcc00';
+            ctx.lineWidth = 3 / this.scale;
+          } else if (n.isMe) {
+            ctx.strokeStyle = '#0071e3';
+          } else {
+            ctx.strokeStyle = n.pDist < 30 ? '#0071e3' : (n.pDist < 60 ? '#86868b' : '#d2d2d7');
+          }
+          ctx.stroke();
+          ctx.shadowBlur = 0;
+
+          // Label - only show for hovered, selected, or "me" when many nodes
+          const showLabel = n.isMe || isHovered || isSelected || nodeCount <= 20;
+          if (showLabel) {
+            ctx.fillStyle = '#1d1d1f';
+            const fontSize = (isHovered || isSelected) ? 11 : (n.isMe ? 11 : 9);
+            ctx.font = `${(n.isMe || isHovered) ? '600' : '500'} ${fontSize}px Inter`;
+            const label = n.original.nickname || n.original.crystal_code || "?";
+            const labelY = n.y + r + 12;
+
+            // Background for better readability when hovered
+            if (isHovered || isSelected) {
+              const metrics = ctx.measureText(label);
+              ctx.fillStyle = 'rgba(255,255,255,0.9)';
+              ctx.fillRect(n.x - metrics.width/2 - 4, labelY - 10, metrics.width + 8, 14);
+              ctx.fillStyle = '#1d1d1f';
+            }
+            ctx.fillText(label, n.x, labelY);
+          }
+        });
+
+        // Selection hint (fixed position, outside zoom transform)
+        ctx.setTransform(2, 0, 0, 2, 0, 0);
+        if (this.selected) {
+          ctx.fillStyle = '#ff3b30';
+          ctx.font = 'bold 12px Inter';
+          ctx.textAlign = 'center';
+          ctx.fillText("비교할 상대를 선택하세요", this.width / 2, this.height - 30);
+        }
+      }
+    }
+
+    // --- Advice Logic (OCEAN-based) - Ultra-Detailed Version ---
+    // Combines profile matrix + score-based analysis for maximum personalization
+
+    const OCEAN_LABELS = {
+      O: { name: '개방성', axis: 'O',
+           high: '탐험가', mid: '균형잡힌', low: '전통주의자',
+           highDesc: '새로운 경험과 아이디어에 열린', lowDesc: '검증된 방식을 선호하는',
+           midDesc: '상황에 따라 유연하게 대처하는' },
+      C: { name: '성실성', axis: 'C',
+           high: '계획가', mid: '적응형', low: '자유영혼',
+           highDesc: '체계적이고 목표지향적인', lowDesc: '즉흥적이고 유연한',
+           midDesc: '필요에 따라 계획하는' },
+      E: { name: '외향성', axis: 'E',
+           high: '사교가', mid: '양면형', low: '사색가',
+           highDesc: '사람들과 함께할 때 에너지를 얻는', lowDesc: '혼자만의 시간이 필요한',
+           midDesc: '상황에 맞게 조절하는' },
+      A: { name: '친화성', axis: 'A',
+           high: '조화가', mid: '중립형', low: '독립가',
+           highDesc: '협력과 배려를 중시하는', lowDesc: '소신과 독립을 중시하는',
+           midDesc: '상황에 따라 조율하는' },
+      N: { name: '정서성', axis: 'N',
+           high: '감성가', mid: '균형형', low: '안정가',
+           highDesc: '감정이 풍부하고 섬세한', lowDesc: '차분하고 안정적인',
+           midDesc: '적절히 감정을 조절하는' }
+    };
+
+    function getOceanScores(person) {
+      if (person.ocean) return person.ocean;
+      if (person.scores && person.scores.O !== undefined) return person.scores;
+      if (person.stats) return convertToOCEAN(person.stats);
+      return { O: 50, C: 50, E: 50, A: 50, N: 50 };
+    }
+
+    // Utilities
+    function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+    function pickN(arr, n) {
+      const shuffled = [...arr].sort(() => Math.random() - 0.5);
+      return shuffled.slice(0, n);
+    }
+
+    // 3-level classification with finer boundaries
+    function level(score) {
+      if (score <= 35) return 'L';
+      if (score >= 65) return 'H';
+      return 'M';
+    }
+
+    // 5-level classification for detailed analysis
+    function fineLevel(score) {
+      if (score <= 20) return 'VL';  // Very Low
+      if (score <= 40) return 'L';   // Low
+      if (score <= 60) return 'M';   // Mid
+      if (score <= 80) return 'H';   // High
+      return 'VH';                    // Very High
+    }
+
+    // Difference magnitude classification
+    function diffLevel(diff) {
+      const abs = Math.abs(diff);
+      if (abs <= 10) return 'similar';      // 거의 같음
+      if (abs <= 25) return 'slight';       // 약간 차이
+      if (abs <= 40) return 'moderate';     // 중간 차이
+      return 'large';                        // 큰 차이
+    }
+
+    function getAdvice(me, other) {
+      const s1 = getOceanScores(me);
+      const s2 = getOceanScores(other);
+      const axes = ['O', 'C', 'E', 'A', 'N'];
+
+      // === 1. Profile Analysis ===
+      const profiles = {};
+      const diffs = {}, absDiffs = {}, diffLevels = {};
+      axes.forEach(k => {
+        profiles[k] = { me: level(s1[k]), other: level(s2[k]), meFine: fineLevel(s1[k]), otherFine: fineLevel(s2[k]) };
+        diffs[k] = s1[k] - s2[k];
+        absDiffs[k] = Math.abs(diffs[k]);
+        diffLevels[k] = diffLevel(diffs[k]);
+      });
+
+      // === 2. Interaction Pattern Detection ===
+      const patterns = detectInteractionPatterns(s1, s2, profiles, diffs);
+
+      // === 3. Chemistry Analysis ===
+      const chemistry = analyzeChemistry(s1, s2, diffs, patterns);
+
+      // === 4. Generate Detailed Advice ===
+      let lines = [];
+
+      // Primary Chemistry Header (from 25+ types)
+      lines.push(getDetailedChemistryHeader(chemistry));
+
+      // Shared Traits (show up to 2 if multiple)
+      if (patterns.sharedTraits.length > 0) {
+        lines.push(getDetailedSharedInsight(patterns.sharedTraits, s1, s2));
+        if (patterns.sharedTraits.length > 1) {
+          lines.push(getDetailedSharedInsight([patterns.sharedTraits[1]], s1, s2));
+        }
+      }
+
+      // Complementary traits (보완 관계)
+      if (patterns.complementary.length > 0) {
+        lines.push(getComplementaryInsight(patterns.complementary[0], s1, s2, diffs));
+      }
+
+      // Key Interaction Dynamics
+      if (patterns.keyInteractions.length > 0) {
+        lines.push(getInteractionInsight(patterns.keyInteractions[0], s1, s2, diffs));
+      }
+
+      // Synergies (시너지 포인트)
+      if (patterns.synergies.length > 0) {
+        lines.push(getSynergyInsight(patterns.synergies, s1, s2));
+      }
+
+      // Tensions (긴장 포인트) - 주의할 점
+      if (patterns.tensions.length > 0) {
+        lines.push(getTensionInsight(patterns.tensions, s1, s2, diffs));
+      }
+
+      // Specific Axis Advice (based on largest difference with context)
+      const primaryDiffAxis = getPrimaryDiffAxis(diffs, absDiffs);
+      if (primaryDiffAxis && absDiffs[primaryDiffAxis] > 8) {
+        lines.push(getAxisSpecificAdvice(primaryDiffAxis, s1, s2, diffs, diffLevels));
+      }
+
+      // Secondary Axis (if significant)
+      const secondaryDiffAxis = getSecondaryDiffAxis(diffs, absDiffs, primaryDiffAxis);
+      if (secondaryDiffAxis && absDiffs[secondaryDiffAxis] > 12) {
+        lines.push(getSecondaryAxisAdvice(secondaryDiffAxis, s1, s2, diffs));
+      }
+
+      // Third Axis (if notable)
+      const thirdDiffAxis = getThirdDiffAxis(diffs, absDiffs, primaryDiffAxis, secondaryDiffAxis);
+      if (thirdDiffAxis && absDiffs[thirdDiffAxis] > 15) {
+        lines.push(getSecondaryAxisAdvice(thirdDiffAxis, s1, s2, diffs));
+      }
+
+      // Role Dynamics
+      lines.push(getRoleDynamics(s1, s2, diffs, patterns));
+
+      // Context-Aware Actionable Tip
+      lines.push(getContextualTip(chemistry, patterns, s1, s2));
+
+      // Bonus tip based on overall compatibility
+      lines.push(getBonusTip(chemistry, patterns, s1, s2));
+
+      // Filter nulls and return
+      return lines.filter(l => l !== null);
+    }
+
+    // === Interaction Pattern Detection ===
+    function detectInteractionPatterns(s1, s2, profiles, diffs) {
+      const patterns = {
+        sharedTraits: [],      // 공통 특성
+        complementary: [],      // 상호보완적 특성
+        tensions: [],           // 잠재적 갈등 요소
+        synergies: [],          // 시너지 요소
+        keyInteractions: []     // 핵심 상호작용 패턴
+      };
+
+      const axes = ['O', 'C', 'E', 'A', 'N'];
+
+      // Shared traits (both high or both low)
+      axes.forEach(k => {
+        if (profiles[k].me === 'H' && profiles[k].other === 'H') {
+          patterns.sharedTraits.push({ axis: k, type: 'high', strength: Math.min(s1[k], s2[k]) });
+        } else if (profiles[k].me === 'L' && profiles[k].other === 'L') {
+          patterns.sharedTraits.push({ axis: k, type: 'low', strength: 100 - Math.max(s1[k], s2[k]) });
+        }
+      });
+
+      // Complementary patterns (opposite but potentially beneficial)
+      if ((profiles.E.me === 'H' && profiles.E.other === 'L') || (profiles.E.me === 'L' && profiles.E.other === 'H')) {
+        patterns.complementary.push({ type: 'E_balance', desc: '외향-내향 균형' });
+      }
+      if ((profiles.O.me === 'H' && profiles.C.other === 'H') || (profiles.C.me === 'H' && profiles.O.other === 'H')) {
+        patterns.synergies.push({ type: 'vision_execution', desc: '비전-실행 시너지' });
+      }
+      if ((profiles.A.me === 'H' && profiles.A.other === 'L') || (profiles.A.me === 'L' && profiles.A.other === 'H')) {
+        patterns.complementary.push({ type: 'A_balance', desc: '조화-독립 균형' });
+      }
+
+      // Potential tensions
+      if (profiles.C.me !== profiles.C.other && Math.abs(diffs.C) > 30) {
+        patterns.tensions.push({ type: 'planning_conflict', axis: 'C' });
+      }
+      if (profiles.N.me === 'H' && profiles.N.other === 'L' && Math.abs(diffs.N) > 30) {
+        patterns.tensions.push({ type: 'emotional_gap', axis: 'N' });
+      }
+
+      // Special synergies
+      if (s1.A > 60 && s2.A > 60) {
+        patterns.synergies.push({ type: 'harmony_duo', desc: '조화로운 듀오' });
+      }
+      if (s1.O > 60 && s2.O > 60 && s1.E > 50 && s2.E > 50) {
+        patterns.synergies.push({ type: 'adventure_duo', desc: '모험 듀오' });
+      }
+      if (s1.C > 60 && s2.C > 60 && s1.N < 40 && s2.N < 40) {
+        patterns.synergies.push({ type: 'power_duo', desc: '실행력 듀오' });
+      }
+
+      // Key interaction patterns (2-axis combinations)
+      // E-A: Social Harmony Pattern
+      if (s1.E > 60 && s1.A > 60) patterns.keyInteractions.push({ type: 'social_connector', who: 'me' });
+      if (s2.E > 60 && s2.A > 60) patterns.keyInteractions.push({ type: 'social_connector', who: 'other' });
+
+      // C-N: Stability Pattern
+      if (s1.C > 60 && s1.N < 40) patterns.keyInteractions.push({ type: 'rock_solid', who: 'me' });
+      if (s2.C > 60 && s2.N < 40) patterns.keyInteractions.push({ type: 'rock_solid', who: 'other' });
+
+      // O-E: Explorer Pattern
+      if (s1.O > 60 && s1.E > 60) patterns.keyInteractions.push({ type: 'explorer', who: 'me' });
+      if (s2.O > 60 && s2.E > 60) patterns.keyInteractions.push({ type: 'explorer', who: 'other' });
+
+      // A-N: Emotional Intelligence Pattern
+      if (s1.A > 60 && s1.N > 50) patterns.keyInteractions.push({ type: 'empath', who: 'me' });
+      if (s2.A > 60 && s2.N > 50) patterns.keyInteractions.push({ type: 'empath', who: 'other' });
+
+      return patterns;
+    }
+
+    // === Chemistry Analysis (25+ types) ===
+    function analyzeChemistry(s1, s2, diffs, patterns) {
+      const dist = Math.sqrt(['O','C','E','A','N'].reduce((sum, k) => {
+        const w = { O: 1.0, C: 1.3, E: 1.1, A: 1.4, N: 1.2 }[k];
+        return sum + (diffs[k] ** 2 * w);
+      }, 0));
+
+      // Primary type based on distance
+      let primary, secondary = null;
+
+      if (dist < 20) {
+        primary = 'mirror_soul';  // 거울 영혼
+      } else if (dist < 35) {
+        primary = 'kindred_spirit';  // 영혼의 동반자
+      } else if (dist > 100) {
+        primary = 'polar_opposites';  // 정반대
+      } else if (dist > 80) {
+        primary = 'different_worlds';  // 다른 세계
+      } else {
+        // Pattern-based classification
+        if (patterns.synergies.some(s => s.type === 'adventure_duo')) {
+          primary = 'adventure_partners';
+        } else if (patterns.synergies.some(s => s.type === 'harmony_duo')) {
+          primary = 'harmony_keepers';
+        } else if (patterns.synergies.some(s => s.type === 'power_duo')) {
+          primary = 'power_team';
+        } else if (patterns.synergies.some(s => s.type === 'vision_execution')) {
+          primary = 'dream_makers';
+        } else if (patterns.complementary.some(c => c.type === 'E_balance')) {
+          primary = 'energy_balance';
+        } else if (patterns.complementary.some(c => c.type === 'A_balance')) {
+          primary = 'yin_yang';
+        } else if (patterns.sharedTraits.length >= 3) {
+          primary = 'tribe_members';
+        } else if (patterns.sharedTraits.length >= 2) {
+          primary = 'value_sharers';
+        } else if (patterns.tensions.length >= 2) {
+          primary = 'growth_partners';
+        } else if (patterns.tensions.length === 1) {
+          primary = 'learning_pair';
+        } else {
+          primary = 'balanced_match';
+        }
+      }
+
+      // Secondary modifier based on specific patterns
+      if (patterns.keyInteractions.some(k => k.type === 'empath')) {
+        secondary = 'emotionally_attuned';
+      } else if (patterns.keyInteractions.some(k => k.type === 'rock_solid')) {
+        secondary = 'stability_anchor';
+      } else if (patterns.keyInteractions.some(k => k.type === 'explorer')) {
+        secondary = 'curiosity_driven';
+      }
+
+      return { primary, secondary, dist, patterns };
+    }
+
+    // === Detailed Chemistry Headers (MZ Style) ===
+    function getDetailedChemistryHeader(chemistry) {
+      const headers = {
+        mirror_soul: [
+          "🪞 **찐 소울메이트** — 말 안 해도 아는 사이 ㄹㅇ 텔레파시 가능",
+          "✨ **복붙 수준 싱크로율** — 취향부터 생각까지 거의 쌍둥이..?",
+          "💫 **운명 맞음** — 이 정도면 전생에 뭔가 있었던 듯"
+        ],
+        kindred_spirit: [
+          "🌟 **찐친 각** — 핵심 가치관 일치, 오래가는 인연이에요",
+          "💚 **케미 터짐** — 중요한 거 다 통하는 레어템 같은 사이",
+          "🤝 **믿고 보는 관계** — 서로 '아 이 사람은 진짜다' 느낌 옴"
+        ],
+        polar_opposites: [
+          "🌗 **정반대 매력** — 완전 다른데 그래서 더 흥미로움 ㅋㅋ",
+          "🎭 **이세계 조합** — 다른 점이 많아서 오히려 배울 게 많음",
+          "🔮 **성장 부스터** — 불편할 수 있는데 그만큼 성장함"
+        ],
+        different_worlds: [
+          "🌍 **평행세계 만남** — 각자 세계관이 있어서 신기방기",
+          "🎨 **다름의 미학** — 다른 거 인정하면 의외로 재밌는 관계",
+          "🌈 **시야 확장템** — 서로한테 완전 새로운 세계 열어줄 듯"
+        ],
+        adventure_partners: [
+          "🚀 **갓생 파트너** — 같이 있으면 뭐든 재밌어지는 조합!",
+          "🎢 **놀이공원 찐친** — 새로운 거 같이 하면 시너지 폭발",
+          "🗺️ **탐험 메이트** — 세상 구경하기 딱 좋은 파트너"
+        ],
+        harmony_keepers: [
+          "☮️ **평화주의 듀오** — 둘 다 싸움 싫어해서 편안~",
+          "🕊️ **힐링 관계** — 서로 챙겨주는 거 잘해서 마음 편함",
+          "💝 **안전지대** — 같이 있으면 심리적 안정감 옴"
+        ],
+        power_team: [
+          "⚡ **갓생러 듀오** — 계획하고 실행하는 거 찐으로 잘함",
+          "🎯 **목표 달성 머신** — 같이하면 뭐든 해내는 조합",
+          "💪 **든든한 팀** — 믿고 맡길 수 있는 사이"
+        ],
+        dream_makers: [
+          "💭 **아이디어 + 실행력** — 한 명이 꿈꾸면 한 명이 현실로!",
+          "🌠 **콜라보 장인** — 서로 강점이 달라서 시너지 ㅁㅊ",
+          "✨ **가능성 무한대** — 같이하면 뭔가 큰 거 할 수 있을 듯"
+        ],
+        energy_balance: [
+          "⚖️ **밸런스 맞음** — 활발함 + 차분함 = 완벽한 조합",
+          "🔄 **에너지 교환** — 서로 없는 거 채워주는 관계",
+          "🎭 **동적 평형** — 놀 때 쉴 때 균형 잡기 좋은 케미"
+        ],
+        yin_yang: [
+          "☯️ **음양 밸런스** — 다른데 그래서 딱 맞는 느낌",
+          "🌓 **퍼즐 조각** — 서로의 빈 곳 채워주는 사이",
+          "💫 **1+1=3 조합** — 같이 있으면 더 완전해지는 느낌"
+        ],
+        tribe_members: [
+          "🏕️ **같은 편** — 가치관 여러 개 겹쳐서 편한 사이",
+          "🤗 **공감대 많음** — 대화하면 '아 맞아맞아' 연발",
+          "🌿 **내추럴 케미** — 노력 안 해도 자연스럽게 친해짐"
+        ],
+        value_sharers: [
+          "💎 **핵심 가치 공유** — 중요한 건 같이 생각하는 사이",
+          "🔗 **연결된 느낌** — 결정적인 순간에 서로 이해함",
+          "🌟 **같은 언어** — 소통이 편한 관계"
+        ],
+        growth_partners: [
+          "🌱 **성장 메이트** — 다른 점이 서로 레벨업 시켜줌",
+          "🔥 **자극제** — 같이 있으면 새로운 나를 발견함",
+          "💡 **배움 관계** — 다름에서 인사이트 얻는 중"
+        ],
+        learning_pair: [
+          "📚 **서로 선생님** — 한 가지 다른 점이 새 시각을 줌",
+          "🔍 **발견의 재미** — 몰랐던 세계 알게 해주는 사이",
+          "🌈 **시야 넓히기** — 차이가 관계를 더 풍요롭게 함"
+        ],
+        balanced_match: [
+          "⚖️ **무난하게 좋음** — 적당히 같고 적당히 달라서 편함",
+          "🤝 **안정적인 사이** — 무난 is 최고, 편안한 관계",
+          "🌐 **기본 이상** — 서로 존중하면서 잘 지낼 수 있음"
+        ]
+      };
+
+      let result = pick(headers[chemistry.primary] || headers.balanced_match);
+
+      // Add secondary modifier (MZ style)
+      if (chemistry.secondary) {
+        const modifiers = {
+          emotionally_attuned: " + 감정 교류 찐임",
+          stability_anchor: " + 멘탈 케어 가능",
+          curiosity_driven: " + 호기심이 케미를 이끔"
+        };
+        if (modifiers[chemistry.secondary]) {
+          result = result.slice(0, -1) + modifiers[chemistry.secondary];
+        }
+      }
+
+      return result;
+    }
+
+    // === Detailed Shared Traits Insight (MZ Style) ===
+    function getDetailedSharedInsight(sharedTraits, s1, s2) {
+      if (sharedTraits.length === 0) return null;
+
+      // Sort by strength
+      sharedTraits.sort((a, b) => b.strength - a.strength);
+      const primary = sharedTraits[0];
+
+      const templates = {
+        O: {
+          high: {
+            strong: ["둘 다 **호기심 폭발형** ㅋㅋ 새로운 거 같이 파면 시간 순삭", "**탐험가 DNA** 장착한 둘이라 대화하면 주제가 끝이 없음"],
+            normal: ["둘 다 **새로운 거 좋아함** — 같이 뭐 해보자! 가 잘 통하는 사이", "**도전 정신** 있어서 서로 자극됨"]
+          },
+          low: {
+            strong: ["둘 다 **검증된 거 좋아함** — 안정 추구 성향이라 마음 편함", "**루틴 러버** 둘이라 예측 가능한 관계 ㄱㄴ"],
+            normal: ["둘 다 **급발진 싫어함** — 점진적 변화 선호해서 맞음", "**익숙한 게 최고** 마인드가 같아서 결정이 쉬움"]
+          }
+        },
+        C: {
+          high: {
+            strong: ["둘 다 **갓생러** ㅇㅈ — 같이 프로젝트 하면 완벽하게 끝냄", "**계획 장인** 둘이 만남 — 약속 시간 칼같이 지킴"],
+            normal: ["둘 다 **플래너형** — 일정 잡을 때 스트레스 제로", "**책임감 甲** 둘이라 서로 믿고 맡길 수 있음"]
+          },
+          low: {
+            strong: ["둘 다 **자유영혼** — 즉흥적인 거 오히려 좋아 ㅋㅋ", "**계획? 그게 뭔데** 마인드라 부담 없는 사이"],
+            normal: ["둘 다 **융통성** 있어서 갑자기 계획 바뀌어도 ㄱㅊ", "**느슨한 약속** 선호해서 서로 압박 안 줌"]
+          }
+        },
+        E: {
+          high: {
+            strong: ["둘 다 **인싸력 만렙** — 같이 다니면 어디든 분위기 UP", "**에너지 뿜뿜** 둘이라 만나면 항상 신남"],
+            normal: ["둘 다 **사람 좋아함** — 같이 놀러 다니기 딱 좋음", "**사교 활동** 취향 비슷해서 잘 맞음"]
+          },
+          low: {
+            strong: ["둘 다 **집순이/돌이** 성향 — 혼자 시간 필요한 거 찐 이해함", "**깊은 대화** 좋아하는 둘이라 피상적이지 않음"],
+            normal: ["둘 다 **조용한 시간** 소중히 여겨서 편함", "**소수 정예** 관계 선호하는 점이 같음"]
+          }
+        },
+        A: {
+          high: {
+            strong: ["둘 다 **배려 장인** — 서로 눈치 게임 잘함 (좋은 의미로)", "**평화주의자** 둘이라 갈등이 거의 없음"],
+            normal: ["둘 다 **협력형** — 같이 뭐 하면 분위기 좋음", "**챙겨주는 거** 잘해서 편안한 관계"]
+          },
+          low: {
+            strong: ["둘 다 **할 말 하는 타입** — 솔직하게 얘기 가능", "**독립적** 성향이라 서로 간섭 안 함"],
+            normal: ["둘 다 **눈치 안 봄** — 속 시원한 관계 ㄱㄴ", "**각자 영역** 존중해서 편함"]
+          }
+        },
+        N: {
+          high: {
+            strong: ["둘 다 **감성 충만** — 서로 기분 변화 귀신같이 알아챔", "**공감 능력 만렙** 둘이라 감정 교류 깊음"],
+            normal: ["둘 다 **감정에 민감** — 서로 기분 잘 챙겨줌", "**섬세한 타입**이라 세심한 배려 가능"]
+          },
+          low: {
+            strong: ["둘 다 **멘탈 강철** — 웬만한 일에 흔들리지 않음", "**스트레스 내성** 높은 둘이라 힘든 상황도 ㄱㅊ"],
+            normal: ["둘 다 **감정 기복 적음** — 예측 가능해서 편함", "**차분한 타입**이라 안정적인 관계"]
+          }
+        }
+      };
+
+      const strengthLevel = primary.strength > 70 ? 'strong' : 'normal';
+      const options = templates[primary.axis]?.[primary.type]?.[strengthLevel] || [];
+      let result = pick(options) || "공통점 있어서 이해하기 쉬움";
+
+      // Add second shared trait if exists (MZ style)
+      if (sharedTraits.length > 1) {
+        const secondary = sharedTraits[1];
+        const mzDesc = {
+          O: { high: '새로운 거 좋아하는', low: '안정 추구하는' },
+          C: { high: '계획적인', low: '즉흥적인' },
+          E: { high: '사교적인', low: '혼자 시간 필요한' },
+          A: { high: '배려하는', low: '솔직한' },
+          N: { high: '감성적인', low: '차분한' }
+        };
+        const desc = mzDesc[secondary.axis]?.[secondary.type] || '';
+        if (desc) result += ` + 둘 다 **${desc}** 편`;
+      }
+
+      return "💚 " + result;
+    }
+
+    // === Interaction Pattern Insight (MZ Style) ===
+    function getInteractionInsight(interaction, s1, s2, diffs) {
+      const insights = {
+        social_connector: {
+          me: "니가 **인싸+배려** 다 갖춘 타입이라 관계에서 분위기 메이커 역할 함",
+          other: "쟤는 **연결 능력** 만렙임 — 사람들 잘 엮어주는 재능 인정해줘"
+        },
+        rock_solid: {
+          me: "니가 **계획+안정** 담당이라 이 관계에 든든한 기반 제공 중",
+          other: "쟤는 **멘탈 바위** 타입 — 믿고 의지해도 됨"
+        },
+        explorer: {
+          me: "니가 **모험 담당** — 관계에 새로운 바람 넣어주는 역할",
+          other: "쟤 **탐험가 기질** 있어서 같이 다니면 새로운 세계 열림"
+        },
+        empath: {
+          me: "니가 **감정 읽기 만렙**이라 상대 기분 귀신같이 알아챔",
+          other: "쟤 **공감력 甲**이라 네 감정 깊이 이해해줄 거임"
+        }
+      };
+
+      const template = insights[interaction.type]?.[interaction.who];
+      return template ? "🔮 " + template : null;
+    }
+
+    // === Primary Difference Axis ===
+    function getPrimaryDiffAxis(diffs, absDiffs) {
+      const weights = { O: 1.0, C: 1.3, E: 1.1, A: 1.4, N: 1.2 };
+      return ['O', 'C', 'E', 'A', 'N']
+        .sort((a, b) => (absDiffs[b] * weights[b]) - (absDiffs[a] * weights[a]))[0];
+    }
+
+    function getSecondaryDiffAxis(diffs, absDiffs, primary) {
+      const weights = { O: 1.0, C: 1.3, E: 1.1, A: 1.4, N: 1.2 };
+      return ['O', 'C', 'E', 'A', 'N']
+        .filter(k => k !== primary)
+        .sort((a, b) => (absDiffs[b] * weights[b]) - (absDiffs[a] * weights[a]))[0];
+    }
+
+    function getThirdDiffAxis(diffs, absDiffs, primary, secondary) {
+      const weights = { O: 1.0, C: 1.3, E: 1.1, A: 1.4, N: 1.2 };
+      return ['O', 'C', 'E', 'A', 'N']
+        .filter(k => k !== primary && k !== secondary)
+        .sort((a, b) => (absDiffs[b] * weights[b]) - (absDiffs[a] * weights[a]))[0];
+    }
+
+    // === Complementary Insight (MZ Style) ===
+    function getComplementaryInsight(comp, s1, s2, diffs) {
+      const templates = {
+        O: [
+          "🔄 **개방성 보완**: 니가 새로운 거 제안하면 쟤가 현실 체크해줌 — 꿀조합임",
+          "🔄 **탐험+안정 시너지**: 서로 다른 관점이라 의사결정 퀄리티 올라감"
+        ],
+        C: [
+          "🔄 **계획성 보완**: 한 명은 큰 그림, 한 명은 디테일 — 역할 분담 ㄱㄱ",
+          "🔄 **체계+유연 밸런스**: 플랜 B 있으면서도 즉흥 가능한 조합"
+        ],
+        E: [
+          "🔄 **에너지 보완**: 밖에서 놀 때 / 집에서 쉴 때 서로 맞춰주면 됨",
+          "🔄 **사교+휴식 밸런스**: 같이 있어도 각자 충전 방식 다른 거 인정 ㄱㄱ"
+        ],
+        A: [
+          "🔄 **소통 스타일 보완**: 한 명은 직설, 한 명은 부드럽게 — 상황에 따라 역할 바꿔",
+          "🔄 **배려+솔직 밸런스**: 둘이 있으면 관계에서 균형 잡힘"
+        ],
+        N: [
+          "🔄 **감정 보완**: 한 명이 불안할 때 다른 한 명이 안정감 줄 수 있음",
+          "🔄 **멘탈 서포트**: 서로 다른 감정 스타일이라 위로 방식도 달라 — 맞춰가봐"
+        ]
+      };
+      return pick(templates[comp.axis] || templates.E);
+    }
+
+    // === Synergy Insight (MZ Style) ===
+    function getSynergyInsight(synergies, s1, s2) {
+      if (synergies.length === 0) return null;
+
+      const synergyMessages = {
+        O_high: "**창의력** 둘 다 높아서 아이디어 배틀하면 ㄹㅇ 재밌을 듯",
+        C_high: "**실행력** 둘 다 갑이라 목표 세우면 진짜 이룸",
+        E_high: "**에너지** 둘 다 넘쳐서 같이 있으면 분위기 업됨",
+        A_high: "**배려심** 둘 다 있어서 갈등 거의 없을 듯",
+        N_low: "**멘탈** 둘 다 단단해서 서로 의지할 수 있음",
+        O_low: "**안정 추구** 둘 다 비슷해서 예측 가능한 관계 형성됨",
+        C_low: "**유연함** 둘 다 있어서 즉흥적인 것도 잘 맞음",
+        E_low: "**조용한 시간** 둘 다 좋아해서 같이 있어도 편함",
+        A_low: "**솔직함** 둘 다 있어서 돌려 말 안 해도 됨",
+        N_high: "**감성** 둘 다 풍부해서 감정 공유가 잘됨"
+      };
+
+      const msgs = synergies.map(s => synergyMessages[s]).filter(Boolean);
+      if (msgs.length === 0) return null;
+
+      return "✨ **시너지 포인트**: " + pick(msgs);
+    }
+
+    // === Tension Insight (MZ Style) ===
+    function getTensionInsight(tensions, s1, s2, diffs) {
+      if (tensions.length === 0) return null;
+
+      const tensionMessages = {
+        O: diffs.O > 0
+          ? "⚡ **주의**: 니가 새로운 거 하자고 할 때 쟤는 부담될 수 있음 — 천천히 제안해"
+          : "⚡ **주의**: 쟤가 변화 제안할 때 바로 거부하지 말고 한 번 생각해봐",
+        C: diffs.C > 0
+          ? "⚡ **주의**: 니 기준으로 계획 세우면 쟤한텐 빡셀 수 있음 — 여유 줘"
+          : "⚡ **주의**: 쟤 계획에 니가 너무 즉흥적이면 스트레스받을 수 있음",
+        E: diffs.E > 0
+          ? "⚡ **주의**: 니가 밖에서 놀자고 할 때 쟤는 지칠 수 있음 — 휴식도 같이"
+          : "⚡ **주의**: 쟤가 약속 잡을 때 부담되면 솔직히 말해도 됨",
+        A: diffs.A > 0
+          ? "⚡ **주의**: 니 배려가 쟤한텐 답답하게 느껴질 수 있음 — 솔직하게 말해도 됨"
+          : "⚡ **주의**: 쟤 직설적인 표현에 상처받지 마 — 그냥 스타일임",
+        N: diffs.N > 0
+          ? "⚡ **주의**: 니가 걱정 많이 할 때 쟤는 이해 못 할 수 있음 — 설명해줘"
+          : "⚡ **주의**: 쟤가 예민할 때 '괜찮아'보다 '그럴 수 있지' 가 나음"
+      };
+
+      const msgs = tensions.map(t => tensionMessages[t]).filter(Boolean);
+      return msgs.length > 0 ? pick(msgs) : null;
+    }
+
+    // === Bonus Tip (MZ Style) ===
+    function getBonusTip(chemistry, patterns, s1, s2) {
+      const bonusTips = {
+        high_compatibility: [
+          "🎁 **꿀팁**: 너무 잘 맞아서 당연하게 여기기 쉬움 — 가끔 고마움 표현해줘",
+          "🎁 **꿀팁**: 편한 관계라도 **새로운 경험** 같이 해보면 더 가까워짐",
+          "🎁 **꿀팁**: 비슷한 점 많으니까 **차이점**에서 배울 게 있을 듯"
+        ],
+        medium_compatibility: [
+          "🎁 **꿀팁**: 적당히 다르고 적당히 비슷해서 밸런스 좋음 — 유지 ㄱㄱ",
+          "🎁 **꿀팁**: 서로 다른 부분이 오히려 **관계를 풍성**하게 만듦",
+          "🎁 **꿀팁**: 의견 다를 때 **'왜?'** 물어보면 서로 이해 깊어짐"
+        ],
+        low_compatibility: [
+          "🎁 **꿀팁**: 많이 다르지만 그래서 **배울 게 많음** — 열린 마음 ㄱㄱ",
+          "🎁 **꿀팁**: 차이가 클수록 **소통이 중요**함 — 추측 말고 물어봐",
+          "🎁 **꿀팁**: 다른 게 나쁜 게 아님 — **다양성**이 관계를 성장시킴"
+        ]
+      };
+
+      // Determine compatibility level
+      const sharedCount = patterns.sharedTraits.length;
+      const tensionCount = patterns.tensions.length;
+
+      let level = 'medium_compatibility';
+      if (sharedCount >= 3 && tensionCount === 0) level = 'high_compatibility';
+      else if (tensionCount >= 2 || sharedCount === 0) level = 'low_compatibility';
+
+      return pick(bonusTips[level]);
+    }
+
+    // === Axis-Specific Advice with Context (MZ Style) ===
+    function getAxisSpecificAdvice(axis, s1, s2, diffs, diffLevels) {
+      const diff = diffs[axis];
+      const level = diffLevels[axis];
+      const direction = diff > 0 ? 'higher' : 'lower';
+
+      const templates = {
+        O: {
+          similar: ["**새로운 것에 대한 태도** 비슷해서 의사결정 편함", "변화에 대한 입장 같아서 **ㅇㅋㅇㅋ** 잘 됨"],
+          slight: {
+            higher: ["니가 좀 더 **도전적**임 — 쟤의 신중함도 가치 있으니까 존중 ㄱㄱ", "가끔 네 아이디어 던져봐, 쟤도 관심 가질 듯"],
+            lower: ["쟤가 좀 더 **모험파**임 — 가끔 새로운 제안 따라가 봐", "쟤 창의력 응원해주면 관계 업그레이드됨"]
+          },
+          moderate: {
+            higher: ["넌 **탐험가**, 쟨 **안정파** — 새 시도 전에 충분히 설명하면 ㄱㅊ", "네 아이디어 **작은 것부터** 같이 시도해봐"],
+            lower: ["쟨 **변화 러버**, 넌 **검증된 것** 선호 — 균형 잡힌 조합임", "쟤 제안에 '**해볼게**' 해봐, 의외로 재밌을 수 있음"]
+          },
+          large: {
+            higher: ["넌 **새로움 갈구**, 쟨 **익숙함 원함** — 이 차이 인정하는 게 첫걸음", "급발진 대신 **점진적 시도**로 쟤가 적응할 시간 줘"],
+            lower: ["쟤의 **끊임없는 새 제안**이 부담될 수 있음 — 솔직히 **페이스 조절** 요청 ㄱㄴ", "가끔 쟤 모험에 동참하고, 가끔은 **네 루틴**도 존중받아야 함"]
+          }
+        },
+        C: {
+          similar: ["**계획성** 비슷해서 일정 조율 이지", "시간 관념 맞아서 **약속 잡기 편함**"],
+          slight: {
+            higher: ["니가 좀 더 **체계적**임 — 중요한 일정은 네가 리드해", "쟤의 **유연함**도 장점이니까 작은 건 맡겨봐"],
+            lower: ["쟤가 좀 더 **계획적**임 — 중요한 약속은 **미리 공유** ㄱㄱ", "시간 약속만 지켜도 **신뢰** 쌓임"]
+          },
+          moderate: {
+            higher: ["넌 **플래너**, 쟨 **자유영혼** — 핵심만 정하고 나머진 여유 ㄱㄱ", "네 계획 **강요** 안 하면 쟤도 기꺼이 따라옴"],
+            lower: ["쟨 **계획 철저파** — 갑작스러운 변경은 **미리 알려줘**", "쟤가 정한 일정 **존중**하면 관계 훨씬 편해짐"]
+          },
+          large: {
+            higher: ["너한텐 계획이 **필수**, 쟤한텐 **속박**일 수 있음 — **협상점** 찾아봐", "핵심(시간, 장소)만 정하고 나머진 **흘러가는 대로**"],
+            lower: ["쟤의 세세한 계획이 **답답할 수 있음** — 솔직히 말해도 됨", "중요한 약속은 **꼭 지켜** — 쟤한텐 그게 사랑 표현임"]
+          }
+        },
+        E: {
+          similar: ["**에너지 충전법** 비슷해서 같이 있어도 편함", "사교 활동 선호도 맞아서 **마찰 적음**"],
+          slight: {
+            higher: ["니가 좀 더 **인싸**임 — 모임 후 쟤 쉴 시간 **존중** ㄱㄱ", "쟤도 너랑 같이면 사람 만나는 거 **덜 피곤**해할 듯"],
+            lower: ["쟤가 좀 더 **활발**함 — 가끔 같이 **나가봐**", "혼자 시간 필요하면 **미리 말해둬**, 쟨 이해해줄 거임"]
+          },
+          moderate: {
+            higher: ["넌 **사람들 속에서**, 쟨 **조용한 곳에서** 충전 — **균형** 찾아봐", "모임 후엔 **둘만의 시간** 갖거나 쟤 쉴 시간 줘"],
+            lower: ["쟤의 **활발한 사교**가 부담되면 **솔직히 말해도** 됨", "네 페이스 존중받으면서 **가끔 같이** 나가주면 쟤 기뻐함"]
+          },
+          large: {
+            higher: ["너한텐 사람들이 **에너지원**, 쟤한텐 **에너지 소모** — 이해 필요", "쟤한테 **혼자 시간** 충분히 줘, 관계 오래가는 비결임"],
+            lower: ["쟤의 **끊임없는 모임**이 지칠 수 있음 — **한계 정해서** 소통해", "모든 모임 다 갈 필요 없음, **선택적 참여** ㄱㅊ"]
+          }
+        },
+        A: {
+          similar: ["**협력 vs 독립** 성향 비슷해서 갈등 적음", "의견 나누는 방식 맞아서 **소통 편함**"],
+          slight: {
+            higher: ["니가 좀 더 **조화 추구**함 — 갈등 시 **먼저 손 내밀어** 줘", "쟤의 직설적 표현은 **나쁜 의도 아님**"],
+            lower: ["쟤가 좀 더 **부드러움** — 의견 말할 때 **감정 표현** 곁들여봐", "'**나는 ~하게 느껴**' 이런 표현 쓰면 소통 부드러워짐"]
+          },
+          moderate: {
+            higher: ["넌 **조화**, 쟨 **솔직함** 중시 — 둘 다 가치 있음", "쟤의 직설적 표현에 **상처받지 마** — 의도는 좋음"],
+            lower: ["쟨 **감정 섬세하게** 다룸 — 논쟁보다 **대화**로 접근해봐", "네 솔직함이 **상처** 안 되게 표현 방식 살짝 바꿔봐"]
+          },
+          large: {
+            higher: ["넌 **평화 유지자**, 쟨 **진실 추구자** — 서로 방식 인정해", "갈등 피하지 말고 **건설적으로** 다뤄봐, 쟨 솔직한 대화 원함"],
+            lower: ["쟤한테 **공감 먼저**, 의견은 나중에 — 순서 중요함", "논쟁에서 이기려 하지 말고 **이해하려는 자세**가 관계 지킴"]
+          }
+        },
+        N: {
+          similar: ["**감정 처리 방식** 비슷해서 서로 이해 쉬움", "스트레스 상황에서 **비슷하게 반응**해서 편함"],
+          slight: {
+            higher: ["쟤가 좀 더 **감정에 민감**함 — 가볍게 넘기지 말고 **공감** ㄱㄱ", "쟤 걱정에 **공감 먼저** 하고 해결책 제안해"],
+            lower: ["니가 좀 더 **감정적**임 — 쟤의 차분함이 **무관심 아님**", "힘들 때 **솔직히 말하면** 쟤가 도와줄 거임"]
+          },
+          moderate: {
+            higher: ["쟨 **감정 섬세**함 — 걱정할 때 **해결책보다 공감**이 먼저", "쟤의 감정 기복 **있는 그대로** 받아들여줘"],
+            lower: ["네 감정 **말로 표현**해줘 — 쟨 알아서 눈치채기 어려움", "쟤의 차분함이 **네 든든한 버팀목** 될 수 있음"]
+          },
+          large: {
+            higher: ["쟤 **감정 기복 클 수 있음** — 판단 말고 **있는 그대로** 함께해줘", "쟤 감정적일 때 해결하려 들지 말고 **들어주기만** 해도 충분"],
+            lower: ["네 감정 **표현 안 하면** 쟨 모를 수 있음 — **말로 알려줘**", "쟤한테 **감정적 지원** 요청해도 ㄱㅊ, 방법 알려주면 도와줄 거임"]
+          }
+        }
+      };
+
+      const axisTemplates = templates[axis];
+      if (!axisTemplates) return null;
+
+      let options;
+      if (level === 'similar') {
+        options = axisTemplates.similar;
+      } else {
+        options = axisTemplates[level]?.[direction] || [];
+      }
+
+      return options.length > 0 ? "🔄 " + pick(options) : null;
+    }
+
+    // === Secondary Axis Advice (MZ Style) ===
+    function getSecondaryAxisAdvice(axis, s1, s2, diffs) {
+      const diff = diffs[axis];
+      const direction = diff > 0 ? 'me_higher' : 'other_higher';
+      const label = OCEAN_LABELS[axis].name;
+
+      const templates = {
+        O: {
+          me_higher: `**${label}** 갭도 있음 — 새로운 거 시도할 때 **스몰 스텝**으로 ㄱㄱ`,
+          other_higher: `**${label}** 갭도 있음 — 쟤 제안에 **오픈 마인드** 장착해봐`
+        },
+        C: {
+          me_higher: `**${label}** 갭도 있음 — 플래닝은 니가 리드하되 **여유** 좀 줘`,
+          other_higher: `**${label}** 갭도 있음 — 쟤 계획 **존중**해주면 신뢰 쌓임`
+        },
+        E: {
+          me_higher: `**${label}** 갭도 있음 — 놀고 나서 쟤 **혼자만의 시간** 존중 ㄱㄱ`,
+          other_higher: `**${label}** 갭도 있음 — 혼자 있고 싶을 때 **솔직히** 말해도 됨`
+        },
+        A: {
+          me_higher: `**${label}** 갭도 있음 — 쟤의 직설은 **찐심**에서 나온 거임`,
+          other_higher: `**${label}** 갭도 있음 — 의견 말할 때 **감정 표현** 좀 섞어봐`
+        },
+        N: {
+          me_higher: `**${label}** 갭도 있음 — 쟤가 걱정할 때 **공감부터** ㄱㄱ`,
+          other_higher: `**${label}** 갭도 있음 — 힘들면 **말로** 해줘야 쟤가 도울 수 있음`
+        }
+      };
+
+      return "💡 " + (templates[axis]?.[direction] || `**${label}** 갭도 있으니 서로 맞춰가면 됨`);
+    }
+
+    // === Role Dynamics (MZ Style) ===
+    function getRoleDynamics(s1, s2, diffs, patterns) {
+      const roles = [];
+
+      // Planning role
+      if (Math.abs(diffs.C) > 15) {
+        const planner = diffs.C > 0 ? '니가' : '쟤가';
+        roles.push(`📅 플래닝/일정은 **${planner}** 담당`);
+      }
+
+      // Social role
+      if (Math.abs(diffs.E) > 15) {
+        const socializer = diffs.E > 0 ? '니가' : '쟤가';
+        roles.push(`🎉 약속 잡기는 **${socializer}** 담당`);
+      }
+
+      // Mediator role
+      if (Math.abs(diffs.A) > 15) {
+        const mediator = diffs.A > 0 ? '니가' : '쟤가';
+        roles.push(`🕊️ 분위기 메이커는 **${mediator}**`);
+      }
+
+      // Emotional anchor
+      if (Math.abs(diffs.N) > 15) {
+        const anchor = diffs.N < 0 ? '니가' : '쟤가';
+        roles.push(`⚓ 멘탈 케어는 **${anchor}** 담당`);
+      }
+
+      // Explorer role
+      if (Math.abs(diffs.O) > 15) {
+        const explorer = diffs.O > 0 ? '니가' : '쟤가';
+        roles.push(`🧭 새로운 거 발굴은 **${explorer}** 담당`);
+      }
+
+      if (roles.length === 0) {
+        return "⚖️ **역할**: 비슷한 성향이라 같이 정하면 됨 ㅋㅋ";
+      }
+
+      // Return 1-2 roles
+      const selectedRoles = pickN(roles, Math.min(2, roles.length));
+      return "🎭 **역할 분담**: " + selectedRoles.join(' / ');
+    }
+
+    // === Contextual Actionable Tip (MZ Style) ===
+    function getContextualTip(chemistry, patterns, s1, s2) {
+      // Tips based on chemistry type + patterns
+      const baseTips = {
+        mirror_soul: [
+          "너무 비슷해서 **새로운 자극 필요**할 수도 — 각자 취미 하나씩 ㄱㄱ",
+          "서로를 **당연하게 생각하기 쉬움** — 작은 고마움도 표현해줘",
+          "마음이 통하니까 **대화 스킵하기 쉬움** — '요즘 어때?' 잊지마"
+        ],
+        kindred_spirit: [
+          "공통점 기반으로 **같이 할 새로운 활동** 찾아봐",
+          "서로 **성장하는 모습** 응원해주면 관계 레벨업 됨",
+          "비슷한 점 많으니까 **작은 차이도 리스펙** 해줘"
+        ],
+        polar_opposites: [
+          "서로 **바꾸려 하지 말고** 다름 자체를 인정 ㄱㄱ",
+          "이해 안 될 땐 **판단 말고 질문**부터",
+          "공통점 **억지로 찾기보다** 다름을 즐겨봐"
+        ],
+        different_worlds: [
+          "서로의 세계를 **소개해주는 마음**으로 대화해봐",
+          "작은 공통점 하나 찾아서 **거기서부터** 시작",
+          "다름에서 오는 **불편함을 성장 기회**로 생각해봐"
+        ],
+        adventure_partners: [
+          "활동적인 것도 좋은데 가끔 **조용히 대화**하는 시간도 ㄱㄱ",
+          "에너지 넘치니까 **각자 충전 타임**도 필요함",
+          "새로운 도전할 때 **서로 한계 존중** 해줘"
+        ],
+        harmony_keepers: [
+          "갈등 피하기보다 **작은 불만도 솔직하게** 나눠봐",
+          "배려하느라 **내 니즈 무시**하지 않도록 체크",
+          "조화로운 만큼 **서로 개성**도 살려줘"
+        ],
+        power_team: [
+          "효율만 추구 말고 **느긋하게 즐기는 시간**도 가져",
+          "목표 달성하면 **같이 축하 타임** 꼭 가져",
+          "완벽함보다 **과정의 재미**도 중요함"
+        ],
+        dream_makers: [
+          "아이디어 낼 때 vs 실행할 때 **역할 확실히** 나눠",
+          "꿈꾸는 사람도 **실현 과정**에 참여하면 더 좋음",
+          "실행하는 사람의 **현실적 조언** 열린 마음으로 들어봐"
+        ],
+        energy_balance: [
+          "**같이 있는 시간 vs 각자 시간** 밸런스 의식적으로 맞춰",
+          "쟤 에너지 충전 방식 **리스펙** 해줘",
+          "가끔은 쟤 방식으로 **시간 보내봐**"
+        ],
+        yin_yang: [
+          "차이를 **약점 아닌 강점**으로 바라봐",
+          "중요한 결정은 **둘 다 시각 반영**해서 내려",
+          "서로에게 **배울 점** 있다는 거 기억해"
+        ],
+        gentle_guides: [
+          "조언할 때 **감정 먼저** 공감해주고 말해",
+          "쟤 감정 흐름에 **맞춰주는 연습** 해봐",
+          "니 안정감이 쟤한테 **큰 힘**이 됨"
+        ],
+        creative_sparks: [
+          "아이디어 배틀할 때 **서로 Yes, and** 마인드로",
+          "창의력 폭발하는 순간 **기록** 해둬",
+          "너무 발산만 하지 말고 가끔 **정리 타임**도"
+        ],
+        stability_seekers: [
+          "안정감 좋은데 가끔 **작은 변화**도 시도해봐",
+          "익숙한 게 편하지만 **새로운 경험**도 같이",
+          "서로 예측 가능해서 좋음 — 근데 **서프라이즈**도 가끔?"
+        ],
+        growth_partners: [
+          "서로 **성장 목표** 공유하면 시너지 ㅁㅊ",
+          "발전하는 모습 **인정해주기** 잊지마",
+          "같이 성장하니까 **비교는 금물**"
+        ],
+        comfort_zone: [
+          "편안한 관계 좋음 — 근데 가끔 **도전**도 같이",
+          "서로 **위로 잘 해주는 사이** — 이거 진짜 귀함",
+          "안전지대도 좋지만 **확장**도 같이 해봐"
+        ]
+      };
+
+      // Get base tip
+      let tip = pick(baseTips[chemistry.primary] || baseTips.kindred_spirit);
+
+      // Modify based on patterns
+      if (patterns.tensions.length > 0) {
+        const tensionTips = [
+          "갈등 포인트 예상됨 — **미리 대화**해두면 좋음",
+          "차이 큰 부분은 **서로 방식 리스펙**이 핵심"
+        ];
+        if (Math.random() > 0.5) tip = pick(tensionTips);
+      }
+
+      if (patterns.synergies.length > 1) {
+        const synergyTips = [
+          "시너지 낼 수 있는 부분 많음 — **같이 프로젝트** 해봐!",
+          "서로 강점이 잘 맞음 — **콜라보**하면 결과 ㄹㅇ 좋을 듯"
+        ];
+        if (Math.random() > 0.5) tip = pick(synergyTips);
+      }
+
+      return "💡 **실천 팁**: " + tip;
+    }
+
+    // === Loading State Helpers ===
+    function showLoading(text = '데이터 불러오는 중...') {
+      const overlay = document.getElementById('loading-overlay');
+      const loadingText = document.getElementById('loading-text');
+      if (loadingText) loadingText.textContent = text;
+      if (overlay) overlay.classList.add('active');
+    }
+
+    function hideLoading() {
+      const overlay = document.getElementById('loading-overlay');
+      if (overlay) overlay.classList.remove('active');
+    }
+
+    function showAdvice(me, other) {
+      const modal = document.getElementById('advice-modal');
+      const header = document.getElementById('advice-header');
+      const list = document.getElementById('advice-body');
+
+      const n1 = me.nickname || '나';
+      const n2 = other.nickname || '친구';
+      const c1 = me.crystal_code || '???';
+      const c2 = other.crystal_code || '???';
+
+      header.textContent = `${n1}(${c1}) × ${n2}(${c2})`;
+
+      const lines = getAdvice(me, other);
+      list.innerHTML = lines.map(t => `<li>${t.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</li>`).join('');
+
+      modal.classList.add('active');
+    }
+
+    // --- Core Logic ---
+    let graphInstance = null;
+    let myResultId = null;
+    let supabaseClient = null; // Init later
+
+    function init() {
+      // Init Supabase safely
+      if (window.supabase) {
+        supabaseClient = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
+        console.log("Supabase connected");
+      } else {
+        console.error("Supabase library not loaded");
+        alert("네트워크 오류: 데이터베이스를 불러오지 못했습니다. 새로고침 해주세요.");
+      }
+
+      document.getElementById('start-btn').addEventListener('click', startQuiz);
+
+      document.getElementById('view-map-btn').addEventListener('click', async () => {
+        // View Map Mode
+        if (!supabaseClient) return alert("데이터베이스 연결 실패");
+        document.querySelector('#result-screen .card').style.display = 'none'; // Hide result card
+        document.querySelector('.screen-actions').style.display = 'none'; // Hide actions
+        document.getElementById('room-section').style.marginTop = '0';
+        switchScreen('result-screen');
+        await loadRoomData();
+      });
+
+      document.getElementById('test-100-btn').addEventListener('click', () => {
+        // 100명 테스트 모드
+        document.querySelector('#result-screen .card').style.display = 'none';
+        document.querySelector('.screen-actions').style.display = 'none';
+        document.getElementById('room-section').style.marginTop = '0';
+        switchScreen('result-screen');
+
+        if (!graphInstance) graphInstance = new SnowGraph('graph-canvas');
+
+        // Generate 100 test users with OCEAN scores
+        const dummyUsers = [];
+        const koreanNames = ['민준', '서윤', '예준', '지우', '도윤', '서연', '하준', '지민', '시우', '수아',
+          '준서', '하윤', '예서', '다은', '지호', '채원', '윤서', '주원', '지안', '소율'];
+
+        // Me at center with moderate OCEAN scores
+        const myName = document.getElementById('nickname-input').value || '나';
+        dummyUsers.push({ id: 'me', nickname: myName, scores: { O: 50, C: 50, E: 50, A: 50, N: 50 }, crystal_code: 'N2c' });
+
+        for (let i = 0; i < 100; i++) {
+          const cluster = Math.random();
+          let baseO = 50, baseC = 50, baseE = 50, baseA = 50, baseN = 50;
+          let variance = 15;
+
+          if (cluster < 0.2) {
+            // Soulmates - very similar OCEAN profile
+            variance = 10;
+          } else if (cluster < 0.5) {
+            // Colleagues - moderate differences, good C and A match
+            baseO += (Math.random() - 0.5) * 40;
+            baseE += (Math.random() - 0.5) * 40;
+            variance = 15;
+          } else {
+            // Different - random OCEAN profile
+            baseO = Math.random() * 100;
+            baseC = Math.random() * 100;
+            baseE = Math.random() * 100;
+            baseA = Math.random() * 100;
+            baseN = Math.random() * 100;
+            variance = 20;
+          }
+
+          dummyUsers.push({
+            id: `u${i}`,
+            nickname: koreanNames[i % koreanNames.length] + (Math.floor(i / 20) || ''),
+            scores: {
+              O: Math.max(0, Math.min(100, baseO + (Math.random() - 0.5) * variance * 2)),
+              C: Math.max(0, Math.min(100, baseC + (Math.random() - 0.5) * variance * 2)),
+              E: Math.max(0, Math.min(100, baseE + (Math.random() - 0.5) * variance * 2)),
+              A: Math.max(0, Math.min(100, baseA + (Math.random() - 0.5) * variance * 2)),
+              N: Math.max(0, Math.min(100, baseN + (Math.random() - 0.5) * variance * 2))
+            },
+            crystal_code: `C${i}`
+          });
+        }
+
+        requestAnimationFrame(() => {
+          graphInstance.resize();
+          graphInstance.setUsers(dummyUsers, 'me');
+          renderRoomList(dummyUsers);
+        });
+      });
+
+      document.getElementById('restart-btn').addEventListener('click', () => {
+        scores = { O: 50, C: 50, E: 50, A: 50, N: 50 }; // Reset OCEAN scores
+        current = 0;
+        myResultId = null; // Reset result ID
+        // Reset UI visibility in case we came from map view
+        document.querySelector('#result-screen .card').style.display = 'block';
+        document.querySelector('.screen-actions').style.display = 'grid';
+        document.getElementById('room-section').style.marginTop = '60px';
+        document.getElementById('delete-btn').style.display = 'none'; // Hide delete button
+        switchScreen('start-screen');
+      });
+
+      document.getElementById('share-btn').addEventListener('click', () => {
+        const url = window.location.href;
+        navigator.clipboard.writeText(url).then(() => {
+          const btn = document.getElementById('share-btn');
+          const originalText = btn.textContent;
+          btn.textContent = "복사 완료!";
+          setTimeout(() => btn.textContent = originalText, 2000);
+        }).catch(err => {
+          console.error('Failed to copy: ', err);
+          alert('링크 복사에 실패했습니다.');
+        });
+      });
+
+      document.getElementById('delete-btn').addEventListener('click', async () => {
+        if (!myResultId || !supabaseClient) {
+          alert('삭제할 결과가 없습니다.');
+          return;
+        }
+
+        if (!confirm('정말 내 결과를 삭제하시겠습니까?\n삭제 후에는 복구할 수 없습니다.')) {
+          return;
+        }
+
+        showLoading('결과 삭제 중...');
+
+        try {
+          const { error } = await supabaseClient
+            .from('snow_results')
+            .delete()
+            .eq('id', myResultId);
+
+          if (error) throw error;
+
+          hideLoading();
+          alert('결과가 삭제되었습니다.');
+
+          // Reset state
+          myResultId = null;
+          document.getElementById('delete-btn').style.display = 'none';
+
+          // Reload room data to update graph
+          await loadRoomData();
+
+        } catch (err) {
+          console.error('Delete error:', err);
+          hideLoading();
+          alert('삭제 중 오류가 발생했습니다. 다시 시도해주세요.');
+        }
+      });
+
+      // Load data if available (I'll inject it)
+      if (typeof snowData !== 'undefined') renderGallery(snowData);
+      initRoom();
+    }
+
+    function switchScreen(id) {
+      document.querySelectorAll('.screen').forEach(el => el.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function startQuiz() {
+      const input = document.getElementById('nickname-input');
+      let nick = input.value.trim();
+
+      // 입력 검증: 최대 20자, 특수문자 제한
+      if (nick.length > 20) {
+        nick = nick.substring(0, 20);
+      }
+
+      // 위험한 문자 제거 (XSS 방지)
+      nick = nick.replace(/[<>\"'&]/g, '');
+
+      if (nick) {
+        nickname = nick;
+        input.value = nick; // 정제된 값으로 업데이트
+      }
+
+      switchScreen('quiz-screen');
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const q = questions[current];
+      document.getElementById('q-idx').textContent = current + 1;
+      document.getElementById('question-text').textContent = q.prompt;
+      document.getElementById('progress-fill').style.width = ((current / questions.length) * 100) + '%';
+
+      const container = document.getElementById('options-container');
+      container.innerHTML = '';
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.textContent = opt.label;
+        btn.onclick = () => {
+          Object.entries(opt.effect).forEach(([k, v]) => scores[k] = Math.max(0, Math.min(100, scores[k] + v)));
+          nextQuestion();
+        };
+        container.appendChild(btn);
+      });
+    }
+
+    function nextQuestion() {
+      if (current < questions.length - 1) {
+        current++;
+        renderQuestion();
+      } else {
+        finishQuiz();
+      }
+    }
+
+    function finishQuiz() {
+      document.getElementById('progress-fill').style.width = '100%';
+
+      // Calculate Match using OCEAN model with weighted distance
+      // Weights based on psychological research:
+      // - C (Conscientiousness) and A (Agreeableness) are stronger predictors of behavior
+      // - N (Neuroticism) affects emotional responses
+      // - E (Extraversion) and O (Openness) add diversity
+      const weights = { O: 1.0, C: 1.2, E: 1.0, A: 1.15, N: 1.1 };
+
+      let best = null;
+      snowData.forEach(item => {
+        // Get OCEAN scores for this crystal type
+        const crystalOcean = item.ocean || convertToOCEAN(item.stats);
+
+        // Weighted Euclidean distance in OCEAN space
+        const dist = Math.sqrt(
+          ['O', 'C', 'E', 'A', 'N'].reduce((sum, k) => {
+            const diff = scores[k] - crystalOcean[k];
+            return sum + (diff * diff * weights[k]);
+          }, 0)
+        );
+
+        if (!best || dist < best.dist) best = { dist, item };
+      });
+
+      showResult(best.item);
+    }
+
+    async function showResult(item) {
+      document.getElementById('result-icon-container').innerHTML = item.svg.replace('stroke="#A0D2EB"', 'stroke="#0071e3"'); // Recolor
+      document.getElementById('result-title').textContent = item.title;
+      document.getElementById('result-code').textContent = item.code;
+      document.getElementById('result-desc').textContent = item.desc;
+
+      // Persona Text logic - OCEAN based description
+      const oceanLabels = {
+        O: { name: '개방성', high: '새로운 경험을 추구하는', low: '안정을 추구하는' },
+        C: { name: '성실성', high: '계획적이고 체계적인', low: '유연하고 즉흥적인' },
+        E: { name: '외향성', high: '사교적이고 활발한', low: '사려 깊고 조용한' },
+        A: { name: '친화성', high: '협조적이고 따뜻한', low: '독립적이고 당당한' },
+        N: { name: '정서', high: '섬세하고 민감한', low: '안정적이고 차분한' }
+      };
+
+      // Find top 2 traits
+      const sortedTraits = Object.entries(scores)
+        .sort((a, b) => Math.abs(b[1] - 50) - Math.abs(a[1] - 50))
+        .slice(0, 2);
+
+      const trait1 = sortedTraits[0];
+      const trait2 = sortedTraits[1];
+      const desc1 = trait1[1] > 50 ? oceanLabels[trait1[0]].high : oceanLabels[trait1[0]].low;
+      const desc2 = trait2[1] > 50 ? oceanLabels[trait2[0]].high : oceanLabels[trait2[0]].low;
+
+      document.getElementById('persona-text').innerHTML = `
+           <strong>${item.title}</strong> 타입은<br/>
+           <span style="color:var(--accent)">${desc1}</span> 성향과<br/>
+           <span style="color:var(--accent)">${desc2}</span> 면을 가지고 있습니다.
+        `;
+
+      // Render Stats - OCEAN model
+      const oceanFullNames = {
+        O: '개방성 (Openness)',
+        C: '성실성 (Conscientiousness)',
+        E: '외향성 (Extraversion)',
+        A: '친화성 (Agreeableness)',
+        N: '신경성 (Neuroticism)'
+      };
+
+      // Get crystal's OCEAN scores
+      const crystalOcean = item.ocean || convertToOCEAN(item.stats);
+
+      document.getElementById('stat-bars').innerHTML = ['O', 'C', 'E', 'A', 'N'].map(k => `
+            <div class="stat-bar">
+                <span class="stat-label" title="${oceanFullNames[k]}">${k}</span>
+                <div class="stat-rail">
+                    <div class="stat-val-match" style="width:${crystalOcean[k]}%"></div>
+                    <div class="stat-val-user" style="width:${scores[k]}%"></div>
+                </div>
+            </div>
+        `).join('');
+
+      switchScreen('result-screen');
+
+      if (roomId && supabaseClient) {
+        console.log(`Sending result to Room: ${roomId}, Nickname: ${nickname || '익명'}`);
+        showLoading('결과 저장 중...');
+        try {
+          // Use select().single() to get the inserted row including UUID
+          const { data: inserted, error } = await supabaseClient.from("snow_results").insert({
+            room_id: roomId,
+            crystal_code: item.code,
+            scores: scores,
+            nickname: nickname || '익명'
+          }).select().single();
+
+          if (error) {
+            console.error("Supabase Insert Error:", error);
+            hideLoading();
+            alert("결과 저장 중 오류가 발생했습니다. 다시 시도해주세요.");
+          } else {
+            console.log("Result saved successfully. My ID:", inserted.id);
+            myResultId = inserted.id; // Store ID globally
+            // Show delete button
+            document.getElementById('delete-btn').style.display = 'block';
+          }
+        } catch (err) {
+          console.error("Supabase Exception:", err);
+          hideLoading();
+          alert("네트워크 오류가 발생했습니다. 다시 시도해주세요.");
+        }
+
+        // Load Room Data & Render Graph
+        loadRoomData();
+      } else {
+        // Guest mode (just viewing result)
+        // We might still want to show a graph if there's test data or just "Me"
+        // But for now, just initialize empty graph
+        if (!graphInstance) graphInstance = new SnowGraph('graph-canvas');
+        // Crucial: Resize now that container is visible
+        requestAnimationFrame(() => {
+          graphInstance.resize();
+          // If we are just alone, show me centered
+          graphInstance.setUsers([{
+            id: 'me', nickname: nickname || '나', scores: scores, crystal_code: item.code
+          }], 'me');
+        });
+      }
+    }
+
+    async function loadRoomData() {
+      if (!roomId || !supabaseClient) return;
+
+      showLoading('관계도 불러오는 중...');
+
+      try {
+        const { data, error } = await supabaseClient
+          .from('snow_results')
+          .select('*')
+          .eq('room_id', roomId);
+
+        if (error) throw error;
+
+        roomResults = data || [];
+        renderRoomList(roomResults);
+
+        // Graph Update
+        if (!graphInstance) graphInstance = new SnowGraph('graph-canvas');
+
+        // Crucial: Resize now that we are surely visible
+        requestAnimationFrame(() => {
+          graphInstance.resize();
+          graphInstance.setUsers(roomResults, myResultId);
+          hideLoading();
+        });
+
+      } catch (err) {
+        console.error("Error loading room data:", err);
+        hideLoading();
+        alert('데이터를 불러오는데 실패했습니다. 다시 시도해주세요.');
+      }
+    }
+
+    // --- Test / Debug ---
+    window.testGraph = function () {
+      // Switch to result screen
+      switchScreen('result-screen');
+      if (!graphInstance) graphInstance = new SnowGraph('graph-canvas');
+
+      // Generate dummy users (100 people for stress test)
+      const dummyUsers = [];
+      const koreanNames = ['민준', '서윤', '예준', '지우', '도윤', '서연', '하준', '지민', '시우', '수아',
+        '준서', '하윤', '예서', '다은', '지호', '채원', '윤서', '주원', '지안', '소율'];
+
+      // Me at center
+      dummyUsers.push({ id: 'me', nickname: '나', scores: { T: 50, H: 50, V: 50, R: 50 }, crystal_code: 'TEST' });
+
+      // Generate 100 random users with varied distributions
+      for (let i = 0; i < 100; i++) {
+        // Create clusters: some close (soulmates), some medium (colleagues), some far
+        const cluster = Math.random();
+        let baseT = 50, baseH = 50, baseV = 50, baseR = 50;
+        let variance = 15;
+
+        if (cluster < 0.2) {
+          // Soulmates - close to me (20%)
+          variance = 10;
+        } else if (cluster < 0.5) {
+          // Colleagues - medium distance (30%)
+          baseT += (Math.random() - 0.5) * 40;
+          baseH += (Math.random() - 0.5) * 40;
+          variance = 15;
+        } else {
+          // Different - far away (50%)
+          baseT = Math.random() * 100;
+          baseH = Math.random() * 100;
+          baseV = Math.random() * 100;
+          baseR = Math.random() * 100;
+          variance = 20;
+        }
+
+        dummyUsers.push({
+          id: `u${i}`,
+          nickname: koreanNames[i % koreanNames.length] + (Math.floor(i / 20) || ''),
+          scores: {
+            T: Math.max(0, Math.min(100, baseT + (Math.random() - 0.5) * variance * 2)),
+            H: Math.max(0, Math.min(100, baseH + (Math.random() - 0.5) * variance * 2)),
+            V: Math.max(0, Math.min(100, baseV + (Math.random() - 0.5) * variance * 2)),
+            R: Math.max(0, Math.min(100, baseR + (Math.random() - 0.5) * variance * 2))
+          },
+          crystal_code: `C${i}`
+        });
+      }
+
+      requestAnimationFrame(() => {
+        graphInstance.resize();
+        graphInstance.setUsers(dummyUsers, 'me');
+      });
+      console.log("Test Graph Loaded with 100 random users.");
+    };
+
+    // Auto-init? no.
+    // Renders the list of users in the room
+    function renderRoomList(data) {
+      if (!data || !document.getElementById('room-list')) return;
+
+      // Find 'me' to calculate relative distance for the list
+      // myResultId is global. scores is global (current user scores).
+      const me = data.find(u => u.id === myResultId) || { scores: scores };
+
+      const sorted = data.map(u => ({
+        ...u,
+        dist: Math.sqrt(['T', 'H', 'V', 'R'].reduce((s, k) => s + Math.pow((me.scores[k] || 50) - (u.scores[k] || 50), 2), 0))
+      })).sort((a, b) => a.dist - b.dist);
+
+      document.getElementById('room-list').innerHTML = sorted.map(u => `
+         <div class="room-list-item">
+            <div>
+               <strong>${u.nickname || '익명'}</strong> 
+               <span style="font-size:12px; color:#888;">(${u.crystal_code || '???'})</span>
+               ${u.id === myResultId ? '<span style="font-size:10px; color:var(--accent); border:1px solid var(--accent); padding:2px 4px; border-radius:4px; margin-left:4px;">나</span>' : ''}
+            </div>
+            <div class="affinity-badge ${u.dist < 30 ? 'affinity-high' : ''}">
+               ${u.dist < 30 ? '천생연분' : (u.dist < 60 ? '좋은 동료' : '색다른 관계')}
+            </div>
+         </div>
+       `).join('');
+    }
+
+    function initRoom() {
+      const url = new URL(window.location);
+      roomId = url.searchParams.get('room');
+      if (!roomId) {
+        roomId = Math.random().toString(36).slice(2);
+        url.searchParams.set('room', roomId);
+        history.replaceState(null, '', url);
+      }
+    }
+
+    function renderGallery(data) {
+      document.getElementById('gallery-grid').innerHTML = data.map(item => `
+        <div class="grid-item">
+          ${item.svg}
+          <div class="grid-code">${item.code}</div>
+          <div class="grid-name">${item.title}</div>
+        </div>
+      `).join('');
+    }
+
+    // START
+    window.onload = init;
+  </script>
+</body>
+
+</html>

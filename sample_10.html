@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Magono-Lee Snow Crystal Icons (1–10)</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 24px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #050b16;
+      color: #e5f4ff;
+    }
+    h1 {
+      margin-bottom: 16px;
+      font-size: 20px;
+      letter-spacing: 0.03em;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: rgba(7, 21, 38, 0.9);
+      border-radius: 12px;
+      border: 1px solid rgba(160, 210, 235, 0.2);
+      padding: 12px 12px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+    }
+    .card svg {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 6px;
+    }
+    .code {
+      font-size: 12px;
+      color: #7fb6d8;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .title {
+      font-size: 13px;
+      margin-top: 2px;
+      text-align: center;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>눈 결정 아이콘 (ID 1–10)</h1>
+  <div class="grid">
+
+    <!-- 1. N1a Simple Needle / 예리한 외골수 : 얇고 단순한 육각 바늘 -->
+    <div class="card">
+      <svg viewBox="0 0 100 100"
+           xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           stroke="#A0D2EB"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <g transform="translate(50,50)">
+          <!-- 중심 작은 육각 -->
+          <polygon points="0,-5 4,-3 4,3 0,5 -4,3 -4,-3" />
+          <!-- 기본 팔: 곁가지 거의 없는 아주 단순한 바늘 -->
+          <g id="arm-n1a">
+            <line x1="0" y1="-5" x2="0" y2="-30" />
+            <!-- 끝 육각 단면 -->
+            <polygon points="0,-30 3,-28 3,-24 0,-22 -3,-24 -3,-28" />
+          </g>
+          <!-- 6방향 회전 복제 -->
+          <g transform="rotate(60)">
+            <use href="#arm-n1a" />
+          </g>
+          <g transform="rotate(120)">
+            <use href="#arm-n1a" />
+          </g>
+          <g transform="rotate(180)">
+            <use href="#arm-n1a" />
+          </g>
+          <g transform="rotate(240)">
+            <use href="#arm-n1a" />
+          </g>
+          <g transform="rotate(300)">
+            <use href="#arm-n1a" />
+          </g>
+        </g>
+        <!-- arm 정의 -->
+        <defs>
+          <g id="arm-n1a">
+            <line x1="0" y1="-5" x2="0" y2="-30" />
+            <polygon points="0,-30 3,-28 3,-24 0,-22 -3,-24 -3,-28" />
+          </g>
+        </defs>
+      </svg>
+      <div class="code">N1a</div>
+      <div class="title">예리한 외골수</div>
+    </div>
+
+    <!-- 2. N1b Needle with Top / 신중한 바늘 : 끝에 캡이 있는 바늘 -->
+    <div class="card">
+      <svg viewBox="0 0 100 100"
+           xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           stroke="#A0D2EB"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <g transform="translate(50,50)">
+          <!-- 중심 육각 -->
+          <polygon points="0,-6 5,-3 5,3 0,6 -5,3 -5,-3" />
+          <!-- 기본 팔: 끝에 캡(작은 판) -->
+          <g id="arm-n1b">
+            <!-- 메인 바늘 -->
+            <line x1="0" y1="-6" x2="0" y2="-30" />
+            <!-- 캡 -->
+            <path d="M-5 -30 L5 -30 L3 -26 L-3 -26 Z" />
+          </g>
+          <!-- 6방향 반복 -->
+          <g transform="rotate(60)">
+            <use href="#arm-n1b" />
+          </g>
+          <g transform="rotate(120)">
+            <use href="#arm-n1b" />
+          </g>
+          <g transform="rotate(180)">
+            <use href="#arm-n1b" />
+          </g>
+          <g transform="rotate(240)">
+            <use href="#arm-n1b" />
+          </g>
+          <g transform="rotate(300)">
+            <use href="#arm-n1b" />
+          </g>
+        </g>
+        <defs>
+          <g id="arm-n1b">
+            <line x1="0" y1="-6" x2="0" y2="-30" />
+            <path d="M-5 -30 L5 -30 L3 -26 L-3 -26 Z" />
+          </g>
+        </defs>
+      </svg>
+      <div class="code">N1b</div>
+      <div class="title">신중한 바늘</div>
+    </div>
+
+    <!-- 3. N1c Bundle of Needles / 협력하는 전략가 : 두 갈래로 갈라지는 바늘 묶음 -->
+    <div class="card">
+      <svg viewBox="0 0 100 100"
+           xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           stroke="#A0D2EB"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <g transform="translate(50,50)">
+          <!-- 중심 이중 육각 -->
+          <polygon points="0,-5 4,-3 4,3 0,5 -4,3 -4,-3" />
+          <polygon points="0,-9 6,-5 6,5 0,9 -6,5 -6,-5" />
+          <!-- 기본 팔: Y자 형태의 두 갈래 바늘 -->
+          <g id="arm-n1c">
+            <line x1="0" y1="-5" x2="-3" y2="-26" />
+            <line x1="0" y1="-5" x2="3" y2="-26" />
+            <!-- 각 끝에 작은 단면 -->
+            <polygon points="-3,-26 -1,-25 -1,-22 -3,-21 -5,-22 -5,-25" />
+            <polygon points="3,-26 5,-25 5,-22 3,-21 1,-22 1,-25" />
+          </g>
+          <!-- 6방향 반복 -->
+          <g transform="rotate(60)">
+            <use href="#arm-n1c" />
+          </g>
+          <g transform="rotate(120)">
+            <use href="#arm-n1c" />
+          </g>
+          <g transform="rotate(180)">
+            <use href="#arm-n1c" />
+          </g>
+          <g transform="rotate(240)">
+            <use href="#arm-n1c" />
+          </g>
+          <g transform="rotate(300)">
+            <use href="#arm-n1c" />
+          </g>
+        </g>
+        <defs>
+          <g id="arm-n1c">
+            <line x1="0" y1="-5" x2="-3" y2="-26" />
+            <line x1="0" y1="-5" x2="3" y2="-26" />
+            <polygon points="-3,-26 -1,-25 -1,-22 -3,-21 -5,-22 -5,-25" />
+            <polygon points="3,-26 5,-25 5,-22 3,-21 1,-22 1,-25" />
+          </g>
+        </defs>
+      </svg>
+      <div class="code">N1c</div>
+      <div class="title">협력하는 전략가</div>
+    </div>
+
+    <!-- 4. N1d Needle with Cornice / 멋쟁이 신사 : 중심에 장식 링이 있는 바늘 -->
+    <div class="card">
+      <svg viewBox="0 0 100 100"
+           xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           stroke="#A0D2EB"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <g transform="translate(50,50)">
+          <!-- 중심 육각 + 장식 링 -->
+          <polygon points="0,-4 4,-2 4,2 0,4 -4,2 -4,-2" />
+          <circle cx="0" cy="0" r="9" />
+          <!-- 기본 팔: 중앙 장식에서 뻗어나가는 바늘 -->
+          <g id="arm-n1d">
+            <!-- 메인 바늘 -->
+            <line x1="0" y1="-9" x2="0" y2="-30" />
+            <!-- 장식 코니스 (작은 수평판) -->
+            <line x1="-5" y1="-14" x2="5" y2="-14" />
+            <!-- 끝 단면 -->
+            <polygon points="0,-30 3,-28 3,-24 0,-22 -3,-24 -3,-28" />
+          </g>
+          <!-- 6방향 반복 -->
+          <g transform="rotate(60)"><use href="#arm-n1d" /></g>
+          <g transform="rotate(120)"><use href="#arm-n1d" /></g>
+          <g transform="rotate(180)"><use href="#arm-n1d" /></g>
+          <g transform="rotate(240)"><use href="#arm-n1d" /></g>
+          <g transform="rotate(300)"><use href="#arm-n1d" /></g>
+        </g>
+        <defs>
+          <g id="arm-n1d">
+            <line x1="0" y1="-9" x2="0" y2="-30" />
+            <line x1="-5" y1="-14" x2="5" y2="-14" />
+            <polygon points="0,-30 3,-28 3,-24 0,-22 -3,-24 -3,-28" />
+          </g>
+        </defs>
+      </svg>
+      <div class="code">N1d</div>
+      <div class="title">멋쟁이 신사</div>
+    </div>
+
+    <!-- 5. N1e Bundle of Elementary Needles / 호기심 대장 : 예시로 마음에 들었던 스타일 그대로 -->
+    <div class="card">
+      <svg viewBox="0 0 100 100"
+           xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           stroke="#A0D2EB"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <g transform="translate(50,50)">
+          <!-- 중심 육각 코어 -->
+          <polygon points="0,-6 5,-3 5,3 0,6 -5,3 -5,-3" />
+
+          <!-- 기본 팔: 가지가 두 단계 있는 프랙탈 느낌 -->
+          <g id="arm-n1e">
+            <!-- 메인 가지 -->
+            <line x1="0" y1="-6" x2="0" y2="-32" />
+            <!-- 곁가지1 -->
+            <line x1="0" y1="-14" x2="4" y2="-18" />
+            <line x1="0" y1="-14" x2="-4" y2="-18" />
+            <!-- 곁가지2 -->
+            <line x1="0" y1="-22" x2="5" y2="-26" />
+            <line x1="0" y1="-22" x2="-5" y2="-26" />
+            <!-- 팔 끝 작은 육각 -->
+            <polygon points="0,-32 3,-30 3,-26 0,-24 -3,-26 -3,-30" />
+          </g>
+
+          <!-- 6방향 회전 -->
+          <g transform="rotate(60)"><use href="#arm-n1e" /></g>
+          <g transform="rotate(120)"><use href="#arm-n1e" /></g>
+          <g transform="rotate(180)"><use href="#arm-n1e" /></g>
+          <g transform="rotate(240)"><use href="#arm-n1e" /></g>
+          <g transform="rotate(300)"><use href="#arm-n1e" /></g>
+        </g>
+        <defs>
+          <g id="arm-n1e">
+            <line x1="0" y1="-6" x2="0" y2="-32" />
+            <line x1="0" y1="-14" x2="4" y2="-18" />
+            <line x1="0" y1="-14" x2="-4" y2="-18" />
+            <line x1="0" y1="-22" x2="5" y2="-26" />
+            <line x1="0" y1="-22" x2="-5" y2="-26" />
+            <polygon points="0,-32 3,-30 3,-26 0,-24 -3,-26 -3,-30" />
+          </g>
+        </defs>
+      </svg>
+      <div class="code">N1e</div>
+      <div class="title">호기심 대장</div>
+    </div>
+
+    <!-- 6. N2a Combination of Needles / 복잡한 해결사 : 길고 곁가지가 많은 복합 바늘 -->
+    <div class="card">
+      <svg viewBox="0 0 100 100"
+           xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           stroke="#A0D2EB"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <g transform="translate(50,50)">
+          <!-- 중심 이중 육각 -->
+          <polygon points="0,-5 4,-3 4,3 0,5 -4,3 -4,-3" />
+          <polygon points="0,-9 6,-5 6,5 0,9 -6,5 -6,-5" />
+
+          <!-- 기본 팔: 구간마다 가지가 있는 긴 복합 바늘 -->
+          <g id="arm-n2a">
+            <line x1="0" y1="-9" x2="0" y2="-34" />
+            <!-- 3단계 곁가지 -->
+            <line x1="0" y1="-14" x2="4" y2="-18" />
+            <line x1="0" y1="-14" x2="-4" y2="-18" />
+
+            <line x1="0" y1="-20" x2="5" y2="-24" />
+            <line x1="0" y1="-20" x2="-5" y2="-24" />
+
+            <line x1="0" y1="-26" x2="6" y2="-30" />
+            <line x1="0" y1="-26" x2="-6" y2="-30" />
+            <!-- 끝 단면 -->
+            <polygon points="0,-34 3,-32 3,-28 0,-26 -3,-28 -3,-32" />
+          </g>
+
+          <!-- 6방향 반복 -->
+          <g transform="rotate(60)"><use href="#arm-n2a" /></g>
+          <g transform="rotate(120)"><use href="#arm-n2a" /></g>
+          <g transform="rotate(180)"><use href="#arm-n2a" /></g>
+          <g transform="rotate(240)"><use href="#arm-n2a" /></g>
+          <g transform="rotate(300)"><use href="#arm-n2a" /></g>
+        </g>
+        <defs>
+          <g id="arm-n2a">
+            <line x1="0" y1="-9" x2="0" y2="-34" />
+            <line x1="0" y1="-14" x2="4" y2="-18" />
+            <line x1="0" y1="-14" x2="-4" y2="-18" />
+            <line x1="0" y1="-20" x2="5" y2="-24" />
+            <line x1="0" y1="-20" x2="-5" y2="-24" />
+            <line x1="0" y1="-26" x2="6" y2="-30" />
+            <line x1="0" y1="-26" x2="-6" y2="-30" />
+            <polygon points="0,-34 3,-32 3,-28 0,-26 -3,-28 -3,-32" />
+          </g>
+        </defs>
+      </svg>
+      <div class="code">N2a</div>
+      <div class="title">복잡한 해결사</div>
+    </div>
+
+    <!-- 7. N2b Bundle of Needles (Radial) / 사교적인 리더 : 각 방향에 이중 바늘이 있는 묶음 -->
+    <div class="card">
+      <svg viewBox="0 0 100 100"
+           xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           stroke="#A0D2EB"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <g transform="translate(50,50)">
+          <!-- 중심 육각 -->
+          <polygon points="0,-6 5,-3 5,3 0,6 -5,3 -5,-3" />
+
+          <!-- 기본 팔: 두 줄이 나란한 바늘(리더 + 동료) -->
+          <g id="arm-n2b">
+            <!-- 메인 두 줄 -->
+            <line x1="-2" y1="-6" x2="-2" y2="-30" />
+            <line x1="2" y1="-6" x2="2" y2="-30" />
+            <!-- 곁가지 -->
+            <line x1="-2" y1="-16" x2="-7" y2="-21" />
+            <line x1="2" y1="-16" x2="7" y2="-21" />
+            <!-- 끝 단면 (조금 넓게) -->
+            <path d="M-4 -30 L4 -30 L3 -26 L-3 -26 Z" />
+          </g>
+
+          <!-- 6방향 반복 -->
+          <g transform="rotate(60)"><use href="#arm-n2b" /></g>
+          <g transform="rotate(120)"><use href="#arm-n2b" /></g>
+          <g transform="rotate(180)"><use href="#arm-n2b" /></g>
+          <g transform="rotate(240)"><use href="#arm-n2b" /></g>
+          <g transform="rotate(300)"><use href="#arm-n2b" /></g>
+        </g>
+        <defs>
+          <g id="arm-n2b">
+            <line x1="-2" y1="-6" x2="-2" y2="-30" />
+            <line x1="2" y1="-6" x2="2" y2="-30" />
+            <line x1="-2" y1="-16" x2="-7" y2="-21" />
+            <line x1="2" y1="-16" x2="7" y2="-21" />
+            <path d="M-4 -30 L4 -30 L3 -26 L-3 -26 Z" />
+          </g>
+        </defs>
+      </svg>
+      <div class="code">N2b</div>
+      <div class="title">사교적인 리더</div>
+    </div>
+
+    <!-- 8. N2c Needles with Skeleton / 뼈대 있는 가문 : 중심축 패턴이 강조된 바늘 -->
+    <div class="card">
+      <svg viewBox="0 0 100 100"
+           xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           stroke="#A0D2EB"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <g transform="translate(50,50)">
+          <!-- 중심 육각 + 안쪽 십자 뼈대 -->
+          <polygon points="0,-5 4,-3 4,3 0,5 -4,3 -4,-3" />
+          <line x1="-6" y1="0" x2="6" y2="0" />
+          <line x1="0" y1="-6" x2="0" y2="6" />
+
+          <!-- 기본 팔: 축을 따라 규칙적으로 가지가 달린 바늘 -->
+          <g id="arm-n2c">
+            <line x1="0" y1="-5" x2="0" y2="-32" />
+            <!-- 뼈대 가지 -->
+            <line x1="0" y1="-10" x2="4" y2="-12" />
+            <line x1="0" y1="-10" x2="-4" y2="-12" />
+
+            <line x1="0" y1="-17" x2="5" y2="-19" />
+            <line x1="0" y1="-17" x2="-5" y2="-19" />
+
+            <line x1="0" y1="-24" x2="6" y2="-26" />
+            <line x1="0" y1="-24" x2="-6" y2="-26" />
+
+            <!-- 끝 육각 -->
+            <polygon points="0,-32 3,-30 3,-26 0,-24 -3,-26 -3,-30" />
+          </g>
+
+          <!-- 6방향 반복 -->
+          <g transform="rotate(60)"><use href="#arm-n2c" /></g>
+          <g transform="rotate(120)"><use href="#arm-n2c" /></g>
+          <g transform="rotate(180)"><use href="#arm-n2c" /></g>
+          <g transform="rotate(240)"><use href="#arm-n2c" /></g>
+          <g transform="rotate(300)"><use href="#arm-n2c" /></g>
+        </g>
+        <defs>
+          <g id="arm-n2c">
+            <line x1="0" y1="-5" x2="0" y2="-32" />
+            <line x1="0" y1="-10" x2="4" y2="-12" />
+            <line x1="0" y1="-10" x2="-4" y2="-12" />
+            <line x1="0" y1="-17" x2="5" y2="-19" />
+            <line x1="0" y1="-17" x2="-5" y2="-19" />
+            <line x1="0" y1="-24" x2="6" y2="-26" />
+            <line x1="0" y1="-24" x2="-6" y2="-26" />
+            <polygon points="0,-32 3,-30 3,-26 0,-24 -3,-26 -3,-30" />
+          </g>
+        </defs>
+      </svg>
+      <div class="code">N2c</div>
+      <div class="title">뼈대 있는 가문</div>
+    </div>
+
+    <!-- 9. C1a Pyramid / 고고한 철학자 : 피라미드 끝이 있는 기둥형 결정 -->
+    <div class="card">
+      <svg viewBox="0 0 100 100"
+           xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           stroke="#A0D2EB"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <!-- 기둥 중심에 약한 방사형을 섞어서 눈결정 느낌 유지 -->
+        <g transform="translate(50,50)">
+          <!-- 중앙 기둥형 육각 -->
+          <polygon points="0,-18 8,-12 8,12 0,18 -8,12 -8,-12" />
+          <!-- 위쪽 피라미드 모양 -->
+          <polygon points="0,-32 10,-20 0,-18 -10,-20" />
+          <!-- 아래 기둥 바닥 -->
+          <line x1="-8" y1="12" x2="8" y2="12" />
+          <!-- 내부 골격 -->
+          <line x1="0" y1="-32" x2="0" y2="18" />
+          <line x1="-4" y1="-10" x2="4" y2="-10" />
+          <line x1="-4" y1="0" x2="4" y2="0" />
+          <!-- 짧은 방사형 가지 (철학자지만 눈결정 구조를 유지) -->
+          <line x1="-12" y1="0" x2="-18" y2="0" />
+          <line x1="12" y1="0" x2="18" y2="0" />
+          <line x1="-10" y1="-8" x2="-15" y2="-11" />
+          <line x1="10" y1="-8" x2="15" y2="-11" />
+          <line x1="-10" y1="8" x2="-15" y2="11" />
+          <line x1="10" y1="8" x2="15" y2="11" />
+        </g>
+      </svg>
+      <div class="code">C1a</div>
+      <div class="title">고고한 철학자</div>
+    </div>
+
+    <!-- 10. C1b Cup / 넓은 포용력 : 컵 모양 기둥 + 짧은 방사형 가지 -->
+    <div class="card">
+      <svg viewBox="0 0 100 100"
+           xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           stroke="#A0D2EB"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <g transform="translate(50,50)">
+          <!-- 컵 림: 살짝 육각 느낌이 나는 곡선 -->
+          <path d="M-12 -16 C-6 -22, 0 -24, 6 -22 C10 -20, 12 -18, 12 -16" />
+          <!-- 컵 몸통 -->
+          <path d="M-12 -16 C-12 0, -6 12, 0 12 C6 12, 12 0, 12 -16" />
+          <!-- 내부 골격 -->
+          <line x1="0" y1="-24" x2="0" y2="12" />
+          <line x1="-6" y1="-12" x2="-6" y2="4" />
+          <line x1="6" y1="-12" x2="6" y2="4" />
+          <!-- 스템과 받침 -->
+          <line x1="0" y1="12" x2="0" y2="22" />
+          <path d="M-10 24 H10" />
+          <!-- 짧은 방사형 가지: 포용력 느낌으로 주변에 살짝 펼침 -->
+          <line x1="-18" y1="-4" x2="-12" y2="-4" />
+          <line x1="18" y1="-4" x2="12" y2="-4" />
+          <line x1="-16" y1="2" x2="-10" y2="4" />
+          <line x1="16" y1="2" x2="10" y2="4" />
+        </g>
+      </svg>
+      <div class="code">C1b</div>
+      <div class="title">넓은 포용력</div>
+    </div>
+
+  </div>
+</body>
+</html>
